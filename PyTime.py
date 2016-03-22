@@ -87,7 +87,9 @@ v_tk_ok_1 = IntVar()
 
 titre = Label(fenetre, text="Horloge")
 
+# Création de la partie "Couleur des chiffres".
 tk_alea = LabelFrame(fenetre, text="Couleur des chiffres", padx=2, pady=2)
+
 tk_alea_h1 = LabelFrame(tk_alea, text="1er chiffre des heures", padx=2, pady=2)
 tk_alea_h1_1 = Checkbutton(tk_alea_h1, text="Aleatoire", variable = v_tk_alea_h1_1)
 tk_alea_h1_2 = Checkbutton(tk_alea_h1, text="Bleu", variable = v_tk_alea_h1_2)
@@ -144,16 +146,22 @@ tk_alea_m2_10 = Checkbutton(tk_alea_m2, text="Gris", variable = v_tk_alea_m2_10)
 tk_alea_m2_11 = Checkbutton(tk_alea_m2, text="Orange", variable = v_tk_alea_m2_11)
 tk_alea_m2_12 = Checkbutton(tk_alea_m2, text="Noir/Blanc", variable = v_tk_alea_m2_12)
 
+
+# Création de la partie "Mode nuit".
 tk_nuit = LabelFrame(fenetre, text="Mode nuit", padx=2, pady=2)
 tk_nuit_1 = Checkbutton(tk_nuit, text="Auto", variable = v_tk_nuit_1)
 tk_nuit_2 = Checkbutton(tk_nuit, text="Oui", variable = v_tk_nuit_2)
 tk_nuit_3 = Checkbutton(tk_nuit, text="Non", variable = v_tk_nuit_3)
 
+
+# Création de la partie "Tour".
 tk_tour = LabelFrame(fenetre, text="Tour", padx=2, pady=2)
 tk_tour_1 = Label(tk_tour, text="Choisissez le nombre de tour que l'horloge")
 tk_tour_2 = Label(tk_tour, text="doit effectuer (1000 tour ~= 20 min).")
-tk_tour_3 = Spinbox(tk_tour, from_ = 0, to = 9999999)
+tk_tour_3 = Spinbox(tk_tour, from_ = 0, to = 9999999, textvariable = v_tk_tour_3)
 
+
+# Création de la partie "Mode d'emploi".
 tk_me = LabelFrame(fenetre, text="Mode d'emploi", padx=2, pady=2)
 tk_me_1 = Label(tk_me, text="Pour les couleurs, choisissez une seul couleur")
 tk_me_2 = Label(tk_me, text="OU aléatoire avec les couleurs que vous voulez")
@@ -162,11 +170,15 @@ tk_me_4 = Label(tk_me, text="aléatoire pour mettre toutes les couleurs.")
 tk_me_5 = Label(tk_me, text="Pour le mode nuit, cochez une seul case.")
 tk_me_6 = Label(tk_me, text="Appuyez sur Ok une fois les paramètres choisi.")
 tk_me_7 = Label(tk_me, text="Appuyez sur Aléatoire/Auto et sur Ok pour cocher")
-tk_me_8 = Label(tk_me, text="les modes aléatoires et mode nuit auto.")
+tk_me_8 = Label(tk_me, text="les modes aléatoires, mode nuit auto et 1000 tours.")
 
+
+# Création des deux boutons.
 tk_ok = Button(fenetre, text="→ OK ←", command=fenetre.destroy, cursor="clock")
 tk_ok_1 = Checkbutton(fenetre, text="→ Aléatoire/Auto ←", variable = v_tk_ok_1)
 
+
+# Formation des différents objets.
 titre.pack()
 tk_alea.pack(side=LEFT, fill="both", expand="yes")
 tk_alea_h1.pack()
@@ -234,6 +246,7 @@ tk_tour.pack(side=TOP, fill="both")
 tk_tour_1.pack()
 tk_tour_2.pack()
 tk_tour_3.pack()
+tk_tour_3.get()
 
 tk_me.pack(side=TOP, fill="both")
 tk_me_1.pack()
@@ -248,8 +261,11 @@ tk_me_8.pack()
 tk_ok.pack()
 tk_ok_1.pack()
 
+# Permet de laisser afficher la fenètre de commande tant que l'utilisateur
+# n'appui pas sur OK.
 fenetre.mainloop()
 
+# Met les résultats obtenu dans les variables correspondantes.
 v_tk_alea_h1_1 = v_tk_alea_h1_1.get()
 v_tk_alea_h1_2 = v_tk_alea_h1_2.get()
 v_tk_alea_h1_3 = v_tk_alea_h1_3.get()
@@ -310,6 +326,7 @@ v_tk_tour_3 = v_tk_tour_3.get()
 
 v_tk_ok_1 = v_tk_ok_1.get()
 
+# Configure le mode auto.
 if v_tk_ok_1 == 1:
 	v_tk_alea_h1_1 = 1
 	v_tk_alea_h2_1 = 1
@@ -318,6 +335,7 @@ if v_tk_ok_1 == 1:
 	v_tk_nuit_1 = 1
 	v_tk_tour_3 = 1000
 
+# Fin : Fenètre de commande.
 
 # Construction des chiffres par Turtle : a désigne le positionnement gauche/
 # droite, b désigne le positionnement haut/bas, f désigne la couleur du crayon,
@@ -1100,9 +1118,8 @@ turtle.setup(width=850,height=450)
 turtle.title("Horloge v5.0")
 
 # Boucle qui permet de faire tourner le rectangle du milieu et d'actualiser
-# l'heure. La boucle fait 1000 tours donc environ 20 minutes (selon la vitesse
-# du PC). Peut-être augmenté ou diminué.
-for i in range(1000):
+# l'heure. La boucle fait le nombre de tour indiqué par la fenètre de commande.
+for i in range(v_tk_tour_3):
 	heure = time.strftime("%H")	# heure prend les heures de l'heure qu'il est.
 	minu = time.strftime("%M")	# minu prend les minutes de l'heure qu'il est.
 	day = time.strftime("%d")	# day prend le jour où l'on est.
@@ -1119,7 +1136,9 @@ for i in range(1000):
 	a1 = int(ans[0]) 	 	# |
 	a2 = int(ans[1]) 	 	# |
 	
-	# Détermine si il fait jour ou nuit (nuit entre 18h et 08h), et en
+	# Lit les options de la fenètre de commande et en fonction, met le mode
+	# nuit ou le mode jour ou automatiquement.
+	# Si il fait jour ou nuit (nuit entre 18h et 08h), et en
 	# fonction, détermine la couleur de l'effacement des chiffres et la
 	# couleur du cadre et de la date.
 	if v_tk_nuit_2 == 1:
@@ -1229,8 +1248,9 @@ for i in range(1000):
 	# Pour que le cadre et la date apparaissent une seul fois.
 	cadredate = 1
 	
-	# Si l'utilisateur choisi les couleurs aléatoires, choisir une couleur,
-	# sinon, selon si il fait nuit ou jour, choisi noir ou blanc.
+	# Choisi la couleur choisi par l'utilisateur. Si il en a choisi plusieurs
+	# afficher une couleur aléatoire parmi celles choisi. Si aléatoire a été
+	# cocher, choisir une couleur aléatoire.
 	if v_tk_alea_h1_1 == 1:
 		if v_tk_alea_h1_2 == 1:
 			colora.append('blue')
@@ -1573,7 +1593,7 @@ for i in range(1000):
 	
 	# Fait tourner le rectangle du milieu à chaque boucle. La boucle est
 	# nécessaire si on change time.sleep et le nombre de tour (change le
-	# temps d'actualisation sans toucher au rectangle qui bouge.
+	# temps d'actualisation sans toucher au rectangle qui bouge).
 	for i in range(1):
 		if v_tk_alea_h1_12 == 1 and v_tk_alea_h2_12 == 1 and \
 		v_tk_alea_m1_12 == 1 and v_tk_alea_m2_12 == 1:
@@ -1678,7 +1698,18 @@ for i in range(1000):
 
 Changelog :
 v5.0
-Fenètre de commande avec tkinter.
+Fenètre de commande avec tkinter :
+- Adaptation du code pour soutenir la fenètre de commande.
+- Adaptation des commentaires.
+La fenètre contient :
+- Une partie "Couleur des chiffres" avec trois sous-partie : 1er chiffre des 
+  heures, 2eme chiffre des heures, 1er chiffre des minutes et 2eme chiffre 
+  des minutes.
+- Une partie "Mode nuit" avec les options : Auto, Oui, Non.
+- Une partie "Tour" avec un texte et un Spinbox.
+- Une partie "Mode d'emploi" avec un texte.
+- Un bouton OK
+- Un bouton Aléatoire/Auto.
 
 v4.0
 Optimisation du code.
