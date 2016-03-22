@@ -1,26 +1,30 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("Horloge v3.2")
+print("Horloge v4.0")
 print("----------------------------------------------------------------------")
 print("Ne pas fermer la fenètre sauf pour fermer l'horloge.")
 
+# Initialisation des variables et importation des modules.
 import time
-from turtle import Turtle
 import turtle
 import random
-hh1 = 1
-hh2 = 1
-mm1 = 1
-mm2 = 1
-cadre = 0
+hh1 = 1		# Savoir si l'heure a changée après la boucle.
+hh2 = 1		# Savoir si l'heure a changée après la boucle.
+mm1 = 1		# Savoir si les minutes ont changées après la boucle.
+mm2 = 1		# Savoir si les minutes ont changées après la boucle.
+cadredate = 0	# Permet de faire le cadre et la date une seule fois.
 
+# Demande si l'utilisateur veut des couleurs aléatoires.
 print("")
 choix = str(input("Avec des couleurs aléatoire ? "))
 
-def zero(t, c, f, g):
-	x_d = c[0] - int(-80)
-	y_d = c[1] - int(0)
+# Construction des chiffres par Turtle : a désigne le positionnement gauche/
+# droite, b désigne le positionnement haut/bas, f désigne la couleur du crayon,
+# g désigne l'épaisseur du crayon et t désigne la class Turtle().
+def zero(a, b, f, g, t):
+	x_d = a + (-50)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -50,9 +54,9 @@ def zero(t, c, f, g):
 	t.forward(60)
 	t.hideturtle()
 
-def un(t, c, f, g):
-	x_d = c[0] - int(0)
-	y_d = c[1] - int(0)
+def un(a, b, f, g, t):
+	x_d = a + (-60)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -73,9 +77,9 @@ def un(t, c, f, g):
 	t.forward(9)
 	t.hideturtle()
 	
-def deux(t, c, f, g):
-	x_d = c[0] - int(0)
-	y_d = c[1] - int(0)
+def deux(a, b, f, g, t):
+	x_d = a + (-60)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -108,9 +112,9 @@ def deux(t, c, f, g):
 	t.forward(80)
 	t.hideturtle()
 		
-def trois(t, c, f, g):
-	x_d = c[0] - int(0)
-	y_d = c[1] - int(0)
+def trois(a, b, f, g, t):
+	x_d = a +(-60)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -143,9 +147,9 @@ def trois(t, c, f, g):
 	t.forward(80)
 	t.hideturtle()
 	
-def quatre(t, c, f, g):
-	x_d = c[0] - int(0)
-	y_d = c[1] - int(0)
+def quatre(a, b, f, g, t):
+	x_d = a + (-60)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -170,9 +174,9 @@ def quatre(t, c, f, g):
 	t.forward(9)
 	t.hideturtle()
 	
-def cinq(t, c, f, g):
-	x_d = c[0] - int(0)
-	y_d = c[1] - int(0)
+def cinq(a, b, f, g, t):
+	x_d = a + (-140)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -205,9 +209,9 @@ def cinq(t, c, f, g):
 	t.forward(10)
 	t.hideturtle()
 
-def six(t, c, f, g):
-	x_d = c[0] - int(-70)
-	y_d = c[1] - int(-70)
+def six(a, b, f, g, t):
+	x_d = a + (-130)
+	y_d = b + 20
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -239,9 +243,9 @@ def six(t, c, f, g):
 	t.forward(60)
 	t.hideturtle()
 	
-def sept(t, c, f, g):
-	x_d = c[0] - int(0)
-	y_d = c[1] - int(0)
+def sept(a, b, f, g, t):
+	x_d = a + (-140)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -279,9 +283,9 @@ def sept(t, c, f, g):
 	t.forward(10)
 	t.hideturtle()
 	
-def huit(t, c, f, g):
-	x_d = c[0] - int(-80)
-	y_d = c[1] - int(0)
+def huit(a, b, f, g, t):
+	x_d = a + (-60)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -322,9 +326,9 @@ def huit(t, c, f, g):
 	t.forward(60)
 	t.hideturtle()
 	
-def neuf(t, c, f, g):
-	x_d = c[0] - int(0)
-	y_d = c[1] - int(-70)
+def neuf(a, b, f, g, t):
+	x_d = a + (-70)
+	y_d = b + (20)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -356,9 +360,9 @@ def neuf(t, c, f, g):
 	t.forward(60)
 	t.hideturtle()
 	
-def pzero(t, c, f, g):
-	x_d = c[0] - int(-80)
-	y_d = c[1] - int(0)
+def pzero(a, b, f, g, t):
+	x_d = a + (-50)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -388,9 +392,9 @@ def pzero(t, c, f, g):
 	t.forward(60/3)
 	t.hideturtle()
 
-def pun(t, c, f, g):
-	x_d = c[0] - int(0)
-	y_d = c[1] - int(0)
+def pun(a, b, f, g, t):
+	x_d = a + (-60)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -411,9 +415,9 @@ def pun(t, c, f, g):
 	t.forward(9/3)
 	t.hideturtle()
 	
-def pdeux(t, c, f, g):
-	x_d = c[0] - int(0)
-	y_d = c[1] - int(0)
+def pdeux(a, b, f, g, t):
+	x_d = a + (-60)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -446,9 +450,9 @@ def pdeux(t, c, f, g):
 	t.forward(80/3)
 	t.hideturtle()
 		
-def ptrois(t, c, f, g):
-	x_d = c[0] - int(-10)
-	y_d = c[1] - int(0)
+def ptrois(a, b, f, g, t):
+	x_d = a + (-50)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -481,9 +485,9 @@ def ptrois(t, c, f, g):
 	t.forward(80/3)
 	t.hideturtle()
 	
-def pquatre(t, c, f, g):
-	x_d = c[0] - int(0)
-	y_d = c[1] - int(0)
+def pquatre(a, b, f, g, t):
+	x_d = a + (-60)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -508,9 +512,9 @@ def pquatre(t, c, f, g):
 	t.forward(9/3)
 	t.hideturtle()
 	
-def pcinq(t, c, f, g):
-	x_d = c[0] - int(-60)
-	y_d = c[1] - int(0)
+def pcinq(a, b, f, g, t):
+	x_d = a + (-80)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -543,9 +547,9 @@ def pcinq(t, c, f, g):
 	t.forward(10/3)
 	t.hideturtle()
 
-def psix(t, c, f, g):
-	x_d = c[0] - int(-115)
-	y_d = c[1] - int(-23)
+def psix(a, b, f, g, t):
+	x_d = a + (-85)
+	y_d = b + (-27)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -577,9 +581,9 @@ def psix(t, c, f, g):
 	t.forward(60/3)
 	t.hideturtle()
 	
-def psept(t, c, f, g):
-	x_d = c[0] - int(-55)
-	y_d = c[1] - int(-0)
+def psept(a, b, f, g, t):
+	x_d = a + (-85)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -617,9 +621,9 @@ def psept(t, c, f, g):
 	t.forward(10/3)
 	t.hideturtle()
 	
-def phuit(t, c, f, g):
-	x_d = c[0] - int(-80)
-	y_d = c[1] - int(0)
+def phuit(a, b, f, g, t):
+	x_d = a +(-60)
+	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -660,9 +664,9 @@ def phuit(t, c, f, g):
 	t.forward(60/3)
 	t.hideturtle()
 	
-def pneuf(t, c, f, g):
-	x_d = c[0] - int(-12)
-	y_d = c[1] - int(-23)
+def pneuf(a, b, f, g, t):
+	x_d = a + (-58)
+	y_d = b + (-27)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -694,9 +698,9 @@ def pneuf(t, c, f, g):
 	t.forward(60/3)
 	t.hideturtle()
 	
-def milieu(t, c, f, g):
-	x_d = c[0] - int(-90)
-	y_d = c[1] - int(0)
+def milieu(a, b, f, g, t):
+	x_d = a + 20
+	y_d = b
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -717,9 +721,9 @@ def milieu(t, c, f, g):
 	t.reset()
 	t.hideturtle()
 
-def contour(t, c, f, g):
-	x_d = c[0] - int(-350)
-	y_d = c[1] - int(0)
+def contour(a, b, f, g, t):
+	x_d = a + 280
+	y_d = b + (-90)
 	t.shape('turtle')
 	t.penup()
 	t.setposition(x_d, y_d)
@@ -736,164 +740,82 @@ def contour(t, c, f, g):
 	t.forward(540)
 	t.hideturtle()
 	
-def color(alea):
-	if alea == 98:
-		fondcolor = 'white'
-	elif alea == 99:
-		fondcolor = 'black'
-	elif alea == 1:
-		fondcolor = 'blue'
-	elif alea == 2:
-		fondcolor = 'red'
-	elif alea == 3:
-		fondcolor = 'green'
-	elif alea == 4:
-		fondcolor = 'violet'
-	elif alea == 5:
-		fondcolor = 'yellow'
-	elif alea == 6:
-		fondcolor = 'brown'
-	elif alea == 7:
-		fondcolor = 'pink'
-	elif alea == 8:
-		fondcolor = 'purple'
-	elif alea == 9:
-		fondcolor = 'grey'
-	else:
-		fondcolor = 'orange'
-	return fondcolor
+# Permet de faire appel au chiffre appelé.
+def main(d, a, b, f, g):
+	if d == "p0":
+		chif = pzero
+	if d == "p1":
+		chif = pun
+	if d == "p2":
+		chif = pdeux
+	if d == "p3":
+		chif = ptrois
+	if d == "p4":
+		chif = pquatre
+	if d == "p5":
+		chif = pcinq
+	if d == "p6":
+		chif = psix
+	if d == "p7":
+		chif = psept
+	if d == "p8":
+		chif = phuit
+	if d == "p9":
+		chif = pneuf
+	if d == "0":
+		chif = zero
+	if d == "1":
+		chif = un
+	if d == "2":
+		chif = deux
+	if d == "3":
+		chif = trois
+	if d == "4":
+		chif = quatre
+	if d == "5":
+		chif = cinq
+	if d == "6":
+		chif = six
+	if d == "7":
+		chif = sept
+	if d == "8":
+		chif = huit
+	if d == "9":
+		chif = neuf
+	if d == "c":
+		chif = contour
+	if d == "m":
+		chif = milieu
+	t = turtle.Turtle()
+	chif(a, b, f, g, t)
 	
-def main0(a, b, f, g):
-	t = Turtle()
-	c = (a +(-130), b + (-50))
-	zero(t, c, f, g)
-
-def main1(a, b, f, g):
-	t = Turtle()
-	c = (a +(-60), b + (-50))
-	un(t, c, f, g)
-	
-def main2(a, b, f, g):
-	t = Turtle()
-	c = (a +(-60), b + (-50))
-	deux(t, c, f, g)
-
-def main3(a, b, f, g):
-	t = Turtle()
-	c = (a +(-60), b + (-50))
-	trois(t, c, f, g)
-	
-def main4(a, b, f, g):
-	t = Turtle()
-	c = (a +(-60), b + (-50))
-	quatre(t, c, f, g)
-	
-def main5(a, b, f, g):
-	t = Turtle()
-	c = (a +(-140), b + (-50))
-	cinq(t, c, f, g)
-	
-def main6(a, b, f, g):
-	t = Turtle()
-	c = (a +(-200), b + (-50))
-	six(t, c, f, g)
-	
-def main7(a, b, f, g):
-	t = Turtle()
-	c = (a +(-140), b + (-50))
-	sept(t, c, f, g)
-	
-def main8(a, b, f, g):
-	t = Turtle()
-	c = (a +(-140), b + (-50))
-	huit(t, c, f, g)
-	
-def main9(a, b, f, g):
-	t = Turtle()
-	c = (a +(-70), b + (-50))
-	neuf(t, c, f, g)
-	
-def mainp0(a, b, f, g):
-	t = Turtle()
-	c = (a +(-130), b + (-50))
-	pzero(t, c, f, g)
-
-def mainp1(a, b, f, g):
-	t = Turtle()
-	c = (a +(-60), b + (-50))
-	pun(t, c, f, g)
-	
-def mainp2(a, b, f, g):
-	t = Turtle()
-	c = (a +(-60), b + (-50))
-	pdeux(t, c, f, g)
-
-def mainp3(a, b, f, g):
-	t = Turtle()
-	c = (a +(-60), b + (-50))
-	ptrois(t, c, f, g)
-	
-def mainp4(a, b, f, g):
-	t = Turtle()
-	c = (a +(-60), b + (-50))
-	pquatre(t, c, f, g)
-	
-def mainp5(a, b, f, g):
-	t = Turtle()
-	c = (a +(-140), b + (-50))
-	pcinq(t, c, f, g)
-	
-def mainp6(a, b, f, g):
-	t = Turtle()
-	c = (a +(-200), b + (-50))
-	psix(t, c, f, g)
-	
-def mainp7(a, b, f, g):
-	t = Turtle()
-	c = (a +(-140), b + (-50))
-	psept(t, c, f, g)
-	
-def mainp8(a, b, f, g):
-	t = Turtle()
-	c = (a +(-140), b + (-50))
-	phuit(t, c, f, g)
-	
-def mainp9(a, b, f, g):
-	t = Turtle()
-	c = (a +(-70), b + (-50))
-	pneuf(t, c, f, g)
-	
-def mainm(a, b, f, g):
-	t = Turtle()
-	c = (a +(-70), b + 0)
-	milieu(t, c, f, g)
-	
-def mainc(a, b, f, g):
-	t = Turtle()
-	c = (a +(-70), b + (-90))
-	contour(t, c, f, g)
-
+# Configure la fenètre.
 turtle.setup(width=850,height=450)
-turtle.title("Horloge v3.2")
+turtle.title("Horloge v4.0")
 
+# Boucle qui permet de faire tourner le rectangle du milieu et d'actualiser
+# l'heure. La boucle fait 1000 tours donc environ 20 minutes (selon la vitesse
+# du PC). Peut-être augmenté ou diminué.
 for i in range(1000):
-	heure = time.strftime("%H")
-	minu = time.strftime("%M")
-	day = time.strftime("%d")
-	mois = time.strftime("%m")
-	ans = time.strftime("%y")
-	h1 = int(heure[0])
-	h2 = int(heure[1])
-	m1 = int(minu[0])
-	m2 = int(minu[1])
-	d1 = int(day[0])
-	d2 = int(day[1])
-	mo1 = int(mois[0])
-	mo2 = int(mois[1])
-	a1 = int(ans[0])
-	a2 = int(ans[1])
+	heure = time.strftime("%H")	# heure prend les heures de l'heure qu'il est.
+	minu = time.strftime("%M")	# minu prend les minutes de l'heure qu'il est.
+	day = time.strftime("%d")	# day prend le jour où l'on est.
+	mois = time.strftime("%m")	# mois prend le mois où l'on est.
+	ans = time.strftime("%y")	# ans prend l'année où l'on est.
+	h1 = int(heure[0])	# |
+	h2 = int(heure[1])	# |
+	m1 = int(minu[0])	 	# |
+	m2 = int(minu[1]) 	# |
+	d1 = int(day[0]) 	 	# Prend le premier caractère, le converti en
+	d2 = int(day[1]) 	 	# entier et le met dans la variable.
+	mo1 = int(mois[0]) 	# |
+	mo2 = int(mois[1]) 	# |
+	a1 = int(ans[0]) 	 	# |
+	a2 = int(ans[1]) 	 	# |
 	
-	
+	# Détermine si il fait jour ou nuit (nuit entre 18h et 08h), et en
+	# fonction, détermine la couleur de l'effacement des chiffres et la
+	# couleur du cadre et de la date.
 	if (h1 == 1 and h2 >= 8) or (h1 == 2) or (h1 == 0 and h2 <= 8):
 		fondcolor = 'white'
 		ifondcolor = 'black'
@@ -904,89 +826,94 @@ for i in range(1000):
 		ifondcolor = 'white'
 		alea = 99
 		turtle.bgcolor('white')
-		
-	if cadre == 0:
-		mainc(-10, 15, fondcolor, 1)
+
+	# Dessine le cadre et la date une seul fois (tant que cadredate = 0).
+	if cadredate == 0:
+		main("c", -10, 15, fondcolor, 1)
 		if d1 == 0:
-			mainp0(-50, -100, fondcolor, 1)
+			main("p0", -50, -100, fondcolor, 1)
 		elif d1 == 1:
-			mainp1(-50, -100, fondcolor, 1)
+			main("p1", -50, -100, fondcolor, 1)
 		elif d1 == 2:
-			mainp2(-50, -100, fondcolor, 1)
+			main("p2", -50, -100, fondcolor, 1)
 		elif d1 == 3:
-			mainp3(-50, -100, fondcolor, 1)
+			main("p3", -50, -100, fondcolor, 1)
 		if d2 == 0:
-			mainp0(-10, -100, fondcolor, 1)
+			main("p0", -10, -100, fondcolor, 1)
 		elif d2 == 1:
-			mainp1(-10, -100, fondcolor, 1)
+			main("p1", -10, -100, fondcolor, 1)
 		elif d2 == 2:
-			mainp2(-10, -100, fondcolor, 1)
+			main("p2", -10, -100, fondcolor, 1)
 		elif d2 == 3:
-			mainp3(-10, -100, fondcolor, 1)
+			main("p3", -10, -100, fondcolor, 1)
 		elif d2 == 4:
-			mainp4(-10, -100, fondcolor, 1)
+			main("p4", -10, -100, fondcolor, 1)
 		elif d2 == 5:
-			mainp5(-10, -100, fondcolor, 1)
+			main("p5", -10, -100, fondcolor, 1)
 		elif d2 == 6:
-			mainp6(-10, -100, fondcolor, 1)
+			main("p6", -10, -100, fondcolor, 1)
 		elif d2 == 7:
-			mainp7(-10, -100, fondcolor, 1)
+			main("p7", -10, -100, fondcolor, 1)
 		elif d2 == 8:
-			mainp8(-10, -100, fondcolor, 1)
+			main("p8", -10, -100, fondcolor, 1)
 		elif d2 == 9:
-			mainp9(-10, -100, fondcolor, 1)
+			main("p9", -10, -100, fondcolor, 1)
 		if mo1 == 0:
-			mainp0(50, -100, fondcolor, 1)
+			main("p0", 50, -100, fondcolor, 1)
 		elif mo1 == 1:
-			mainp1(50, -100, fondcolor, 1)
+			main("p1", 50, -100, fondcolor, 1)
 		if mo2 == 0:
-			mainp0(90, -100, fondcolor, 1)
+			main("p0", 90, -100, fondcolor, 1)
 		elif mo2 == 1:
-			mainp1(90, -100, fondcolor, 1)
+			main("p1", 90, -100, fondcolor, 1)
 		elif mo2 == 2:
-			mainp2(90, -100, fondcolor, 1)
+			main("p2", 90, -100, fondcolor, 1)
 		elif mo2 == 3:
-			mainp3(90, -100, fondcolor, 1)
+			main("p3", 90, -100, fondcolor, 1)
 		elif mo2 == 4:
-			mainp4(90, -100, fondcolor, 1)
+			main("p4", 90, -100, fondcolor, 1)
 		elif mo2 == 5:
-			mainp5(90, -100, fondcolor, 1)
+			main("p5", 90, -100, fondcolor, 1)
 		elif mo2 == 6:
-			mainp6(90, -100, fondcolor, 1)
+			main("p6", 90, -100, fondcolor, 1)
 		elif mo2 == 7:
-			mainp7(90, -100, fondcolor, 1)
+			main("p7", 90, -100, fondcolor, 1)
 		elif mo2 == 8:
-			mainp8(90, -100, fondcolor, 1)
+			main("p8", 90, -100, fondcolor, 1)
 		elif mo2 == 9:
-			mainp9(90, -100, fondcolor, 1)
+			main("p9", 90, -100, fondcolor, 1)
 		if a1 == 1:
-			mainp1(150, -100, fondcolor, 1)
+			main("p1", 150, -100, fondcolor, 1)
 		elif a1 == 2:
-			mainp2(150, -100, fondcolor, 1)
+			main("p2", 150, -100, fondcolor, 1)
 		elif a1 == 3:
-			mainp3(150, -100, fondcolor, 1)
+			main("p3", 150, -100, fondcolor, 1)
 		if a2 == 0:
-			mainp0(190, -100, fondcolor, 1)
+			main("p0", 190, -100, fondcolor, 1)
 		elif a2 == 1:
-			mainp1(190, -100, fondcolor, 1)
+			main("p1", 190, -100, fondcolor, 1)
 		elif a2 == 2:
-			mainp2(190, -100, fondcolor, 1)
+			main("p2", 190, -100, fondcolor, 1)
 		elif a2 == 3:
-			mainp3(190, -100, fondcolor, 1)
+			main("p3", 190, -100, fondcolor, 1)
 		elif a2 == 4:
-			mainp4(190, -100, fondcolor, 1)
+			main("p4", 190, -100, fondcolor, 1)
 		elif a2 == 5:
-			mainp5(190, -100, fondcolor, 1)
+			main("p5", 190, -100, fondcolor, 1)
 		elif a2 == 6:
-			mainp6(190, -100, fondcolor, 1)
+			main("p6", 190, -100, fondcolor, 1)
 		elif a2 == 7:
-			mainp7(190, -100, fondcolor, 1)
+			main("p7", 190, -100, fondcolor, 1)
 		elif a2 == 8:
-			mainp8(190, -100, fondcolor, 1)
+			main("p8", 190, -100, fondcolor, 1)
 		elif a2 == 9:
-			mainp9(190, -100, fondcolor, 1)
-	cadre = 1
+			main("p9", 190, -100, fondcolor, 1)
+			
+	# Pour que le cadre et la date apparaissent une seul fois.
+	cadredate = 1
 	
+	# Si l'utilisateur choisi les couleurs aléatoires, choisir une couleur,
+	# sinon, selon si il fait nuit ou jour, choisi noir ou blanc.
 	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
 		alea = random.randint(0, 9)
 		colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
@@ -997,13 +924,14 @@ for i in range(1000):
 	elif alea == 99:
 		fondcolor = 'black'
 		
+	# Choisi un chiffre selon l'heure.
 	if hh1 == 1:
 		if h1 == 0:
-			main0(-100, 0, fondcolor, 3)
+			main("0", -100, 0, fondcolor, 3)
 		elif h1 == 1:
-			main1(-100, 0, fondcolor, 3)
+			main("1", -100, 0, fondcolor, 3)
 		elif h1 == 2:
-			main2(-100, 0, fondcolor, 3)
+			main("2", -100, 0, fondcolor, 3)
 			
 	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
 		alea = random.randint(0, 9)
@@ -1017,25 +945,25 @@ for i in range(1000):
 		
 	if hh2 == 1:
 		if h2 == 0:
-			main0(0, 0, fondcolor, 3)
+			main("0", 0, 0, fondcolor, 3)
 		elif h2 == 1:
-			main1(0, 0, fondcolor, 3)
+			main("1", 0, 0, fondcolor, 3)
 		elif h2 == 2:
-			main2(0, 0, fondcolor, 3)
+			main("2", 0, 0, fondcolor, 3)
 		elif h2 == 3:
-			main3(0, 0, fondcolor, 3)
+			main("3", 0, 0, fondcolor, 3)
 		elif h2 == 4:
-			main4(0, 0, fondcolor, 3)
+			main("4", 0, 0, fondcolor, 3)
 		elif h2 == 5:
-			main5(0, 0, fondcolor, 3)
+			main("5", 0, 0, fondcolor, 3)
 		elif h2 == 6:
-			main6(0, 0, fondcolor, 3)
+			main("6", 0, 0, fondcolor, 3)
 		elif h2 == 7:
-			main7(0, 0, fondcolor, 3)
+			main("7", 0, 0, fondcolor, 3)
 		elif h2 == 8:
-			main8(0, 0, fondcolor, 3)
+			main("8", 0, 0, fondcolor, 3)
 		elif h2 == 9:
-			main9(0, 0, fondcolor, 3)
+			main("9", 0, 0, fondcolor, 3)
 		
 	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
 		alea = random.randint(0, 9)
@@ -1049,17 +977,17 @@ for i in range(1000):
 		
 	if mm1 == 1:
 		if m1 == 0:
-			main0(190, 0, fondcolor, 3)
+			main("0", 190, 0, fondcolor, 3)
 		elif m1 == 1:
-			main1(190, 0, fondcolor, 3)
+			main("1", 190, 0, fondcolor, 3)
 		elif m1 == 2:
-			main2(190, 0, fondcolor, 3)
+			main("2", 190, 0, fondcolor, 3)
 		elif m1 == 3:
-			main3(190, 0, fondcolor, 3)
+			main("3", 190, 0, fondcolor, 3)
 		elif m1 == 4:
-			main4(190, 0, fondcolor, 3)
+			main("4", 190, 0, fondcolor, 3)
 		elif m1 == 5:
-			main5(190, 0, fondcolor, 3)
+			main("5", 190, 0, fondcolor, 3)
 		
 	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
 		alea = random.randint(0, 9)
@@ -1073,26 +1001,29 @@ for i in range(1000):
 		
 	if mm2 == 1:
 		if m2 == 0:
-			main0(290, 0, fondcolor, 3)
+			main("0", 290, 0, fondcolor, 3)
 		elif m2 == 1:
-			main1(290, 0, fondcolor, 3)
+			main("1", 290, 0, fondcolor, 3)
 		elif m2 == 2:
-			main2(290, 0, fondcolor, 3)
+			main("2", 290, 0, fondcolor, 3)
 		elif m2 == 3:
-			main3(290, 0, fondcolor, 3)
+			main("3", 290, 0, fondcolor, 3)
 		elif m2 == 4:
-			main4(290, 0, fondcolor, 3)
+			main("4", 290, 0, fondcolor, 3)
 		elif m2 == 5:
-			main5(290, 0, fondcolor, 3)
+			main("5", 290, 0, fondcolor, 3)
 		elif m2 == 6:
-			main6(290, 0, fondcolor, 3)
+			main("6", 290, 0, fondcolor, 3)
 		elif m2 == 7:
-			main7(290, 0, fondcolor, 3)
+			main("7", 290, 0, fondcolor, 3)
 		elif m2 == 8:
-			main8(290, 0, fondcolor, 3)
+			main("8", 290, 0, fondcolor, 3)
 		elif m2 == 9:
-			main9(290, 0, fondcolor, 3)
+			main("9", 290, 0, fondcolor, 3)
 	
+	# Fait tourner le rectangle du milieu à chaque boucle. La boucle est
+	# nécessaire si on change time.sleep et le nombre de tour (change le
+	# temps d'actualisation sans toucher au rectangle qui bouge.
 	for i in range(1):
 		if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
 			alea = random.randint(0, 9)
@@ -1104,9 +1035,12 @@ for i in range(1000):
 		elif alea == 99:
 			mfondcolor = 'black'
    
-		mainm(-10, 15, mfondcolor, 1)
+		main("m", -10, 15, mfondcolor, 1)
 		time.sleep(0)
 		
+	# Si un chiffre change, "l'effacer" (colore le chiffre de la couleur 
+	# du fond) et met la valeur 1 à xx1 pour changer le chiffre en 
+	# recommencent la boucle.
 	heure1 = time.strftime("%H")
 	minu1 = time.strftime("%M")
 	h11 = int(heure1[0])
@@ -1120,75 +1054,80 @@ for i in range(1000):
 	if h11 != h1:
 		hh1 = 1
 		if h1 == 0:
-			main0(-100, 0, ifondcolor, 3)
+			main("0", -100, 0, ifondcolor, 3)
 		elif h1 == 1:
-			main1(-100, 0, ifondcolor, 3)
+			main("1", -100, 0, ifondcolor, 3)
 		elif h1 == 2:
-			main2(-100, 0, ifondcolor, 3)
+			main("2", -100, 0, ifondcolor, 3)
    
 	if h21 != h2:
 		hh2 = 1
 		if h2 == 0:
-			main0(0, 0, ifondcolor, 3)
+			main("0", 0, 0, ifondcolor, 3)
 		elif h2 == 1:
-			main1(0, 0, ifondcolor, 3)
+			main("1", 0, 0, ifondcolor, 3)
 		elif h2 == 2:
-			main2(0, 0, ifondcolor, 3)
+			main("2", 0, 0, ifondcolor, 3)
 		elif h2 == 3:
-			main3(0, 0, ifondcolor, 3)
+			main("3", 0, 0, ifondcolor, 3)
 		elif h2 == 4:
-			main4(0, 0, ifondcolor, 3)
+			main("4", 0, 0, ifondcolor, 3)
 		elif h2 == 5:
-			main5(0, 0, ifondcolor, 3)
+			main("5", 0, 0, ifondcolor, 3)
 		elif h2 == 6:
-			main6(0, 0, ifondcolor, 3)
+			main("6", 0, 0, ifondcolor, 3)
 		elif h2 == 7:
-			main7(0, 0, ifondcolor, 3)
+			main("7", 0, 0, ifondcolor, 3)
 		elif h2 == 8:
-			main8(0, 0, ifondcolor, 3)
+			main("8", 0, 0, ifondcolor, 3)
 		elif h2 == 9:
-			main9(0, 0, ifondcolor, 3)
+			main("9", 0, 0, ifondcolor, 3)
    
 	if m11 != m1:
 		mm1 = 1
 		if m1 == 0:
-			main0(190, 0, ifondcolor, 3)
+			main("0", 190, 0, ifondcolor, 3)
 		elif m1 == 1:
-			main1(190, 0, ifondcolor, 3)
+			main("1", 190, 0, ifondcolor, 3)
 		elif m1 == 2:
-			main2(190, 0, ifondcolor, 3)
+			main("2", 190, 0, ifondcolor, 3)
 		elif m1 == 3:
-			main3(190, 0, ifondcolor, 3)
+			main("3", 190, 0, ifondcolor, 3)
 		elif m1 == 4:
-			main4(190, 0, ifondcolor, 3)
+			main("4", 190, 0, ifondcolor, 3)
 		elif m1 == 5:
-			main5(190, 0, ifondcolor, 3)
+			main("5", 190, 0, ifondcolor, 3)
    
 	if m21 != m2:
 		mm2 = 1
 		if m2 == 0:
-			main0(290, 0, ifondcolor, 3)
+			main("0", 290, 0, ifondcolor, 3)
 		elif m2 == 1:
-			main1(290, 0, ifondcolor, 3)
+			main("1", 290, 0, ifondcolor, 3)
 		elif m2 == 2:
-			main2(290, 0, ifondcolor, 3)
+			main("2", 290, 0, ifondcolor, 3)
 		elif m2 == 3:
-			main3(290, 0, ifondcolor, 3)
+			main("3", 290, 0, ifondcolor, 3)
 		elif m2 == 4:
-			main4(290, 0, ifondcolor, 3)
+			main("4", 290, 0, ifondcolor, 3)
 		elif m2 == 5:
-			main5(290, 0, ifondcolor, 3)
+			main("5", 290, 0, ifondcolor, 3)
 		elif m2 == 6:
-			main6(290, 0, ifondcolor, 3)
+			main("6", 290, 0, ifondcolor, 3)
 		elif m2 == 7:
-			main7(290, 0, ifondcolor, 3)
+			main("7", 290, 0, ifondcolor, 3)
 		elif m2 == 8:
-			main8(290, 0, ifondcolor, 3)
+			main("8", 290, 0, ifondcolor, 3)
 		elif m2 == 9:
-			main9(290, 0, ifondcolor, 3)
+			main("9", 290, 0, ifondcolor, 3)
 
 """
+
 Changelog :
+v4.0
+Optimisation du code.
+Ajout de commentaires pour rendre le code plus clair.
+
 v3.2
 Réglage de la taille de la fenètre.
 Améliorations de l'affichage de la date.
