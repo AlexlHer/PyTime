@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("Horloge v5.0")
+print("Horloge v6.0")
 print("----------------------------------------------------------------------")
-print("Ne pas fermer la fenètre sauf pour fermer l'horloge.")
 
 # Initialisation des variables et importation des modules.
 import time
@@ -15,14 +14,14 @@ hh2 = 1		# Savoir si l'heure a changée après la boucle.
 mm1 = 1		# Savoir si les minutes ont changées après la boucle.
 mm2 = 1		# Savoir si les minutes ont changées après la boucle.
 cadredate = 0	# Permet de faire le cadre et la date une seule fois.
-test = 0
-colora = []
-colorachif = 0
-boutononf = 0
+colora = []		# Permet de sauvegarder les couleurs choisi.
+colorachif = 0	# Compte le nombre de couleur choisi par l'utilisateur.
+stop = 0		# Permet d'arrêter la boucle une fois le temps écoulé.
+stop_min = 0	# Contient les minutes de l'heure d'arrêt de la boucle.
 
 # Début : Fenètre de commande.
 fenetre = Tk()
-fenetre.title("Horloge v5.0")
+fenetre.title("Horloge v6.0")
 
 # Initialisation des variables de la fenètre de commande.
 v_tk_alea_h1_1 = IntVar()
@@ -84,6 +83,36 @@ v_tk_nuit_3 = IntVar()
 v_tk_tour_3 = IntVar()
 
 v_tk_ok_1 = IntVar()
+
+def aide():
+	fenetre1 = Tk()
+	fenetre1.title("Aide")
+	tk_aide = Label(fenetre1, text="Pour les couleurs, choisissez une seul couleur")
+	tk_aide_1 = Label(fenetre1, text="OU aléatoire avec les couleurs que vous voulez")
+	tk_aide_2 = Label(fenetre1, text="et qui vont apparaitre aléatoirement OU juste")
+	tk_aide_3 = Label(fenetre1, text="aléatoire pour mettre toutes les couleurs.")
+	tk_aide_4 = Label(fenetre1, text="---")
+	tk_aide_5 = Label(fenetre1, text="Pour le mode nuit, cochez une seul case.")
+	tk_aide_6 = Label(fenetre1, text="---")
+	tk_aide_7 = Label(fenetre1, text="Appuyez sur Ok une fois les paramètres choisi.")
+	tk_aide_8 = Label(fenetre1, text="Appuyez sur Aléatoire/Auto et sur Ok pour cocher")
+	tk_aide_9 = Label(fenetre1, text="les modes aléatoires, mode nuit auto et 20 minutes.")
+	tk_aide_10 = Label(fenetre1, text="---")
+	tk_aide_11 = Label(fenetre1, text="Attention, l'arrêt de l'horloge n'est pas très")
+	tk_aide_12 = Label(fenetre1, text="précise au niveau des secondes.")
+	tk_aide.pack()
+	tk_aide_1.pack()
+	tk_aide_2.pack()
+	tk_aide_3.pack()
+	tk_aide_4.pack()
+	tk_aide_5.pack()
+	tk_aide_6.pack()
+	tk_aide_7.pack()
+	tk_aide_8.pack()
+	tk_aide_9.pack()
+	tk_aide_10.pack()
+	tk_aide_11.pack()
+	tk_aide_12.pack()
 
 titre = Label(fenetre, text="Horloge")
 
@@ -155,22 +184,15 @@ tk_nuit_3 = Checkbutton(tk_nuit, text="Non", variable = v_tk_nuit_3)
 
 
 # Création de la partie "Tour".
-tk_tour = LabelFrame(fenetre, text="Tour", padx=2, pady=2)
-tk_tour_1 = Label(tk_tour, text="Choisissez le nombre de tour que l'horloge")
-tk_tour_2 = Label(tk_tour, text="doit effectuer (1000 tour ~= 20 min).")
+tk_tour = LabelFrame(fenetre, text="Minute", padx=2, pady=2)
+tk_tour_1 = Label(tk_tour, text="Choisissez le nombre de minutes que")
+tk_tour_2 = Label(tk_tour, text=" l'horloge doit fonctionner.")
 tk_tour_3 = Spinbox(tk_tour, from_ = 0, to = 9999999, textvariable = v_tk_tour_3)
 
 
 # Création de la partie "Mode d'emploi".
 tk_me = LabelFrame(fenetre, text="Mode d'emploi", padx=2, pady=2)
-tk_me_1 = Label(tk_me, text="Pour les couleurs, choisissez une seul couleur")
-tk_me_2 = Label(tk_me, text="OU aléatoire avec les couleurs que vous voulez")
-tk_me_3 = Label(tk_me, text="et qui vont apparaitre aléatoirement OU juste")
-tk_me_4 = Label(tk_me, text="aléatoire pour mettre toutes les couleurs.")
-tk_me_5 = Label(tk_me, text="Pour le mode nuit, cochez une seul case.")
-tk_me_6 = Label(tk_me, text="Appuyez sur Ok une fois les paramètres choisi.")
-tk_me_7 = Label(tk_me, text="Appuyez sur Aléatoire/Auto et sur Ok pour cocher")
-tk_me_8 = Label(tk_me, text="les modes aléatoires, mode nuit auto et 1000 tours.")
+tk_me_1 = Button(tk_me, text="→ Cliquez ICI ←", command=aide)
 
 
 # Création des deux boutons.
@@ -250,16 +272,9 @@ tk_tour_3.get()
 
 tk_me.pack(side=TOP, fill="both")
 tk_me_1.pack()
-tk_me_2.pack()
-tk_me_3.pack()
-tk_me_4.pack()
-tk_me_5.pack()
-tk_me_6.pack()
-tk_me_7.pack()
-tk_me_8.pack()
 
-tk_ok.pack()
-tk_ok_1.pack()
+tk_ok.pack(side=BOTTOM, fill="both")
+tk_ok_1.pack(side=BOTTOM)
 
 # Permet de laisser afficher la fenètre de commande tant que l'utilisateur
 # n'appui pas sur OK.
@@ -333,7 +348,7 @@ if v_tk_ok_1 == 1:
 	v_tk_alea_m1_1 = 1
 	v_tk_alea_m2_1 = 1
 	v_tk_nuit_1 = 1
-	v_tk_tour_3 = 1000
+	v_tk_tour_3 = 20
 
 # Fin : Fenètre de commande.
 
@@ -1115,11 +1130,11 @@ def main(d, a, b, f, g):
 	
 # Configure la fenètre.
 turtle.setup(width=850,height=450)
-turtle.title("Horloge v5.0")
+turtle.title("Horloge v6.0")
 
 # Boucle qui permet de faire tourner le rectangle du milieu et d'actualiser
 # l'heure. La boucle fait le nombre de tour indiqué par la fenètre de commande.
-for i in range(v_tk_tour_3):
+while stop == 0:
 	heure = time.strftime("%H")	# heure prend les heures de l'heure qu'il est.
 	minu = time.strftime("%M")	# minu prend les minutes de l'heure qu'il est.
 	day = time.strftime("%d")	# day prend le jour où l'on est.
@@ -1319,6 +1334,9 @@ for i in range(v_tk_tour_3):
 	elif v_tk_alea_h1_11 == 1:
 		fondcolor = 'orange'
 
+	# Permet de réinitialiser les variables.
+	colora = []
+	colorachif = 0
 		
 	# Choisi un chiffre selon l'heure.
 	if hh1 == 1:
@@ -1396,6 +1414,9 @@ for i in range(v_tk_tour_3):
 		fondcolor = 'grey'
 	elif v_tk_alea_h2_11 == 1:
 		fondcolor = 'orange'
+		
+	colora = []
+	colorachif = 0		
 		
 	if hh2 == 1:
 		if h2 == 0:
@@ -1487,6 +1508,9 @@ for i in range(v_tk_tour_3):
 	elif v_tk_alea_m1_11 == 1:
 		fondcolor = 'orange'
 		
+	colora = []
+	colorachif = 0		
+		
 	if mm1 == 1:
 		if m1 == 0:
 			main("0", 190, 0, fondcolor, 3)
@@ -1568,6 +1592,9 @@ for i in range(v_tk_tour_3):
 		fondcolor = 'grey'
 	elif v_tk_alea_m2_11 == 1:
 		fondcolor = 'orange'
+		
+	colora = []
+	colorachif = 0
 		
 	if mm2 == 1:
 		if m2 == 0:
@@ -1692,11 +1719,24 @@ for i in range(v_tk_tour_3):
 			main("8", 295, 0, ifondcolor, 3)
 		elif m2 == 9:
 			main("9", 295, 0, ifondcolor, 3)
+	
+	# Pour que l'horloge se ferme automatiquement après l'heure indiqué passé.
+	minuav = int(minu)
+	minuap = int(minu1)
+	if minuav != minuap:
+		stop_min += 1
+	if stop_min >= v_tk_tour_3:
+		stop = 1
 
 
 """
 
 Changelog :
+v6.0
+Ouverture sans la console de commande.
+Les tours sont remplacés par des minutes.
+Correction de bugs.
+
 v5.0
 Fenètre de commande avec tkinter :
 - Adaptation du code pour soutenir la fenètre de commande.
