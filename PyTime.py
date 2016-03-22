@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("PyTime v10.0")
+print("PyTime v10.1")
 print("----------------------------------------------------------------------")
 
 # Initialisation des variables et importation des modules.
@@ -9,11 +9,12 @@ import time
 import turtle
 import random
 from tkinter import *
-numerique = 0
-analogique = 0
+numerique = 0			# Sert à séléctionner le mode numérique.
+analogique = 0			# Sert à séléctionner le mode analogique.
+version = "PyTime v10.1" 	# Permet de définir la version de PyTime pour l'afficher.
 
 debut = Tk()
-debut.title("PyTime v10.0")
+debut.title(version)
 
 def v_tk_debut_1():
 	global numerique
@@ -50,7 +51,7 @@ if numerique == 1:
 	
 	# Début : Fenètre de commande.
 	fenetre = Tk()
-	fenetre.title("PyTime v10.0")
+	fenetre.title(version)
 	
 	# Initialisation des variables de la fenètre de commande.
 	v_tk_alea_h1_1 = IntVar()
@@ -129,7 +130,7 @@ if numerique == 1:
 		titre.config(font=('Arial', 30, 'italic', 'bold'))
 		tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
 		tk_aproposde_2 = Label(fenetre2, text="Mode numérique")
-		tk_aproposde_3 = Label(fenetre2, text="(Version 10.0)")
+		tk_aproposde_3 = Label(fenetre2, text="(Version 10.1)")
 		tk_aproposde_4 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
 		titre.pack()
 		tk_aproposde_1.pack()
@@ -1276,7 +1277,7 @@ if numerique == 1:
 		
 	# Configure la fenètre.
 	turtle.setup(width=850,height=450)
-	turtle.title("PyTime v10.0")
+	turtle.title(version)
 	
 	# Boucle qui permet de faire tourner le rectangle du milieu et d'actualiser
 	# l'heure. La boucle fait le nombre de tour indiqué par la fenètre de commande.
@@ -1893,7 +1894,7 @@ if analogique == 1:
 	
 	# Début : Fenètre de commande.
 	fenetre = Tk()
-	fenetre.title("PyTime v10.0")
+	fenetre.title(version)
 
 	# Initialisation des variables de la fenètre de commande.
 	v_tk_alea_h1_1 = IntVar()
@@ -1932,7 +1933,7 @@ if analogique == 1:
 		titre.config(font=('Arial', 30, 'italic', 'bold'))
 		tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
 		tk_aproposde_2 = Label(fenetre2, text="Mode analogique")
-		tk_aproposde_3 = Label(fenetre2, text="(Version 10.0)")
+		tk_aproposde_3 = Label(fenetre2, text="(Version 10.1)")
 		tk_aproposde_4 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
 		titre.pack()
 		tk_aproposde_1.pack()
@@ -2132,53 +2133,54 @@ if analogique == 1:
 	
 	
 	def acontour(a, b, t):
-		x_d = 400
-		y_d = 0
+		x_d = 0
+		y_d = 400
 		t.speed(v_tk_speed)
 		if a == 1:
 			t.speed(10)
 		t.shape('turtle')
 		t.penup()
 		t.setposition(x_d, y_d)
-		t.setheading(90)
+		t.setheading(0)
 		t.down()
 		if a == 1 and v_tk_chco_2 == 1:
 			t.penup()
 		t.width(3)
 		t.pencolor(b)
-		t.circle(400)
+		t.circle(-400)
 		t.hideturtle()
 		if a == 1:
 			t.reset()
 			t.hideturtle()
 			
 	def heurmin(b, t):
-		x_d = 300
-		y_d = 0
+		x_d = 0
+		y_d = 300
 		t.shape('turtle')
 		t.penup()
 		t.setposition(x_d, y_d)
-		t.setheading(90)
+		t.setheading(0)
 		t.pencolor(b)
 		t.down()
+		t.width(2)
 		t.speed(v_tk_speed)
 		t.speed(20)
 		for i in range(12):
-			t.circle(300, extent=30)
-			t.left(90)
+			t.circle(-300, extent=30)
+			t.left(-90)
 			t.forward(12)
-			t.right(180)
+			t.right(-180)
 			t.forward(12)
-			t.left(90)
+			t.left(-90)
 		for i in range(60):
 			t.penup()
-			t.circle(300, extent=6)
+			t.circle(-300, extent=6)
 			t.down()
-			t.left(90)
+			t.left(-90)
 			t.forward(5)
-			t.right(180)
+			t.right(-180)
 			t.forward(5)
-			t.left(90)
+			t.left(-90)
 		t.hideturtle()
 		
 	def petitmil(a, b, t):
@@ -2429,7 +2431,7 @@ if analogique == 1:
 		t.hideturtle()
 		
 	turtle.setup(width=850,height=850)
-	turtle.title("PyTime v10.0")
+	turtle.title(version)
 	while stop == 0:
 		heure = time.strftime("%H")	# heure prend les heures de l'heure qu'il est.
 		minu = time.strftime("%M")	# minu prend les minutes de l'heure qu'il est.
@@ -2441,17 +2443,17 @@ if analogique == 1:
 		# Si il fait jour ou nuit (nuit entre 18h et 08h), et en
 		# fonction, détermine la couleur de l'effacement des chiffres et la
 		# couleur du cadre et de la date.
-		if v_tk_nuit_2 == 1:
+		if v_tk_nuit_2 == 1 and unefois == 0:
 			fondcolor = 'white'
 			ifondcolor = 'black'
 			alea = 98
 			turtle.bgcolor('black')
-		elif v_tk_nuit_3 == 1:
+		elif v_tk_nuit_3 == 1 and unefois == 0:
 			fondcolor = 'black'
 			ifondcolor = 'white'
 			alea = 99
 			turtle.bgcolor('white')
-		elif v_tk_nuit_1 == 1:
+		elif v_tk_nuit_1 == 1 and unefois == 0:
 			if (h1 >= 18) or (h1 <= 8):
 				fondcolor = 'white'
 				ifondcolor = 'black'
@@ -2462,7 +2464,7 @@ if analogique == 1:
 				ifondcolor = 'white'
 				alea = 99
 				turtle.bgcolor('white')
-		if egea_1 == 1:
+		if egea_1 == 1 and unefois == 0:
 			fondcolor = 'black'
 			ifondcolor = 'green'
 			alea = 99
@@ -2512,31 +2514,31 @@ if analogique == 1:
 				'pink', 'purple', 'grey', 'orange']
 				fondcolor = colr[alea]
 				
-		elif v_tk_alea_h1_12 == 1 and unefois == 0:
+		elif v_tk_alea_h1_12 == 1:
 			if alea == 98:
 				fondcolor = 'white'
 			elif alea == 99:
 				fondcolor = 'black'
 				
-		elif v_tk_alea_h1_2 == 1 and unefois == 0:
+		elif v_tk_alea_h1_2 == 1:
 			fondcolor = 'blue'
-		elif v_tk_alea_h1_3 == 1 and unefois == 0:
+		elif v_tk_alea_h1_3 == 1:
 			fondcolor = 'red'
-		elif v_tk_alea_h1_4 == 1 and unefois == 0:
+		elif v_tk_alea_h1_4 == 1:
 			fondcolor = 'green'
-		elif v_tk_alea_h1_5 == 1 and unefois == 0:
+		elif v_tk_alea_h1_5 == 1:
 			fondcolor = 'violet'
-		elif v_tk_alea_h1_6 == 1 and unefois == 0:
+		elif v_tk_alea_h1_6 == 1:
 			fondcolor = 'yellow'
-		elif v_tk_alea_h1_7 == 1 and unefois == 0:
+		elif v_tk_alea_h1_7 == 1:
 			fondcolor = 'brown'
-		elif v_tk_alea_h1_8 == 1 and unefois == 0:
+		elif v_tk_alea_h1_8 == 1:
 			fondcolor = 'pink'
-		elif v_tk_alea_h1_9 == 1 and unefois == 0:
+		elif v_tk_alea_h1_9 == 1:
 			fondcolor = 'purple'
-		elif v_tk_alea_h1_10 == 1 and unefois == 0:
+		elif v_tk_alea_h1_10 == 1:
 			fondcolor = 'grey'
-		elif v_tk_alea_h1_11 == 1 and unefois == 0:
+		elif v_tk_alea_h1_11 == 1:
 			fondcolor = 'orange'
 			
 		# Permet de réinitialiser les variables.
@@ -2544,22 +2546,29 @@ if analogique == 1:
 		colorachif = 0
 			
 		# Créé l'horloge selon les options voulu.
-		if unefois == 0:
-			petitmil(0, fondcolor, turtle.Turtle())
 		if mm == 1:
-			petitmil(1, fondcolor, turtle.Turtle())
+			petitmil(0, fondcolor, turtle.Turtle())
 			aiguillem(m1, fondcolor, turtle.Turtle())
 		if hh == 1:
-			petitmil(1, fondcolor, turtle.Turtle())
+			petitmil(0, fondcolor, turtle.Turtle())
 			aiguilleh(h1, fondcolor, turtle.Turtle())
 		if unefois == 0:
 			acontour(0, fondcolor, turtle.Turtle())
 			heurmin(fondcolor, turtle.Turtle())
-			postrois(fondcolor, turtle.Turtle())
 			posdouze(fondcolor, turtle.Turtle())
+			postrois(fondcolor, turtle.Turtle())
 			possix(fondcolor, turtle.Turtle())
 			posneuf(fondcolor, turtle.Turtle())
 		unefois = 1
+		
+		# Permet de reconstruire l'aiguille des heure si l'aiguille 
+		# des minute passe dessus.
+		if h1 >= 12:
+			reheure = 5 * (h1 - 12)
+		else:
+			reheure = 5 * h1
+		if reheure == m1 or reheure == m1-1 or reheure == m1+1:
+			aiguilleh(h1, fondcolor, turtle.Turtle())
 		
 		# Fait tourner le grand cercle à chaque boucle. La boucle est
 		# nécessaire si on change time.sleep et le nombre de tour (change le
@@ -2596,6 +2605,10 @@ if analogique == 1:
 """
 
 Changelog :
+v10.1 (Stable) :
+Correction de quelques bugs de l'horloge analogique.
+Ajout de quelques commentaires.
+
 v10.0 :
 Mise en place d'une fenètre de commande pour la partie analogique.
 
@@ -2607,11 +2620,11 @@ v8.0 :
 Fusion du projet AnalogiTime (v1.0) avec PyTime.
 Adaptation du code pour le support de AnalogiTime.
 
-v7.0 :
+v7.0 (Stable) :
 (Version envoyée au prof de ISN)
 Ajout d'une option pour l'épaisseur.
 
-v6.1 :
+v6.1 (Stable) :
 Correction de bugs.
 Ajout du choix de la vitesse.
 Renommage du programme en PyTime.
@@ -2635,13 +2648,13 @@ La fenètre contient :
 - Un bouton OK
 - Un bouton Aléatoire/Auto.
 
-v4.0 :
+v4.0 (Stable) :
 (Version envoyée au prof de ISN)
 Optimisation du code.
 Ajout de commentaires pour rendre le code plus clair.
 Ajout d'une marque aléatoire sur le rectangle du milieu.
 
-v3.2 :
+v3.2 (Stable) :
 (Version présentée en classe)
 Réglage de la taille de la fenètre.
 Améliorations de l'affichage de la date.
@@ -2655,7 +2668,7 @@ v3.0 :
 Ajout d'un cadre.
 Ajout de la date.
 
-v2.2 :
+v2.2 (Stable) :
 Correction d'un problème de ralentissement.
 
 v2.1 :
