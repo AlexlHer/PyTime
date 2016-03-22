@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("GoPyTime v1 numérique")
+print("GoPyTime v1.1 numérique")
 print("----------------------------------------------------------------------")
 
 # Initialisation des variables communes et importation des modules.
@@ -1533,6 +1533,9 @@ while stop == 0:
 				mesaffoui = 1
 				
 """
+GoPyTime v1.1 :
+Code de PyTime v14.0
+
 GoPyTime v1 :
 Code de PyTime v13.0
 Compatible à partir des sauvegardes pytime_v1.save
