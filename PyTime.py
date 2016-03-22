@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("Horloge")
+print("Horloge v3.0")
 print("----------------------------------------------------------------------")
 print("")
 print("Ne pas fermer la fenetre.")
@@ -14,10 +14,11 @@ hh1 = 1
 hh2 = 1
 mm1 = 1
 mm2 = 1
+cadre = 0
 
 choix = str(input("Avec des couleurs aléatoire ? "))
 
-def zero(t, c, f):
+def zero(t, c, f, g):
 	x_d = c[0] - int(-80)
 	y_d = c[1] - int(0)
 	t.shape('turtle')
@@ -26,6 +27,7 @@ def zero(t, c, f):
 	t.setheading(90)
 	t.down()
 	t.pencolor(f)
+	t.width(g)
 	t.forward(140)
 	t.left(90)
 	t.forward(80)
@@ -48,7 +50,7 @@ def zero(t, c, f):
 	t.forward(60)
 	t.hideturtle()
 
-def un(t, c, f):
+def un(t, c, f, g):
 	x_d = c[0] - int(0)
 	y_d = c[1] - int(0)
 	t.shape('turtle')
@@ -57,6 +59,7 @@ def un(t, c, f):
 	t.setheading(90)
 	t.down()
 	t.pencolor(f)
+	t.width(g)
 	t.forward(140)
 	t.left(130)
 	t.forward(100)
@@ -70,7 +73,7 @@ def un(t, c, f):
 	t.forward(9)
 	t.hideturtle()
 	
-def deux(t, c, f):
+def deux(t, c, f, g):
 	x_d = c[0] - int(0)
 	y_d = c[1] - int(0)
 	t.shape('turtle')
@@ -79,6 +82,7 @@ def deux(t, c, f):
 	t.setheading(90)
 	t.down()
 	t.pencolor(f)
+	t.width(g)
 	t.forward(10)
 	t.left(90)
 	t.forward(70)
@@ -104,7 +108,7 @@ def deux(t, c, f):
 	t.forward(80)
 	t.hideturtle()
 		
-def trois(t, c, f):
+def trois(t, c, f, g):
 	x_d = c[0] - int(0)
 	y_d = c[1] - int(0)
 	t.shape('turtle')
@@ -113,6 +117,7 @@ def trois(t, c, f):
 	t.setheading(90)
 	t.down()
 	t.pencolor(f)
+	t.width(g)
 	t.forward(140)
 	t.left(90)
 	t.forward(80)
@@ -138,7 +143,7 @@ def trois(t, c, f):
 	t.forward(80)
 	t.hideturtle()
 	
-def quatre(t, c, f):
+def quatre(t, c, f, g):
 	x_d = c[0] - int(0)
 	y_d = c[1] - int(0)
 	t.shape('turtle')
@@ -147,6 +152,7 @@ def quatre(t, c, f):
 	t.setheading(90)
 	t.down()
 	t.pencolor(f)
+	t.width(g)
 	t.forward(140)
 	t.left(140)
 	t.forward(120)
@@ -164,7 +170,7 @@ def quatre(t, c, f):
 	t.forward(9)
 	t.hideturtle()
 	
-def cinq(t, c, f):
+def cinq(t, c, f, g):
 	x_d = c[0] - int(0)
 	y_d = c[1] - int(0)
 	t.shape('turtle')
@@ -173,6 +179,7 @@ def cinq(t, c, f):
 	t.setheading(0)
 	t.down()
 	t.pencolor(f)
+	t.width(g)
 	t.forward(80)
 	t.left(90)
 	t.forward(70)
@@ -198,7 +205,7 @@ def cinq(t, c, f):
 	t.forward(10)
 	t.hideturtle()
 
-def six(t, c, f):
+def six(t, c, f, g):
 	x_d = c[0] - int(-70)
 	y_d = c[1] - int(-70)
 	t.shape('turtle')
@@ -207,6 +214,7 @@ def six(t, c, f):
 	t.setheading(0)
 	t.down()
 	t.pencolor(f)
+	t.width(g)
 	t.right(0)
 	t.forward(70)
 	t.right(90)
@@ -231,7 +239,7 @@ def six(t, c, f):
 	t.forward(60)
 	t.hideturtle()
 	
-def sept(t, c, f):
+def sept(t, c, f, g):
 	x_d = c[0] - int(0)
 	y_d = c[1] - int(0)
 	t.shape('turtle')
@@ -240,6 +248,7 @@ def sept(t, c, f):
 	t.setheading(50)
 	t.down()
 	t.pencolor(f)
+	t.width(g)
 	t.right(-10)
 	t.forward(70)
 	t.right(60)
@@ -270,7 +279,7 @@ def sept(t, c, f):
 	t.forward(10)
 	t.hideturtle()
 	
-def huit(t, c, f):
+def huit(t, c, f, g):
 	x_d = c[0] - int(-80)
 	y_d = c[1] - int(0)
 	t.shape('turtle')
@@ -279,6 +288,7 @@ def huit(t, c, f):
 	t.setheading(90)
 	t.down()
 	t.pencolor(f)
+	t.width(g)
 	t.forward(140)
 	t.left(90)
 	t.forward(80)
@@ -312,7 +322,7 @@ def huit(t, c, f):
 	t.forward(60)
 	t.hideturtle()
 	
-def neuf(t, c, f):
+def neuf(t, c, f, g):
 	x_d = c[0] - int(0)
 	y_d = c[1] - int(-70)
 	t.shape('turtle')
@@ -321,6 +331,7 @@ def neuf(t, c, f):
 	t.setheading(180)
 	t.down()
 	t.pencolor(f)
+	t.width(g)
 	t.right(0)
 	t.forward(70)
 	t.right(90)
@@ -345,7 +356,7 @@ def neuf(t, c, f):
 	t.forward(60)
 	t.hideturtle()
 	
-def milieu(t, c, f):
+def pzero(t, c, f, g):
 	x_d = c[0] - int(-80)
 	y_d = c[1] - int(0)
 	t.shape('turtle')
@@ -354,6 +365,345 @@ def milieu(t, c, f):
 	t.setheading(90)
 	t.down()
 	t.pencolor(f)
+	t.width(g)
+	t.forward(140/3)
+	t.left(90)
+	t.forward(80/3)
+	t.left(90)
+	t.forward(140/3)
+	t.left(90)
+	t.forward(80/3)
+	t.penup()
+	t.left(180)
+	t.forward(10/3)
+	t.right(90)
+	t.forward(10/3)
+	t.down()
+	t.forward(120/3)
+	t.left(90)
+	t.forward(60/3)
+	t.left(90)
+	t.forward(120/3)
+	t.left(90)
+	t.forward(60/3)
+	t.hideturtle()
+
+def pun(t, c, f, g):
+	x_d = c[0] - int(0)
+	y_d = c[1] - int(0)
+	t.shape('turtle')
+	t.penup()
+	t.setposition(x_d, y_d)
+	t.setheading(90)
+	t.down()
+	t.pencolor(f)
+	t.width(g)
+	t.forward(140/3)
+	t.left(130)
+	t.forward(100/3)
+	t.left(90)
+	t.forward(10/3)
+	t.left(90)
+	t.forward(80/3)
+	t.left(-130)
+	t.forward(120/3)
+	t.left(90)
+	t.forward(9/3)
+	t.hideturtle()
+	
+def pdeux(t, c, f, g):
+	x_d = c[0] - int(0)
+	y_d = c[1] - int(0)
+	t.shape('turtle')
+	t.penup()
+	t.setposition(x_d, y_d)
+	t.setheading(90)
+	t.down()
+	t.pencolor(f)
+	t.width(g)
+	t.forward(10/3)
+	t.left(90)
+	t.forward(70/3)
+	t.right(90)
+	t.forward(50/3)
+	t.right(90)
+	t.forward(70/3)
+	t.left(90)
+	t.forward(80/3)
+	t.left(90)
+	t.forward(80/3)
+	t.left(90)
+	t.forward(10/3)
+	t.left(90)
+	t.forward(70/3)
+	t.right(90)
+	t.forward(60/3)
+	t.right(90)
+	t.forward(70/3)
+	t.left(90)
+	t.forward(70/3)
+	t.left(90)
+	t.forward(80/3)
+	t.hideturtle()
+		
+def ptrois(t, c, f, g):
+	x_d = c[0] - int(-10)
+	y_d = c[1] - int(0)
+	t.shape('turtle')
+	t.penup()
+	t.setposition(x_d, y_d)
+	t.setheading(90)
+	t.down()
+	t.pencolor(f)
+	t.width(g)
+	t.forward(140/3)
+	t.left(90)
+	t.forward(80/3)
+	t.left(90)
+	t.forward(10/3)
+	t.left(90)
+	t.forward(70/3)
+	t.right(90)
+	t.forward(50/3)
+	t.right(90)
+	t.forward(40/3)
+	t.left(90)
+	t.forward(10/3)
+	t.left(90)
+	t.forward(40/3)
+	t.right(90)
+	t.forward(60/3)
+	t.right(90)
+	t.forward(70/3)
+	t.left(90)
+	t.forward(10/3)
+	t.left(90)
+	t.forward(80/3)
+	t.hideturtle()
+	
+def pquatre(t, c, f, g):
+	x_d = c[0] - int(0)
+	y_d = c[1] - int(0)
+	t.shape('turtle')
+	t.penup()
+	t.setposition(x_d, y_d)
+	t.setheading(90)
+	t.down()
+	t.pencolor(f)
+	t.width(g)
+	t.forward(140/3)
+	t.left(140)
+	t.forward(120/3)
+	t.left(130)
+	t.forward(90/3)
+	t.left(90)
+	t.forward(10/3)
+	t.left(90)
+	t.forward(70/3)
+	t.right(130)
+	t.forward(75/3)
+	t.right(140)
+	t.forward(116/3)
+	t.left(90)
+	t.forward(9/3)
+	t.hideturtle()
+	
+def pcinq(t, c, f, g):
+	x_d = c[0] - int(-60)
+	y_d = c[1] - int(0)
+	t.shape('turtle')
+	t.penup()
+	t.setposition(x_d, y_d)
+	t.setheading(0)
+	t.down()
+	t.pencolor(f)
+	t.width(g)
+	t.forward(80/3)
+	t.left(90)
+	t.forward(70/3)
+	t.left(90)
+	t.forward(70/3)
+	t.right(90)
+	t.forward(60/3)
+	t.right(90)
+	t.forward(70/3)
+	t.left(90)
+	t.forward(10/3)
+	t.left(90)
+	t.forward(80/3)
+	t.left(90)
+	t.forward(80/3)
+	t.left(90)
+	t.forward(70/3)
+	t.right(90)
+	t.forward(50/3)
+	t.right(90)
+	t.forward(70/3)
+	t.left(90)
+	t.forward(10/3)
+	t.hideturtle()
+
+def psix(t, c, f, g):
+	x_d = c[0] - int(-115)
+	y_d = c[1] - int(-23)
+	t.shape('turtle')
+	t.penup()
+	t.setposition(x_d, y_d)
+	t.setheading(0)
+	t.down()
+	t.pencolor(f)
+	t.width(g)
+	t.right(0)
+	t.forward(70/3)
+	t.right(90)
+	t.forward(70/3)
+	t.right(90)
+	t.forward(80/3)
+	t.right(90)
+	t.forward(140/3)
+	t.right(90)
+	t.forward(80/3)
+	t.right(90)
+	t.forward(10/3)
+	t.right(90)
+	t.forward(70/3)
+	t.left(90)
+	t.forward(120/3)
+	t.left(90)
+	t.forward(60/3)
+	t.left(90)
+	t.forward(50/3)
+	t.left(90)
+	t.forward(60/3)
+	t.hideturtle()
+	
+def psept(t, c, f, g):
+	x_d = c[0] - int(-55)
+	y_d = c[1] - int(-0)
+	t.shape('turtle')
+	t.penup()
+	t.setposition(x_d, y_d)
+	t.setheading(50)
+	t.down()
+	t.pencolor(f)
+	t.width(g)
+	t.right(-10)
+	t.forward(70/3)
+	t.right(60)
+	t.forward(20/3)
+	t.left(90)
+	t.forward(10/3)
+	t.left(90)
+	t.forward(15/3)
+	t.right(120)
+	t.forward(80/3)
+	t.left(120)
+	t.forward(80/3)
+	t.left(90)
+	t.forward(10/3)
+	t.left(90)
+	t.forward(65/3)
+	t.right(120)
+	t.forward(68/3)
+	t.right(60)
+	t.forward(20/3)
+	t.left(90)
+	t.forward(10/3)
+	t.left(90)
+	t.forward(15/3)
+	t.right(120)
+	t.forward(70/3)
+	t.left(120)
+	t.forward(10/3)
+	t.hideturtle()
+	
+def phuit(t, c, f, g):
+	x_d = c[0] - int(-80)
+	y_d = c[1] - int(0)
+	t.shape('turtle')
+	t.penup()
+	t.setposition(x_d, y_d)
+	t.setheading(90)
+	t.down()
+	t.pencolor(f)
+	t.width(g)
+	t.forward(140/3)
+	t.left(90)
+	t.forward(80/3)
+	t.left(90)
+	t.forward(140/3)
+	t.left(90)
+	t.forward(80/3)
+	t.penup()
+	t.left(180)
+	t.forward(10/3)
+	t.right(90)
+	t.forward(10/3)
+	t.down()
+	t.forward(60/3)
+	t.left(90)
+	t.forward(60/3)
+	t.left(90)
+	t.forward(60/3)
+	t.left(90)
+	t.forward(60/3)
+	t.penup()
+	t.left(90)
+	t.forward(70/3)
+	t.down()
+	t.forward(50/3)
+	t.left(90)
+	t.forward(60/3)
+	t.left(90)
+	t.forward(50/3)
+	t.left(90)
+	t.forward(60/3)
+	t.hideturtle()
+	
+def pneuf(t, c, f, g):
+	x_d = c[0] - int(-15)
+	y_d = c[1] - int(-23)
+	t.shape('turtle')
+	t.penup()
+	t.setposition(x_d, y_d)
+	t.setheading(180)
+	t.down()
+	t.pencolor(f)
+	t.width(g)
+	t.right(0)
+	t.forward(70/3)
+	t.right(90)
+	t.forward(70/3)
+	t.right(90)
+	t.forward(80/3)
+	t.right(90)
+	t.forward(140/3)
+	t.right(90)
+	t.forward(80/3)
+	t.right(90)
+	t.forward(10/3)
+	t.right(90)
+	t.forward(70/3)
+	t.left(90)
+	t.forward(120/3)
+	t.left(90)
+	t.forward(60/3)
+	t.left(90)
+	t.forward(50/3)
+	t.left(90)
+	t.forward(60/3)
+	t.hideturtle()
+	
+def milieu(t, c, f, g):
+	x_d = c[0] - int(-90)
+	y_d = c[1] - int(0)
+	t.shape('turtle')
+	t.penup()
+	t.setposition(x_d, y_d)
+	t.setheading(90)
+	t.down()
+	t.pencolor(f)
+	t.width(g)
 	t.forward(50)
 	t.left(90)
 	t.forward(20)
@@ -363,79 +713,250 @@ def milieu(t, c, f):
 	t.forward(20)
 	t.left(90)
 	t.forward(50)
+	time.sleep(0.2)
+	t.reset()
+
+def contour(t, c, f, g):
+	x_d = c[0] - int(-350)
+	y_d = c[1] - int(0)
+	t.shape('turtle')
+	t.penup()
+	t.setposition(x_d, y_d)
+	t.setheading(90)
+	t.down()
+	t.pencolor(f)
+	t.width(g)
+	t.forward(190)
+	t.left(90)
+	t.forward(540)
+	t.left(90)
+	t.forward(190)
+	t.left(90)
+	t.forward(540)
+	t.hideturtle()
 	
-def main0(a, b, f):
+def main0(a, b, f, g):
 	t = Turtle()
 	c = (a +(-130), b + (-50))
-	zero(t, c, f)
+	zero(t, c, f, g)
 
-def main1(a, b, f):
+def main1(a, b, f, g):
 	t = Turtle()
 	c = (a +(-60), b + (-50))
-	un(t, c, f)
+	un(t, c, f, g)
 	
-def main2(a, b, f):
+def main2(a, b, f, g):
 	t = Turtle()
 	c = (a +(-60), b + (-50))
-	deux(t, c, f)
+	deux(t, c, f, g)
 
-def main3(a, b, f):
+def main3(a, b, f, g):
 	t = Turtle()
 	c = (a +(-60), b + (-50))
-	trois(t, c, f)
+	trois(t, c, f, g)
 	
-def main4(a, b, f):
+def main4(a, b, f, g):
 	t = Turtle()
 	c = (a +(-60), b + (-50))
-	quatre(t, c, f)
+	quatre(t, c, f, g)
 	
-def main5(a, b, f):
+def main5(a, b, f, g):
 	t = Turtle()
 	c = (a +(-140), b + (-50))
-	cinq(t, c, f)
+	cinq(t, c, f, g)
 	
-def main6(a, b, f):
+def main6(a, b, f, g):
 	t = Turtle()
 	c = (a +(-200), b + (-50))
-	six(t, c, f)
+	six(t, c, f, g)
 	
-def main7(a, b, f):
+def main7(a, b, f, g):
 	t = Turtle()
 	c = (a +(-140), b + (-50))
-	sept(t, c, f)
+	sept(t, c, f, g)
 	
-def main8(a, b, f):
+def main8(a, b, f, g):
 	t = Turtle()
 	c = (a +(-140), b + (-50))
-	huit(t, c, f)
+	huit(t, c, f, g)
 	
-def main9(a, b, f):
+def main9(a, b, f, g):
 	t = Turtle()
 	c = (a +(-70), b + (-50))
-	neuf(t, c, f)
+	neuf(t, c, f, g)
 	
-def mainm(a, b, f):
+def mainp0(a, b, f, g):
+	t = Turtle()
+	c = (a +(-130), b + (-50))
+	pzero(t, c, f, g)
+
+def mainp1(a, b, f, g):
+	t = Turtle()
+	c = (a +(-60), b + (-50))
+	pun(t, c, f, g)
+	
+def mainp2(a, b, f, g):
+	t = Turtle()
+	c = (a +(-60), b + (-50))
+	pdeux(t, c, f, g)
+
+def mainp3(a, b, f, g):
+	t = Turtle()
+	c = (a +(-60), b + (-50))
+	ptrois(t, c, f, g)
+	
+def mainp4(a, b, f, g):
+	t = Turtle()
+	c = (a +(-60), b + (-50))
+	pquatre(t, c, f, g)
+	
+def mainp5(a, b, f, g):
+	t = Turtle()
+	c = (a +(-140), b + (-50))
+	pcinq(t, c, f, g)
+	
+def mainp6(a, b, f, g):
+	t = Turtle()
+	c = (a +(-200), b + (-50))
+	psix(t, c, f, g)
+	
+def mainp7(a, b, f, g):
+	t = Turtle()
+	c = (a +(-140), b + (-50))
+	psept(t, c, f, g)
+	
+def mainp8(a, b, f, g):
+	t = Turtle()
+	c = (a +(-140), b + (-50))
+	phuit(t, c, f, g)
+	
+def mainp9(a, b, f, g):
+	t = Turtle()
+	c = (a +(-70), b + (-50))
+	pneuf(t, c, f, g)
+	
+def mainm(a, b, f, g):
 	t = Turtle()
 	c = (a +(-70), b + 0)
-	milieu(t, c, f)
+	milieu(t, c, f, g)
 	
+def mainc(a, b, f, g):
+	t = Turtle()
+	c = (a +(-70), b + (-90))
+	contour(t, c, f, g)
+
+
 for i in range(1000):
 	heure = time.strftime("%H")
 	minu = time.strftime("%M")
+	day = time.strftime("%d")
+	mois = time.strftime("%m")
+	ans = time.strftime("%y")
 	h1 = int(heure[0])
 	h2 = int(heure[1])
 	m1 = int(minu[0])
 	m2 = int(minu[1])
+	d1 = int(day[0])
+	d2 = int(day[1])
+	mo1 = int(mois[0])
+	mo2 = int(mois[1])
+	a1 = int(ans[0])
+	a2 = int(ans[1])
+	
 	
 	if (h1 == 1 and h2 >= 8) or (h1 == 2) or (h1 == 0 and h2 <= 8):
+		fondcolor = 'white'
 		ifondcolor = 'black'
 		alea = 98
 		turtle.bgcolor('black')
 	else:
+		fondcolor = 'black'
 		ifondcolor = 'white'
 		alea = 99
 		turtle.bgcolor('white')
 		
+	if cadre == 0:
+		mainc(-10, 15, fondcolor, 1)
+		if d1 == 0:
+			mainp0(-50, -100, fondcolor, 1)
+		elif d1 == 1:
+			mainp1(-50, -100, fondcolor, 1)
+		elif d1 == 2:
+			mainp2(-50, -100, fondcolor, 1)
+		elif d1 == 3:
+			mainp3(-50, -100, fondcolor, 1)
+		if d2 == 0:
+			mainp0(-10, -100, fondcolor, 1)
+		elif d2 == 1:
+			mainp1(-10, -100, fondcolor, 1)
+		elif d2 == 2:
+			mainp2(-10, -100, fondcolor, 1)
+		elif d2 == 3:
+			mainp3(-10, -100, fondcolor, 1)
+		elif d2 == 4:
+			mainp4(-10, -100, fondcolor, 1)
+		elif d2 == 5:
+			mainp5(-10, -100, fondcolor, 1)
+		elif d2 == 6:
+			mainp6(-10, -100, fondcolor, 1)
+		elif d2 == 7:
+			mainp7(-10, -100, fondcolor, 1)
+		elif d2 == 8:
+			mainp8(-10, -100, fondcolor, 1)
+		elif d2 == 9:
+			mainp9(-10, -100, fondcolor, 1)
+		if mo1 == 0:
+			mainp0(50, -100, fondcolor, 1)
+		elif mo1 == 1:
+			mainp1(50, -100, fondcolor, 1)
+		if mo2 == 0:
+			mainp0(90, -100, fondcolor, 1)
+		elif mo2 == 1:
+			mainp1(90, -100, fondcolor, 1)
+		elif mo2 == 2:
+			mainp2(90, -100, fondcolor, 1)
+		elif mo2 == 3:
+			mainp3(90, -100, fondcolor, 1)
+		elif mo2 == 4:
+			mainp4(90, -100, fondcolor, 1)
+		elif mo2 == 5:
+			mainp5(90, -100, fondcolor, 1)
+		elif mo2 == 6:
+			mainp6(90, -100, fondcolor, 1)
+		elif mo2 == 7:
+			mainp7(90, -100, fondcolor, 1)
+		elif mo2 == 8:
+			mainp8(90, -100, fondcolor, 1)
+		elif mo2 == 9:
+			mainp9(90, -100, fondcolor, 1)
+		if a1 == 1:
+			mainp1(150, -100, fondcolor, 1)
+		elif a1 == 2:
+			mainp2(150, -100, fondcolor, 1)
+		elif a1 == 3:
+			mainp3(150, -100, fondcolor, 1)
+		if a2 == 0:
+			mainp0(190, -100, fondcolor, 1)
+		elif a2 == 1:
+			mainp1(190, -100, fondcolor, 1)
+		elif a2 == 2:
+			mainp2(190, -100, fondcolor, 1)
+		elif a2 == 3:
+			mainp3(190, -100, fondcolor, 1)
+		elif a2 == 4:
+			mainp4(190, -100, fondcolor, 1)
+		elif a2 == 5:
+			mainp5(190, -100, fondcolor, 1)
+		elif a2 == 6:
+			mainp6(190, -100, fondcolor, 1)
+		elif a2 == 7:
+			mainp7(190, -100, fondcolor, 1)
+		elif a2 == 8:
+			mainp8(190, -100, fondcolor, 1)
+		elif a2 == 9:
+			mainp9(190, -100, fondcolor, 1)
+	cadre = 1
+	
 	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
 		alea = random.randint(1,10)
 	if alea == 98:
@@ -465,11 +986,11 @@ for i in range(1000):
 		
 	if hh1 == 1:
 		if h1 == 0:
-			main0(-100, 0, fondcolor)
+			main0(-100, 0, fondcolor, 6)
 		elif h1 == 1:
-			main1(-100, 0, fondcolor)
+			main1(-100, 0, fondcolor, 6)
 		elif h1 == 2:
-			main2(-100, 0, fondcolor)
+			main2(-100, 0, fondcolor, 6)
 			
 	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
 		alea = random.randint(1,10)
@@ -501,25 +1022,25 @@ for i in range(1000):
 		
 	if hh2 == 1:
 		if h2 == 0:
-			main0(-10, 0, fondcolor)
+			main0(-10, 0, fondcolor, 6)
 		elif h2 == 1:
-			main1(-10, 0, fondcolor)
+			main1(-10, 0, fondcolor, 6)
 		elif h2 == 2:
-			main2(-10, 0, fondcolor)
+			main2(-10, 0, fondcolor, 6)
 		elif h2 == 3:
-			main3(-10, 0, fondcolor)
+			main3(-10, 0, fondcolor, 6)
 		elif h2 == 4:
-			main4(-10, 0, fondcolor)
+			main4(-10, 0, fondcolor, 6)
 		elif h2 == 5:
-			main5(-10, 0, fondcolor)
+			main5(-10, 0, fondcolor, 6)
 		elif h2 == 6:
-			main6(-10, 0, fondcolor)
+			main6(-10, 0, fondcolor, 6)
 		elif h2 == 7:
-			main7(-10, 0, fondcolor)
+			main7(-10, 0, fondcolor, 6)
 		elif h2 == 8:
-			main8(-10, 0, fondcolor)
+			main8(-10, 0, fondcolor, 6)
 		elif h2 == 9:
-			main9(-10, 0, fondcolor)
+			main9(-10, 0, fondcolor, 6)
 		
 	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
 		alea = random.randint(1,10)
@@ -551,17 +1072,17 @@ for i in range(1000):
 		
 	if mm1 == 1:
 		if m1 == 0:
-			main0(190, 0, fondcolor)
+			main0(190, 0, fondcolor, 3)
 		elif m1 == 1:
-			main1(190, 0, fondcolor)
+			main1(190, 0, fondcolor, 3)
 		elif m1 == 2:
-			main2(190, 0, fondcolor)
+			main2(190, 0, fondcolor, 3)
 		elif m1 == 3:
-			main3(190, 0, fondcolor)
+			main3(190, 0, fondcolor, 3)
 		elif m1 == 4:
-			main4(190, 0, fondcolor)
+			main4(190, 0, fondcolor, 3)
 		elif m1 == 5:
-			main5(190, 0, fondcolor)
+			main5(190, 0, fondcolor, 3)
 		
 	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
 		alea = random.randint(1,10)
@@ -593,25 +1114,25 @@ for i in range(1000):
 		
 	if mm2 == 1:
 		if m2 == 0:
-			main0(290, 0, fondcolor)
+			main0(290, 0, fondcolor, 3)
 		elif m2 == 1:
-			main1(290, 0, fondcolor)
+			main1(290, 0, fondcolor, 3)
 		elif m2 == 2:
-			main2(290, 0, fondcolor)
+			main2(290, 0, fondcolor, 3)
 		elif m2 == 3:
-			main3(290, 0, fondcolor)
+			main3(290, 0, fondcolor, 3)
 		elif m2 == 4:
-			main4(290, 0, fondcolor)
+			main4(290, 0, fondcolor, 3)
 		elif m2 == 5:
-			main5(290, 0, fondcolor)
+			main5(290, 0, fondcolor, 3)
 		elif m2 == 6:
-			main6(290, 0, fondcolor)
+			main6(290, 0, fondcolor, 3)
 		elif m2 == 7:
-			main7(290, 0, fondcolor)
+			main7(290, 0, fondcolor, 3)
 		elif m2 == 8:
-			main8(290, 0, fondcolor)
+			main8(290, 0, fondcolor, 3)
 		elif m2 == 9:
-			main9(290, 0, fondcolor)
+			main9(290, 0, fondcolor, 3)
 	
 	for i in range(1):
 		if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
@@ -642,8 +1163,8 @@ for i in range(1000):
 		else:
 			mfondcolor = 'orange'
    
-		mainm(-10, 15, mfondcolor)
-		time.sleep(1)
+		mainm(-10, 15, mfondcolor, 1)
+		time.sleep(0)
 		
 	heure1 = time.strftime("%H")
 	minu1 = time.strftime("%M")
@@ -658,75 +1179,95 @@ for i in range(1000):
 	if h11 != h1:
 		hh1 = 1
 		if h1 == 0:
-			main0(-100, 0, ifondcolor)
+			main0(-100, 0, ifondcolor, 6)
 		elif h1 == 1:
-			main1(-100, 0, ifondcolor)
+			main1(-100, 0, ifondcolor, 6)
 		elif h1 == 2:
-			main2(-100, 0, ifondcolor)
+			main2(-100, 0, ifondcolor, 6)
    
 	if h21 != h2:
 		hh2 = 1
 		if h2 == 0:
-			main0(-10, 0, ifondcolor)
+			main0(-10, 0, ifondcolor, 6)
 		elif h2 == 1:
-			main1(-10, 0, ifondcolor)
+			main1(-10, 0, ifondcolor, 6)
 		elif h2 == 2:
-			main2(-10, 0, ifondcolor)
+			main2(-10, 0, ifondcolor, 6)
 		elif h2 == 3:
-			main3(-10, 0, ifondcolor)
+			main3(-10, 0, ifondcolor, 6)
 		elif h2 == 4:
-			main4(-10, 0, ifondcolor)
+			main4(-10, 0, ifondcolor, 6)
 		elif h2 == 5:
-			main5(-10, 0, ifondcolor)
+			main5(-10, 0, ifondcolor, 6)
 		elif h2 == 6:
-			main6(-10, 0, ifondcolor)
+			main6(-10, 0, ifondcolor, 6)
 		elif h2 == 7:
-			main7(-10, 0, ifondcolor)
+			main7(-10, 0, ifondcolor, 6)
 		elif h2 == 8:
-			main8(-10, 0, ifondcolor)
+			main8(-10, 0, ifondcolor, 6)
 		elif h2 == 9:
-			main9(-10, 0, ifondcolor)
+			main9(-10, 0, ifondcolor, 6)
    
 	if m11 != m1:
 		mm1 = 1
 		if m1 == 0:
-			main0(190, 0, ifondcolor)
+			main0(190, 0, ifondcolor, 3)
 		elif m1 == 1:
-			main1(190, 0, ifondcolor)
+			main1(190, 0, ifondcolor, 3)
 		elif m1 == 2:
-			main2(190, 0, ifondcolor)
+			main2(190, 0, ifondcolor, 3)
 		elif m1 == 3:
-			main3(190, 0, ifondcolor)
+			main3(190, 0, ifondcolor, 3)
 		elif m1 == 4:
-			main4(190, 0, ifondcolor)
+			main4(190, 0, ifondcolor, 3)
 		elif m1 == 5:
-			main5(190, 0, ifondcolor)
+			main5(190, 0, ifondcolor, 3)
    
 	if m21 != m2:
 		mm2 = 1
 		if m2 == 0:
-			main0(290, 0, ifondcolor)
+			main0(290, 0, ifondcolor, 3)
 		elif m2 == 1:
-			main1(290, 0, ifondcolor)
+			main1(290, 0, ifondcolor, 3)
 		elif m2 == 2:
-			main2(290, 0, ifondcolor)
+			main2(290, 0, ifondcolor, 3)
 		elif m2 == 3:
-			main3(290, 0, ifondcolor)
+			main3(290, 0, ifondcolor, 3)
 		elif m2 == 4:
-			main4(290, 0, ifondcolor)
+			main4(290, 0, ifondcolor, 3)
 		elif m2 == 5:
-			main5(290, 0, ifondcolor)
+			main5(290, 0, ifondcolor, 3)
 		elif m2 == 6:
-			main6(290, 0, ifondcolor)
+			main6(290, 0, ifondcolor, 3)
 		elif m2 == 7:
-			main7(290, 0, ifondcolor)
+			main7(290, 0, ifondcolor, 3)
 		elif m2 == 8:
-			main8(290, 0, ifondcolor)
+			main8(290, 0, ifondcolor, 3)
 		elif m2 == 9:
-			main9(290, 0, ifondcolor)
+			main9(290, 0, ifondcolor, 3)
 
 # Pour éviter que la fenètre de commande se ferme.
 print("")
 print("==========================")
 print("")
 input("Appuyer sur Entrer pour fermer le programme.")
+
+"""
+Changelog :
+v3.0 :
+Ajout d'un cadre.
+Ajout de la date.
+
+v2.2 :
+Correction d'un problème de ralentissement.
+
+v2.1 :
+Ajout de quelques couleurs.
+
+v2.0 :
+Ajout des couleurs aléatoire.
+Ajout du mode nuit.
+
+v1.0 :
+Version final de Projet Pytime, renommée Horloge.
+"""
