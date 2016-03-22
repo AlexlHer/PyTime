@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("PyTime v11.1")
+print("PyTime v12.0")
 print("----------------------------------------------------------------------")
 
 # Initialisation des variables communes et importation des modules.
@@ -12,7 +12,7 @@ from tkinter import *
 from tkinter.messagebox import *
 numerique = 0			# Sert à séléctionner le mode numérique.
 analogique = 0			# Sert à séléctionner le mode analogique.
-version = "PyTime v11.1" 	# Permet de définir la version de PyTime pour l'afficher.
+version = "PyTime v12.0" 	# Permet de définir la version de PyTime pour l'afficher.
 
 v_tk_textaf_2_1 = 30		# Permet de verifier si il y a un message.
 mesaffoui = 0 			# Permet de savoir si le message a déjà été affiché.
@@ -130,7 +130,40 @@ if numerique == 1:
 	
 	v_tk_ok_1 = IntVar()
 	
+	tk_save_oui = 0
+	tk_save_exe = 0
+	fenetre3 = 0
+	
 	# Fenètres tiers.
+	def creersave():
+		global tk_save_oui
+		global fenetre3
+		tk_save_oui = 1
+		fenetre3.destroy()
+		fenetre.destroy()
+	def exesave():
+		global tk_save_exe
+		global fenetre3
+		tk_save_exe = 1
+		fenetre3.destroy()
+		fenetre.destroy()
+	def save():
+		global fenetre3
+		fenetre3 = Tk()
+		fenetre3.title("Sauvegarde")
+		tk_save_1 = Label(fenetre3, text="Pour créer une sauvegarde, cocher les")
+		tk_save_2 = Label(fenetre3, text="options et cliquer sur Créer une sauvegarde.")
+		tk_save_3 = Label(fenetre3, text="Pour exécuter une sauvegarde,")
+		tk_save_4 = Label(fenetre3, text="cliquer sur Exécuter une sauvegarde")
+		tk_save_5 = Button(fenetre3, text="Créer une sauvegarde", command=creersave)
+		tk_save_6 = Button(fenetre3, text="Exécuter une sauvegarde", command=exesave)
+		tk_save_1.pack()
+		tk_save_2.pack()
+		tk_save_3.pack()
+		tk_save_4.pack()
+		tk_save_5.pack()
+		tk_save_6.pack()
+		
 	def aproposde():
 		fenetre2 = Tk()
 		fenetre2.title("A propos")
@@ -138,7 +171,7 @@ if numerique == 1:
 		titre.config(font=('Arial', 30, 'italic', 'bold'))
 		tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
 		tk_aproposde_2 = Label(fenetre2, text="Mode numérique")
-		tk_aproposde_3 = Label(fenetre2, text="(Version 11.1)")
+		tk_aproposde_3 = Label(fenetre2, text="(Version 12.0)")
 		tk_aproposde_4 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
 		titre.pack()
 		tk_aproposde_1.pack()
@@ -262,8 +295,9 @@ if numerique == 1:
 	
 	
 	# Création de la partie "Mode d'emploi".
-	tk_me = LabelFrame(fenetre, text="Mode d'emploi", padx=2, pady=2)
-	tk_me_1 = Button(tk_me, text="→ Cliquez ICI ←", command=aide, relief=FLAT)
+	tk_me = LabelFrame(fenetre, text="Autres", padx=2, pady=2)
+	tk_me_1 = Button(tk_me, text="→ Mode d'emploi ←", command=aide, relief=FLAT)
+	tk_me_2 = Button(tk_me, text="→ Save ←", command=save, relief=FLAT)
 	
 	
 	# Création de la partie "Vitesse".
@@ -359,15 +393,6 @@ if numerique == 1:
 	tk_nuit_2.pack(side=LEFT)
 	tk_nuit_3.pack(side=LEFT)
 	
-	tk_tour.pack(side=TOP, fill="both")
-	tk_tour_1.pack()
-	tk_tour_2.pack()
-	tk_tour_3.pack()
-	tk_tour_3.get()
-	
-	tk_me.pack(side=TOP, fill="both")
-	tk_me_1.pack()
-	
 	tk_speed.pack(fill="both")
 	tk_speed_1.pack(side=LEFT)
 	tk_speed_2.pack(side=LEFT)
@@ -378,6 +403,12 @@ if numerique == 1:
 	tk_epais_2.pack(side=LEFT)
 	tk_epais_3.pack(side=LEFT)
 	
+	tk_tour.pack(side=TOP, fill="both")
+	tk_tour_1.pack()
+	tk_tour_2.pack()
+	tk_tour_3.pack()
+	tk_tour_3.get()
+	
 	tk_textaf.pack(fill="both")
 	tk_textaf_1.pack()
 	tk_textaf_1_1.pack(side=LEFT)
@@ -385,6 +416,10 @@ if numerique == 1:
 	tk_textaf_2_1.pack(side=LEFT)
 	tk_textaf_2_2.pack(side=LEFT)
 	tk_textaf_2_3.pack(side=LEFT)
+
+	tk_me.pack(side=TOP, fill="both")
+	tk_me_1.pack(side=LEFT)
+	tk_me_2.pack(side=LEFT)
 	
 	tk_ok.pack(side=BOTTOM, fill="both")
 	tk_ok_1.pack(side=BOTTOM)
@@ -465,7 +500,219 @@ if numerique == 1:
 	v_tk_textaf_2_3 = v_tk_textaf_2_3.get()
 	
 	v_tk_ok_1 = v_tk_ok_1.get()
-	
+		
+	if tk_save_oui == 1:
+		ecrire = open("num_pytime_v1.save", "w")
+		ecrire.write("Fichier de sauvegarde pour PyTime partie numerique\n\
+------------------------------------------------------------------------------\n\
+Chaques lignes contient un 1 ou un 0 (sauf pour les minutes) pour savoir quelles options\
+ doivent être activé ou non.\nListe des options dans l'ordre :\nv_tk_alea_h1_1\
+;v_tk_alea_h1_2;v_tk_alea_h1_3;v_tk_alea_h1_4;v_tk_alea_h1_5;v_tk_alea_h1_6\
+;v_tk_alea_h1_7;v_tk_alea_h1_8;v_tk_alea_h1_9;v_tk_alea_h1_10;v_tk_alea_h1_11\
+;v_tk_alea_h1_12;v_tk_alea_h2_1;v_tk_alea_h2_2;v_tk_alea_h2_3;v_tk_alea_h2_4\
+;v_tk_alea_h2_5;v_tk_alea_h2_6;v_tk_alea_h2_7;v_tk_alea_h2_8;v_tk_alea_h2_9\
+;v_tk_alea_h2_10;v_tk_alea_h2_11;v_tk_alea_h2_12;v_tk_alea_m1_1;v_tk_alea_m1_2\
+;v_tk_alea_m1_3;v_tk_alea_m1_4;v_tk_alea_m1_5;v_tk_alea_m1_6;v_tk_alea_m1_7\
+;v_tk_alea_m1_8;v_tk_alea_m1_9;v_tk_alea_m1_10;v_tk_alea_m1_11;v_tk_alea_m1_12\
+;v_tk_alea_m2_1;v_tk_alea_m2_2;v_tk_alea_m2_3;v_tk_alea_m2_4;v_tk_alea_m2_5\
+;v_tk_alea_m2_6;v_tk_alea_m2_7;v_tk_alea_m2_8;v_tk_alea_m2_9;v_tk_alea_m2_10\
+;v_tk_alea_m2_11;v_tk_alea_m2_12;v_tk_nuit_1;v_tk_nuit_2;v_tk_nuit_3\
+;v_tk_tour_3;v_tk_speed_1;v_tk_speed_2;v_tk_speed_3;v_tk_epais_1;v_tk_epais_2\
+;v_tk_epais_3;v_tk_textaf_1_1;v_tk_textaf_2_1;v_tk_textaf_2_3\nOption :\n")
+		ecrire.write(str(v_tk_alea_h1_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_2))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_4))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_5))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_6))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_7))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_8))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_9))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_10))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_11))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_12))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h2_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h2_2))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h2_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h2_4))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h2_5))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h2_6))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h2_7))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h2_8))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h2_9))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h2_10))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h2_11))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h2_12))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m1_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m1_2))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m1_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m1_4))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m1_5))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m1_6))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m1_7))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m1_8))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m1_9))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m1_10))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m1_11))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m1_12))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m2_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m2_2))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m2_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m2_4))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m2_5))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m2_6))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m2_7))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m2_8))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m2_9))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m2_10))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m2_11))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_m2_12))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_nuit_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_nuit_2))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_nuit_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_tour_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_speed_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_speed_2))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_speed_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_epais_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_epais_2))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_epais_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_textaf_1_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_textaf_2_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_textaf_2_3))
+		ecrire.write("\n")
+		ecrire.write(version)
+		ecrire.close()
+		
+	if tk_save_exe == 1:
+		lire = open("num_pytime_v1.save", "r")
+		liste = []
+		for ligne in lire:
+			liste.append(ligne)
+		liste = liste[6]
+		liste = liste.split(";")
+		v_tk_alea_h1_1 = int(liste[0])
+		v_tk_alea_h1_2 = int(liste[1])
+		v_tk_alea_h1_3 = int(liste[2])
+		v_tk_alea_h1_4 = int(liste[3])
+		v_tk_alea_h1_5 = int(liste[4])
+		v_tk_alea_h1_6 = int(liste[5])
+		v_tk_alea_h1_7 = int(liste[6])
+		v_tk_alea_h1_8 = int(liste[7])
+		v_tk_alea_h1_9 = int(liste[8])
+		v_tk_alea_h1_10 = int(liste[9])
+		v_tk_alea_h1_11 = int(liste[10])
+		v_tk_alea_h1_12 = int(liste[11])
+		v_tk_alea_h2_1 = int(liste[12])
+		v_tk_alea_h2_2 = int(liste[13])
+		v_tk_alea_h2_3 = int(liste[14])
+		v_tk_alea_h2_4 = int(liste[15])
+		v_tk_alea_h2_5 = int(liste[16])
+		v_tk_alea_h2_6 = int(liste[17])
+		v_tk_alea_h2_7 = int(liste[18])
+		v_tk_alea_h2_8 = int(liste[19])
+		v_tk_alea_h2_9 = int(liste[20])
+		v_tk_alea_h2_10 = int(liste[21])
+		v_tk_alea_h2_11 = int(liste[22])
+		v_tk_alea_h2_12 = int(liste[23])
+		v_tk_alea_m1_1 = int(liste[24])
+		v_tk_alea_m1_2 = int(liste[25])
+		v_tk_alea_m1_3 = int(liste[26])
+		v_tk_alea_m1_4 = int(liste[27])
+		v_tk_alea_m1_5 = int(liste[28])
+		v_tk_alea_m1_6 = int(liste[29])
+		v_tk_alea_m1_7 = int(liste[30])
+		v_tk_alea_m1_8 = int(liste[31])
+		v_tk_alea_m1_9 = int(liste[32])
+		v_tk_alea_m1_10 = int(liste[33])
+		v_tk_alea_m1_11 = int(liste[34])
+		v_tk_alea_m1_12 = int(liste[35])
+		v_tk_alea_m2_1 = int(liste[36])
+		v_tk_alea_m2_2 = int(liste[37])
+		v_tk_alea_m2_3 = int(liste[38])
+		v_tk_alea_m2_4 = int(liste[39])
+		v_tk_alea_m2_5 = int(liste[40])
+		v_tk_alea_m2_6 = int(liste[41])
+		v_tk_alea_m2_7 = int(liste[42])
+		v_tk_alea_m2_8 = int(liste[43])
+		v_tk_alea_m2_9 = int(liste[44])
+		v_tk_alea_m2_10 = int(liste[45])
+		v_tk_alea_m2_11 = int(liste[46])
+		v_tk_alea_m2_12 = int(liste[47])
+		v_tk_nuit_1 = int(liste[48])
+		v_tk_nuit_2 = int(liste[49])
+		v_tk_nuit_3 = int(liste[50])
+		v_tk_tour_3 = int(liste[51])
+		v_tk_speed_1 = int(liste[52])
+		v_tk_speed_2 = int(liste[53])
+		v_tk_speed_3 = int(liste[54])
+		v_tk_epais_1 = int(liste[55])
+		v_tk_epais_2 = int(liste[56])
+		v_tk_epais_3 = int(liste[57])
+		v_tk_textaf_1_1 = str(liste[58])
+		v_tk_textaf_2_1 = int(liste[59])
+		v_tk_textaf_2_3 = int(liste[60])
+		
 	# Configure le mode auto.
 	if v_tk_ok_1 == 1:
 		v_tk_alea_h1_1 = 1
@@ -500,7 +747,6 @@ if numerique == 1:
 		v_tk_epais = 3
 	elif v_tk_epais_3 == 1:
 		v_tk_epais = 5
-		
 	
 	# Fin : Fenètre de commande.
 	
@@ -1967,7 +2213,40 @@ if analogique == 1:
 	
 	v_tk_ok_1 = IntVar()
 	
+	tk_save_oui = 0
+	tk_save_exe = 0
+	fenetre3 = 0
+	
 	# Fenètres tiers.
+	def acreersave():
+		global tk_save_oui
+		global fenetre3
+		tk_save_oui = 1
+		fenetre3.destroy()
+		fenetre.destroy()
+	def aexesave():
+		global tk_save_exe
+		global fenetre3
+		tk_save_exe = 1
+		fenetre3.destroy()
+		fenetre.destroy()
+	def asave():
+		global fenetre3
+		fenetre3 = Tk()
+		fenetre3.title("Sauvegarde")
+		tk_save_1 = Label(fenetre3, text="Pour créer une sauvegarde, cocher les")
+		tk_save_2 = Label(fenetre3, text="options et cliquer sur Créer une sauvegarde.")
+		tk_save_3 = Label(fenetre3, text="Pour exécuter une sauvegarde,")
+		tk_save_4 = Label(fenetre3, text="cliquer sur Exécuter une sauvegarde")
+		tk_save_5 = Button(fenetre3, text="Créer une sauvegarde", command=acreersave)
+		tk_save_6 = Button(fenetre3, text="Exécuter une sauvegarde", command=aexesave)
+		tk_save_1.pack()
+		tk_save_2.pack()
+		tk_save_3.pack()
+		tk_save_4.pack()
+		tk_save_5.pack()
+		tk_save_6.pack()
+		
 	def aaproposde():
 		fenetre2 = Tk()
 		fenetre2.title("A propos")
@@ -1975,7 +2254,7 @@ if analogique == 1:
 		titre.config(font=('Arial', 30, 'italic', 'bold'))
 		tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
 		tk_aproposde_2 = Label(fenetre2, text="Mode analogique")
-		tk_aproposde_3 = Label(fenetre2, text="(Version 11.1)")
+		tk_aproposde_3 = Label(fenetre2, text="(Version 12.0)")
 		tk_aproposde_4 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
 		titre.pack()
 		tk_aproposde_1.pack()
@@ -2049,8 +2328,9 @@ if analogique == 1:
 	tk_tour_3 = Spinbox(tk_tour, from_ = 0, to = 9999999, textvariable = v_tk_tour_3, relief=FLAT)
 
 	# Création de la partie "Mode d'emploi".
-	tk_me = LabelFrame(fenetre, text="Mode d'emploi", padx=2, pady=2)
-	tk_me_1 = Button(tk_me, text="→ Cliquez ICI ←", command=aaide, relief=FLAT)
+	tk_me = LabelFrame(fenetre, text="Autres", padx=2, pady=2)
+	tk_me_1 = Button(tk_me, text="→ Mode d'emploi ←", command=aaide, relief=FLAT)
+	tk_me_2 = Button(tk_me, text="→ Save ←", command=asave, relief=FLAT)
 
 	# Création de la partie "Vitesse".
 	tk_speed = LabelFrame(fenetre, text="Vitesse", padx=2, pady=2)
@@ -2105,19 +2385,6 @@ if analogique == 1:
 	tk_nuit_2.pack(side=LEFT)
 	tk_nuit_3.pack(side=LEFT)
 	
-	tk_chco.pack(side=TOP, fill="both")
-	tk_chco_1.pack(side=LEFT)
-	tk_chco_2.pack(side=LEFT)	
-	
-	tk_tour.pack(side=TOP, fill="both")
-	tk_tour_1.pack()
-	tk_tour_2.pack()
-	tk_tour_3.pack()
-	tk_tour_3.get()
-	
-	tk_me.pack(side=TOP, fill="both")
-	tk_me_1.pack()
-	
 	tk_speed.pack(fill="both")
 	tk_speed_1.pack(side=LEFT)
 	tk_speed_2.pack(side=LEFT)
@@ -2128,6 +2395,16 @@ if analogique == 1:
 	tk_tyai_2.pack(side=LEFT)
 	tk_tyai_3.pack(side=LEFT)
 	
+	tk_chco.pack(side=TOP, fill="both")
+	tk_chco_1.pack(side=LEFT)
+	tk_chco_2.pack(side=LEFT)	
+	
+	tk_tour.pack(side=TOP, fill="both")
+	tk_tour_1.pack()
+	tk_tour_2.pack()
+	tk_tour_3.pack()
+	tk_tour_3.get()
+	
 	tk_textaf.pack(fill="both")
 	tk_textaf_1.pack()
 	tk_textaf_1_1.pack(side=LEFT)
@@ -2135,6 +2412,10 @@ if analogique == 1:
 	tk_textaf_2_1.pack(side=LEFT)
 	tk_textaf_2_2.pack(side=LEFT)
 	tk_textaf_2_3.pack(side=LEFT)
+	
+	tk_me.pack(side=TOP, fill="both")
+	tk_me_1.pack(side=LEFT)
+	tk_me_2.pack(side=LEFT)
 	
 	tk_ok.pack(side=BOTTOM, fill="both")
 	tk_ok_1.pack(side=BOTTOM)
@@ -2161,9 +2442,6 @@ if analogique == 1:
 	v_tk_nuit_2 = v_tk_nuit_2.get()
 	v_tk_nuit_3 = v_tk_nuit_3.get()
 	
-	v_tk_chco_1 = v_tk_chco_1.get()
-	v_tk_chco_2 = v_tk_chco_2.get()	
-	
 	v_tk_tour_3 = v_tk_tour_3.get()
 	
 	v_tk_speed_1 = v_tk_speed_1.get()
@@ -2174,11 +2452,118 @@ if analogique == 1:
 	v_tk_tyai_2 = v_tk_tyai_2.get()
 	v_tk_tyai_3 = v_tk_tyai_3.get()
 
+	v_tk_chco_1 = v_tk_chco_1.get()
+	v_tk_chco_2 = v_tk_chco_2.get()	
+
 	v_tk_textaf_1_1 = v_tk_textaf_1_1.get()
 	v_tk_textaf_2_1 = v_tk_textaf_2_1.get()
 	v_tk_textaf_2_3 = v_tk_textaf_2_3.get()
 
 	v_tk_ok_1 = v_tk_ok_1.get()
+	
+	if tk_save_oui == 1:
+		ecrire = open("ana_pytime_v1.save", "w")
+		ecrire.write("Fichier de sauvegarde pour PyTime partie analogique\n\
+------------------------------------------------------------------------------\n\
+Chaques lignes contient un 1 ou un 0 (sauf pour les minutes) pour savoir quelles options\
+ doivent être activé ou non.\nListe des options dans l'ordre :\nv_tk_alea_h1_1\
+;v_tk_alea_h1_2;v_tk_alea_h1_3;v_tk_alea_h1_4;v_tk_alea_h1_5;v_tk_alea_h1_6\
+;v_tk_alea_h1_7;v_tk_alea_h1_8;v_tk_alea_h1_9;v_tk_alea_h1_10;v_tk_alea_h1_11\
+;v_tk_alea_h1_12;v_tk_nuit_1;v_tk_nuit_2;v_tk_nuit_3\
+;v_tk_tour_3;v_tk_speed_1;v_tk_speed_2;v_tk_speed_3;v_tk_tyai_1;v_tk_tyai_2\
+;v_tk_tyai_3;v_tk_chco_1;v_tk_chco_2;v_tk_textaf_1_1;v_tk_textaf_2_1\
+;v_tk_textaf_2_3\nOption :\n")
+		ecrire.write(str(v_tk_alea_h1_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_2))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_4))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_5))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_6))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_7))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_8))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_9))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_10))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_11))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_alea_h1_12))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_nuit_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_nuit_2))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_nuit_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_tour_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_speed_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_speed_2))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_speed_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_tyai_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_tyai_2))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_tyai_3))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_chco_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_chco_2))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_textaf_1_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_textaf_2_1))
+		ecrire.write(";")
+		ecrire.write(str(v_tk_textaf_2_3))
+		ecrire.write("\n")
+		ecrire.write(version)
+		ecrire.close()
+		
+	if tk_save_exe == 1:
+		lire = open("ana_pytime_v1.save", "r")
+		liste = []
+		for ligne in lire:
+			liste.append(ligne)
+		liste = liste[6]
+		liste = liste.split(";")
+		v_tk_alea_h1_1 = int(liste[0])
+		v_tk_alea_h1_2 = int(liste[1])
+		v_tk_alea_h1_3 = int(liste[2])
+		v_tk_alea_h1_4 = int(liste[3])
+		v_tk_alea_h1_5 = int(liste[4])
+		v_tk_alea_h1_6 = int(liste[5])
+		v_tk_alea_h1_7 = int(liste[6])
+		v_tk_alea_h1_8 = int(liste[7])
+		v_tk_alea_h1_9 = int(liste[8])
+		v_tk_alea_h1_10 = int(liste[9])
+		v_tk_alea_h1_11 = int(liste[10])
+		v_tk_alea_h1_12 = int(liste[11])
+		v_tk_nuit_1 = int(liste[12])
+		v_tk_nuit_2 = int(liste[13])
+		v_tk_nuit_3 = int(liste[14])
+		v_tk_tour_3 = int(liste[15])
+		v_tk_speed_1 = int(liste[16])
+		v_tk_speed_2 = int(liste[17])
+		v_tk_speed_3 = int(liste[18])
+		v_tk_tyai_1 = int(liste[19])
+		v_tk_tyai_2 = int(liste[20])
+		v_tk_tyai_3 = int(liste[21])
+		v_tk_chco_1 = int(liste[22])
+		v_tk_chco_2 = int(liste[23])
+		v_tk_textaf_1_1 = str(liste[24])
+		v_tk_textaf_2_1 = int(liste[25])
+		v_tk_textaf_2_3 = int(liste[26])
 	
 	# Configure le mode auto.
 	if v_tk_ok_1 == 1:
@@ -2759,11 +3144,11 @@ if analogique == 1:
 			reheure = 5 * (h1 - 12)
 		else:
 			reheure = 5 * h1
-		if reheure == m1 or reheure == m1-1 or reheure == m1-2\
+		if (reheure == m1 or reheure == m1-1 or reheure == m1-2\
 		or reheure == m1-3 or reheure == m1-4 or reheure == m1-5\
 		or reheure == m1-6 or reheure == m1+1 or reheure == m1+2\
 		or reheure == m1+3 or reheure == m1+4 or reheure == m1+5\
-		or reheure == m1+6:
+		or reheure == m1+6) and mm == 1:
 			if v_tk_tyai_1 == 1:
 				aiguilleh(h1, fondcolor, turtle.Turtle())
 			elif v_tk_tyai_2 == 1:
@@ -2824,6 +3209,9 @@ if analogique == 1:
 """
 
 Changelog :
+v12.0 :
+Possibilité de faire une sauvegarde pour les deux types d'horloge.
+
 v11.1 (Stable) :
 Correction de bugs.
 Ajout d'une marque aléatoire sur le contour de l'horloge analogique (comme sur
