@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("Horloge v6.0")
+print("PyTime v6.1")
 print("----------------------------------------------------------------------")
 
 # Initialisation des variables et importation des modules.
 import time
 import turtle
 import random
+import tkinter.font as tkFont
 from tkinter import *
 hh1 = 1		# Savoir si l'heure a changée après la boucle.
 hh2 = 1		# Savoir si l'heure a changée après la boucle.
@@ -18,10 +19,11 @@ colora = []		# Permet de sauvegarder les couleurs choisi.
 colorachif = 0	# Compte le nombre de couleur choisi par l'utilisateur.
 stop = 0		# Permet d'arrêter la boucle une fois le temps écoulé.
 stop_min = 0	# Contient les minutes de l'heure d'arrêt de la boucle.
+egea_1 = 0		# Met 0 à la variable egea_1.
 
 # Début : Fenètre de commande.
 fenetre = Tk()
-fenetre.title("Horloge v6.0")
+fenetre.title("PyTime v6.1")
 
 # Initialisation des variables de la fenètre de commande.
 v_tk_alea_h1_1 = IntVar()
@@ -82,6 +84,10 @@ v_tk_nuit_3 = IntVar()
 
 v_tk_tour_3 = IntVar()
 
+v_tk_speed_1 = IntVar()
+v_tk_speed_2 = IntVar()
+v_tk_speed_3 = IntVar()
+
 v_tk_ok_1 = IntVar()
 
 def aide():
@@ -96,10 +102,11 @@ def aide():
 	tk_aide_6 = Label(fenetre1, text="---")
 	tk_aide_7 = Label(fenetre1, text="Appuyez sur Ok une fois les paramètres choisi.")
 	tk_aide_8 = Label(fenetre1, text="Appuyez sur Aléatoire/Auto et sur Ok pour cocher")
-	tk_aide_9 = Label(fenetre1, text="les modes aléatoires, mode nuit auto et 20 minutes.")
-	tk_aide_10 = Label(fenetre1, text="---")
-	tk_aide_11 = Label(fenetre1, text="Attention, l'arrêt de l'horloge n'est pas très")
-	tk_aide_12 = Label(fenetre1, text="précise au niveau des secondes.")
+	tk_aide_9 = Label(fenetre1, text="les modes aléatoires, mode nuit auto, 20 minutes")
+	tk_aide_10 = Label(fenetre1, text="et vitesse lente.")
+	tk_aide_11 = Label(fenetre1, text="---")
+	tk_aide_12 = Label(fenetre1, text="Attention, l'arrêt de l'horloge n'est pas très")
+	tk_aide_13 = Label(fenetre1, text="précise au niveau des secondes.")
 	tk_aide.pack()
 	tk_aide_1.pack()
 	tk_aide_2.pack()
@@ -113,14 +120,17 @@ def aide():
 	tk_aide_10.pack()
 	tk_aide_11.pack()
 	tk_aide_12.pack()
+	tk_aide_13.pack()
 
-titre = Label(fenetre, text="Horloge")
+titre_1 = LabelFrame(fenetre, text="", padx=2, pady=2)
+titre = Label(titre_1, text="PyTime", height=1)
+titre.config(font=('Arial', 30, 'italic', 'bold'))
 
 # Création de la partie "Couleur des chiffres".
 tk_alea = LabelFrame(fenetre, text="Couleur des chiffres", padx=2, pady=2)
 
 tk_alea_h1 = LabelFrame(tk_alea, text="1er chiffre des heures", padx=2, pady=2)
-tk_alea_h1_1 = Checkbutton(tk_alea_h1, text="Aleatoire", variable = v_tk_alea_h1_1)
+tk_alea_h1_1 = Checkbutton(tk_alea_h1, text="Aléatoire", variable = v_tk_alea_h1_1)
 tk_alea_h1_2 = Checkbutton(tk_alea_h1, text="Bleu", variable = v_tk_alea_h1_2)
 tk_alea_h1_3 = Checkbutton(tk_alea_h1, text="Rouge", variable = v_tk_alea_h1_3)
 tk_alea_h1_4 = Checkbutton(tk_alea_h1, text="Vert", variable = v_tk_alea_h1_4)
@@ -133,8 +143,8 @@ tk_alea_h1_10 = Checkbutton(tk_alea_h1, text="Gris", variable = v_tk_alea_h1_10)
 tk_alea_h1_11 = Checkbutton(tk_alea_h1, text="Orange", variable = v_tk_alea_h1_11)
 tk_alea_h1_12 = Checkbutton(tk_alea_h1, text="Noir/Blanc", variable = v_tk_alea_h1_12)
 
-tk_alea_h2 = LabelFrame(tk_alea, text="2eme chiffre des heures", padx=2, pady=2)
-tk_alea_h2_1 = Checkbutton(tk_alea_h2, text="Aleatoire", variable = v_tk_alea_h2_1)
+tk_alea_h2 = LabelFrame(tk_alea, text="2ème chiffre des heures", padx=2, pady=2)
+tk_alea_h2_1 = Checkbutton(tk_alea_h2, text="Aléatoire", variable = v_tk_alea_h2_1)
 tk_alea_h2_2 = Checkbutton(tk_alea_h2, text="Bleu", variable = v_tk_alea_h2_2)
 tk_alea_h2_3 = Checkbutton(tk_alea_h2, text="Rouge", variable = v_tk_alea_h2_3)
 tk_alea_h2_4 = Checkbutton(tk_alea_h2, text="Vert", variable = v_tk_alea_h2_4)
@@ -148,7 +158,7 @@ tk_alea_h2_11 = Checkbutton(tk_alea_h2, text="Orange", variable = v_tk_alea_h2_1
 tk_alea_h2_12 = Checkbutton(tk_alea_h2, text="Noir/Blanc", variable = v_tk_alea_h2_12)
 
 tk_alea_m1 = LabelFrame(tk_alea, text="1er chiffre des minutes", padx=2, pady=2)
-tk_alea_m1_1 = Checkbutton(tk_alea_m1, text="Aleatoire", variable = v_tk_alea_m1_1)
+tk_alea_m1_1 = Checkbutton(tk_alea_m1, text="Aléatoire", variable = v_tk_alea_m1_1)
 tk_alea_m1_2 = Checkbutton(tk_alea_m1, text="Bleu", variable = v_tk_alea_m1_2)
 tk_alea_m1_3 = Checkbutton(tk_alea_m1, text="Rouge", variable = v_tk_alea_m1_3)
 tk_alea_m1_4 = Checkbutton(tk_alea_m1, text="Vert", variable = v_tk_alea_m1_4)
@@ -161,8 +171,8 @@ tk_alea_m1_10 = Checkbutton(tk_alea_m1, text="Gris", variable = v_tk_alea_m1_10)
 tk_alea_m1_11 = Checkbutton(tk_alea_m1, text="Orange", variable = v_tk_alea_m1_11)
 tk_alea_m1_12 = Checkbutton(tk_alea_m1, text="Noir/Blanc", variable = v_tk_alea_m1_12)
 
-tk_alea_m2 = LabelFrame(tk_alea, text="2eme chiffre des minutes", padx=2, pady=2)
-tk_alea_m2_1 = Checkbutton(tk_alea_m2, text="Aleatoire", variable = v_tk_alea_m2_1)
+tk_alea_m2 = LabelFrame(tk_alea, text="2ème chiffre des minutes", padx=2, pady=2)
+tk_alea_m2_1 = Checkbutton(tk_alea_m2, text="Aléatoire", variable = v_tk_alea_m2_1)
 tk_alea_m2_2 = Checkbutton(tk_alea_m2, text="Bleu", variable = v_tk_alea_m2_2)
 tk_alea_m2_3 = Checkbutton(tk_alea_m2, text="Rouge", variable = v_tk_alea_m2_3)
 tk_alea_m2_4 = Checkbutton(tk_alea_m2, text="Vert", variable = v_tk_alea_m2_4)
@@ -195,13 +205,22 @@ tk_me = LabelFrame(fenetre, text="Mode d'emploi", padx=2, pady=2)
 tk_me_1 = Button(tk_me, text="→ Cliquez ICI ←", command=aide)
 
 
+# Création de la partie "Mode d'emploi".
+tk_speed = LabelFrame(fenetre, text="Vitesse", padx=2, pady=2)
+tk_speed_1 = Checkbutton(tk_speed, text="Normal", variable = v_tk_speed_1)
+tk_speed_2 = Checkbutton(tk_speed, text="Rapide", variable = v_tk_speed_2)
+tk_speed_3 = Checkbutton(tk_speed, text="Très rapide", variable = v_tk_speed_3)
+
+
 # Création des deux boutons.
-tk_ok = Button(fenetre, text="→ OK ←", command=fenetre.destroy, cursor="clock")
-tk_ok_1 = Checkbutton(fenetre, text="→ Aléatoire/Auto ←", variable = v_tk_ok_1)
+tk_ok = Button(fenetre, text="→ OK ←", command=fenetre.destroy, cursor="clock", height=2)
+tk_ok_1 = Checkbutton(fenetre, text="→ Aléatoire/Auto ←", variable = v_tk_ok_1, height=2)
+tk_ok.config(font=('Arial', 12, 'italic', 'bold'))
 
 
 # Formation des différents objets.
 titre.pack()
+titre_1.pack()
 tk_alea.pack(side=LEFT, fill="both", expand="yes")
 tk_alea_h1.pack()
 tk_alea_h1_1.grid(row=1, column=1, sticky = W)
@@ -260,9 +279,9 @@ tk_alea_m2_11.grid(row=2, column=4, sticky = W)
 tk_alea_m2_12.grid(row=3, column=4, sticky = W)
 
 tk_nuit.pack(side=TOP, fill="both")
-tk_nuit_1.pack()
-tk_nuit_2.pack()
-tk_nuit_3.pack()
+tk_nuit_1.pack(side=LEFT)
+tk_nuit_2.pack(side=LEFT)
+tk_nuit_3.pack(side=LEFT)
 
 tk_tour.pack(side=TOP, fill="both")
 tk_tour_1.pack()
@@ -272,6 +291,11 @@ tk_tour_3.get()
 
 tk_me.pack(side=TOP, fill="both")
 tk_me_1.pack()
+
+tk_speed.pack(fill="both")
+tk_speed_1.pack(side=LEFT)
+tk_speed_2.pack(side=LEFT)
+tk_speed_3.pack(side=LEFT)
 
 tk_ok.pack(side=BOTTOM, fill="both")
 tk_ok_1.pack(side=BOTTOM)
@@ -339,6 +363,10 @@ v_tk_nuit_3 = v_tk_nuit_3.get()
 
 v_tk_tour_3 = v_tk_tour_3.get()
 
+v_tk_speed_1 = v_tk_speed_1.get()
+v_tk_speed_2 = v_tk_speed_2.get()
+v_tk_speed_3 = v_tk_speed_3.get()
+
 v_tk_ok_1 = v_tk_ok_1.get()
 
 # Configure le mode auto.
@@ -349,6 +377,14 @@ if v_tk_ok_1 == 1:
 	v_tk_alea_m2_1 = 1
 	v_tk_nuit_1 = 1
 	v_tk_tour_3 = 20
+	v_tk_speed_1 = 1
+	
+if v_tk_speed_1 == 1:
+	v_tk_speed = "slow"
+if v_tk_speed_2 == 1:
+	v_tk_speed = "normal"
+if v_tk_speed_3 == 1:
+	v_tk_speed = "fastest"
 
 # Fin : Fenètre de commande.
 
@@ -365,6 +401,7 @@ def zero(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(140)
 	t.left(90)
 	t.forward(80)
@@ -397,6 +434,7 @@ def un(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(140)
 	t.left(130)
 	t.forward(100)
@@ -420,6 +458,7 @@ def deux(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(10)
 	t.left(90)
 	t.forward(70)
@@ -455,6 +494,7 @@ def trois(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(140)
 	t.left(90)
 	t.forward(80)
@@ -490,6 +530,7 @@ def quatre(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(140)
 	t.left(140)
 	t.forward(120)
@@ -517,6 +558,7 @@ def cinq(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(80)
 	t.left(90)
 	t.forward(70)
@@ -552,6 +594,7 @@ def six(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.right(0)
 	t.forward(70)
 	t.right(90)
@@ -586,6 +629,7 @@ def sept(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.right(-10)
 	t.forward(70)
 	t.right(60)
@@ -626,6 +670,7 @@ def huit(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(140)
 	t.left(90)
 	t.forward(80)
@@ -669,6 +714,7 @@ def neuf(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.right(0)
 	t.forward(70)
 	t.right(90)
@@ -703,6 +749,7 @@ def pzero(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(140/3)
 	t.left(90)
 	t.forward(80/3)
@@ -735,6 +782,7 @@ def pun(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(140/3)
 	t.left(130)
 	t.forward(100/3)
@@ -758,6 +806,7 @@ def pdeux(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(10/3)
 	t.left(90)
 	t.forward(70/3)
@@ -793,6 +842,7 @@ def ptrois(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(140/3)
 	t.left(90)
 	t.forward(80/3)
@@ -828,6 +878,7 @@ def pquatre(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(140/3)
 	t.left(140)
 	t.forward(120/3)
@@ -855,6 +906,7 @@ def pcinq(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(80/3)
 	t.left(90)
 	t.forward(70/3)
@@ -890,6 +942,7 @@ def psix(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.right(0)
 	t.forward(70/3)
 	t.right(90)
@@ -924,6 +977,7 @@ def psept(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.right(-10)
 	t.forward(70/3)
 	t.right(60)
@@ -964,6 +1018,7 @@ def phuit(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(140/3)
 	t.left(90)
 	t.forward(80/3)
@@ -1007,6 +1062,7 @@ def pneuf(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.right(0)
 	t.forward(70/3)
 	t.right(90)
@@ -1047,6 +1103,7 @@ def milieu(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(50)
 	t.left(90)
 	t.forward(20)
@@ -1070,6 +1127,7 @@ def contour(a, b, f, g, t):
 	t.down()
 	t.pencolor(f)
 	t.width(g)
+	t.speed(v_tk_speed)
 	t.forward(190)
 	t.left(90)
 	t.forward(540)
@@ -1130,7 +1188,7 @@ def main(d, a, b, f, g):
 	
 # Configure la fenètre.
 turtle.setup(width=850,height=450)
-turtle.title("Horloge v6.0")
+turtle.title("PyTime v6.1")
 
 # Boucle qui permet de faire tourner le rectangle du milieu et d'actualiser
 # l'heure. La boucle fait le nombre de tour indiqué par la fenètre de commande.
@@ -1732,12 +1790,17 @@ while stop == 0:
 """
 
 Changelog :
-v6.0
+v6.1 :
+Correction de bugs.
+Ajout du choix de la vitesse.
+Renommage du programme en PyTime.
+
+v6.0 :
 Ouverture sans la console de commande.
 Les tours sont remplacés par des minutes.
 Correction de bugs.
 
-v5.0
+v5.0 :
 Fenètre de commande avec tkinter :
 - Adaptation du code pour soutenir la fenètre de commande.
 - Adaptation des commentaires.
@@ -1751,34 +1814,34 @@ La fenètre contient :
 - Un bouton OK
 - Un bouton Aléatoire/Auto.
 
-v4.0
+v4.0 :
 Optimisation du code.
 Ajout de commentaires pour rendre le code plus clair.
 Ajout d'une marque aléatoire sur le rectangle du milieu.
 
-v3.2
+v3.2 :
 Réglage de la taille de la fenètre.
 Améliorations de l'affichage de la date.
 Ajout d'un titre pour la fenètre.
 Optimisation du code.
 
-v3.1
+v3.1 :
 Correction de quelques bugs.
 
-v3.0
+v3.0 :
 Ajout d'un cadre.
 Ajout de la date.
 
-v2.2
+v2.2 :
 Correction d'un problème de ralentissement.
 
-v2.1
+v2.1 :
 Ajout de quelques couleurs.
 
-v2.0
+v2.0 :
 Ajout des couleurs aléatoire.
 Ajout du mode nuit.
 
-v1.0
+v1.0 :
 Version final de Projet Pytime, renommée Horloge.
 """
