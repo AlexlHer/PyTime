@@ -1,17 +1,25 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("PyTime v10.1")
+print("PyTime v11.0")
 print("----------------------------------------------------------------------")
 
-# Initialisation des variables et importation des modules.
+# Initialisation des variables communes et importation des modules.
 import time
 import turtle
 import random
 from tkinter import *
+from tkinter.messagebox import *
 numerique = 0			# Sert à séléctionner le mode numérique.
 analogique = 0			# Sert à séléctionner le mode analogique.
-version = "PyTime v10.1" 	# Permet de définir la version de PyTime pour l'afficher.
+version = "PyTime v11.0" 	# Permet de définir la version de PyTime pour l'afficher.
+
+v_tk_textaf_2_1 = 30		# Permet de verifier si il y a un message.
+mesaffoui = 0 			# Permet de savoir si le message a déjà été affiché.
+egea_1 = 0				# 
+colorachif = 0			# Compte le nombre de couleur choisi par l'utilisateur.
+stop = 0				# Permet d'arrêter la boucle une fois le temps écoulé.
+stop_min = 0			# Contient les minutes de l'heure d'arrêt de la boucle.
 
 debut = Tk()
 debut.title(version)
@@ -37,17 +45,13 @@ tk_debut_2.pack(side=RIGHT)
 debut.mainloop()
 
 if numerique == 1:
-	# Initialisation des variables.
+	# Initialisation des variables "numerique".
 	hh1 = 1		# Savoir si l'heure a changée après la boucle.
 	hh2 = 1		# Savoir si l'heure a changée après la boucle.
 	mm1 = 1		# Savoir si les minutes ont changées après la boucle.
 	mm2 = 1		# Savoir si les minutes ont changées après la boucle.
 	cadredate = 0	# Permet de faire le cadre et la date une seule fois.
 	colora = []		# Permet de sauvegarder les couleurs choisi.
-	colorachif = 0	# Compte le nombre de couleur choisi par l'utilisateur.
-	stop = 0		# Permet d'arrêter la boucle une fois le temps écoulé.
-	stop_min = 0	# Contient les minutes de l'heure d'arrêt de la boucle.
-	egea_1 = 0		# 
 	
 	# Début : Fenètre de commande.
 	fenetre = Tk()
@@ -120,6 +124,10 @@ if numerique == 1:
 	v_tk_epais_2 = IntVar()
 	v_tk_epais_3 = IntVar()
 	
+	v_tk_textaf_1_1 = StringVar()
+	v_tk_textaf_2_1 = IntVar()
+	v_tk_textaf_2_3 = IntVar()
+	
 	v_tk_ok_1 = IntVar()
 	
 	# Fenètres tiers.
@@ -130,7 +138,7 @@ if numerique == 1:
 		titre.config(font=('Arial', 30, 'italic', 'bold'))
 		tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
 		tk_aproposde_2 = Label(fenetre2, text="Mode numérique")
-		tk_aproposde_3 = Label(fenetre2, text="(Version 10.1)")
+		tk_aproposde_3 = Label(fenetre2, text="(Version 11.0)")
 		tk_aproposde_4 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
 		titre.pack()
 		tk_aproposde_1.pack()
@@ -270,7 +278,15 @@ if numerique == 1:
 	tk_epais_1 = Checkbutton(tk_epais, text="Fin", variable = v_tk_epais_1)
 	tk_epais_2 = Checkbutton(tk_epais, text="Normal", variable = v_tk_epais_2)
 	tk_epais_3 = Checkbutton(tk_epais, text="Gros", variable = v_tk_epais_3)
-	
+
+	# Création de la partie "Texte à afficher".
+	tk_textaf = LabelFrame(fenetre, text="Texte à afficher", padx=2, pady=2)
+	tk_textaf_1 = LabelFrame(tk_textaf, text="Entrer le texte voulu", padx=2, pady=2)
+	tk_textaf_1_1 = Entry(tk_textaf_1, textvariable=v_tk_textaf_1_1, width=35)
+	tk_textaf_2 = LabelFrame(tk_textaf, text="Entrer l'heure à laquelle afficher le texte", padx=2, pady=2)
+	tk_textaf_2_1 = Spinbox(tk_textaf_2, from_ = 0, to = 23, textvariable=v_tk_textaf_2_1, width=5)
+	tk_textaf_2_2 = Label(tk_textaf_2, text=":")
+	tk_textaf_2_3 = Spinbox(tk_textaf_2, from_ = 0, to = 59, textvariable=v_tk_textaf_2_3, width=5)
 	
 	# Création des deux boutons.
 	tk_ok = Button(fenetre, text="→ OK ←", command=fenetre.destroy, cursor="clock", height=2, relief=FLAT)
@@ -362,6 +378,14 @@ if numerique == 1:
 	tk_epais_2.pack(side=LEFT)
 	tk_epais_3.pack(side=LEFT)
 	
+	tk_textaf.pack(fill="both")
+	tk_textaf_1.pack()
+	tk_textaf_1_1.pack(side=LEFT)
+	tk_textaf_2.pack(side=TOP)
+	tk_textaf_2_1.pack(side=LEFT)
+	tk_textaf_2_2.pack(side=LEFT)
+	tk_textaf_2_3.pack(side=LEFT)
+	
 	tk_ok.pack(side=BOTTOM, fill="both")
 	tk_ok_1.pack(side=BOTTOM)
 	
@@ -435,6 +459,10 @@ if numerique == 1:
 	v_tk_epais_1 = v_tk_epais_1.get()
 	v_tk_epais_2 = v_tk_epais_2.get()
 	v_tk_epais_3 = v_tk_epais_3.get()
+	
+	v_tk_textaf_1_1 = v_tk_textaf_1_1.get()
+	v_tk_textaf_2_1 = v_tk_textaf_2_1.get()
+	v_tk_textaf_2_3 = v_tk_textaf_2_3.get()
 	
 	v_tk_ok_1 = v_tk_ok_1.get()
 	
@@ -1881,13 +1909,19 @@ if numerique == 1:
 			stop_min += 1
 		if stop_min >= v_tk_tour_3:
 			stop = 1
+			
+		# Pour afficher le message à l'heure indiqué.
+		if v_tk_textaf_2_1 != 30 and mesaffoui == 0:
+			heuremess = int(heure)
+			if v_tk_textaf_2_1 == heuremess:
+				if v_tk_textaf_2_3 == minuav:
+					showinfo("Votre message", v_tk_textaf_1_1)
+					mesaffoui = 1
+
+
 
 if analogique == 1:
-	# Initialisation des variables.
-	egea_1 = 0		# 
-	colorachif = 0	# Compte le nombre de couleur choisi par l'utilisateur.
-	stop_min = 0	# Contient les minutes de l'heure d'arrêt de la boucle.
-	stop = 0		# Permet d'arrêter la boucle une fois le temps écoulé.
+	# Initialisation des variables "analogique".
 	mm = 1		# Savoir si l'heure a changée après la boucle.
 	hh = 1		# Savoir si les minutes ont changées après la boucle.
 	unefois = 0		# Permet de faire la parie aléatoire et le cadre une seule fois.
@@ -1923,6 +1957,14 @@ if analogique == 1:
 	v_tk_speed_2 = IntVar()
 	v_tk_speed_3 = IntVar()
 	
+	v_tk_tyai_1 = IntVar()
+	v_tk_tyai_2 = IntVar()
+	v_tk_tyai_3 = IntVar()
+	
+	v_tk_textaf_1_1 = StringVar()
+	v_tk_textaf_2_1 = IntVar()
+	v_tk_textaf_2_3 = IntVar()
+	
 	v_tk_ok_1 = IntVar()
 	
 	# Fenètres tiers.
@@ -1933,7 +1975,7 @@ if analogique == 1:
 		titre.config(font=('Arial', 30, 'italic', 'bold'))
 		tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
 		tk_aproposde_2 = Label(fenetre2, text="Mode analogique")
-		tk_aproposde_3 = Label(fenetre2, text="(Version 10.1)")
+		tk_aproposde_3 = Label(fenetre2, text="(Version 11.0)")
 		tk_aproposde_4 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
 		titre.pack()
 		tk_aproposde_1.pack()
@@ -1946,8 +1988,7 @@ if analogique == 1:
 		fenetre1.title("Aide")
 		tk_aide = Label(fenetre1, text="Pour les couleurs, choisissez une seul couleur")
 		tk_aide_1 = Label(fenetre1, text="OU aléatoire avec les couleurs que vous voulez")
-		tk_aide_2 = Label(fenetre1, text="et qui vont apparaitre aléatoirement OU juste")
-		tk_aide_3 = Label(fenetre1, text="aléatoire pour mettre toutes les couleurs.")
+		tk_aide_2 = Label(fenetre1, text="OU juste aléatoire.")
 		tk_aide_4 = Label(fenetre1, text="---")
 		tk_aide_5 = Label(fenetre1, text="Pour le mode nuit, cochez une seul case.")
 		tk_aide_6 = Label(fenetre1, text="---")
@@ -1963,7 +2004,6 @@ if analogique == 1:
 		tk_aide.pack()
 		tk_aide_1.pack()
 		tk_aide_2.pack()
-		tk_aide_3.pack()
 		tk_aide_4.pack()
 		tk_aide_5.pack()
 		tk_aide_6.pack()
@@ -2023,6 +2063,21 @@ if analogique == 1:
 	tk_chco_1 = Checkbutton(tk_chco, text="Oui", variable = v_tk_chco_1)
 	tk_chco_2 = Checkbutton(tk_chco, text="Non", variable = v_tk_chco_2)
 
+	# Création de la partie "Aiguilles".
+	tk_tyai = LabelFrame(fenetre, text="Type d'aiguilles", padx=2, pady=2)
+	tk_tyai_1 = Checkbutton(tk_tyai, text="Flèches", variable = v_tk_tyai_1)
+	tk_tyai_2 = Checkbutton(tk_tyai, text="Triangle au bout", variable = v_tk_tyai_2)
+	tk_tyai_3 = Checkbutton(tk_tyai, text="Triangle", variable = v_tk_tyai_3)
+	
+	# Création de la partie "Texte à afficher".
+	tk_textaf = LabelFrame(fenetre, text="Texte à afficher", padx=2, pady=2)
+	tk_textaf_1 = LabelFrame(tk_textaf, text="Entrer le texte voulu", padx=2, pady=2)
+	tk_textaf_1_1 = Entry(tk_textaf_1, textvariable=v_tk_textaf_1_1, width=35)
+	tk_textaf_2 = LabelFrame(tk_textaf, text="Entrer l'heure à laquelle afficher le texte", padx=2, pady=2)
+	tk_textaf_2_1 = Spinbox(tk_textaf_2, from_ = 0, to = 23, textvariable=v_tk_textaf_2_1, width=5)
+	tk_textaf_2_2 = Label(tk_textaf_2, text=":")
+	tk_textaf_2_3 = Spinbox(tk_textaf_2, from_ = 0, to = 59, textvariable=v_tk_textaf_2_3, width=5)
+
 	# Création des deux boutons.
 	tk_ok = Button(fenetre, text="→ OK ←", command=fenetre.destroy, cursor="clock", height=2, relief=FLAT)
 	tk_ok_1 = Checkbutton(fenetre, text="Automatique", variable = v_tk_ok_1, height=2)
@@ -2068,6 +2123,19 @@ if analogique == 1:
 	tk_speed_2.pack(side=LEFT)
 	tk_speed_3.pack(side=LEFT)
 	
+	tk_tyai.pack(fill="both")
+	tk_tyai_1.pack(side=LEFT)
+	tk_tyai_2.pack(side=LEFT)
+	tk_tyai_3.pack(side=LEFT)
+	
+	tk_textaf.pack(fill="both")
+	tk_textaf_1.pack()
+	tk_textaf_1_1.pack(side=LEFT)
+	tk_textaf_2.pack(side=TOP)
+	tk_textaf_2_1.pack(side=LEFT)
+	tk_textaf_2_2.pack(side=LEFT)
+	tk_textaf_2_3.pack(side=LEFT)
+	
 	tk_ok.pack(side=BOTTOM, fill="both")
 	tk_ok_1.pack(side=BOTTOM)
 	
@@ -2101,6 +2169,14 @@ if analogique == 1:
 	v_tk_speed_1 = v_tk_speed_1.get()
 	v_tk_speed_2 = v_tk_speed_2.get()
 	v_tk_speed_3 = v_tk_speed_3.get()
+	
+	v_tk_tyai_1 = v_tk_tyai_1.get()
+	v_tk_tyai_2 = v_tk_tyai_2.get()
+	v_tk_tyai_3 = v_tk_tyai_3.get()
+
+	v_tk_textaf_1_1 = v_tk_textaf_1_1.get()
+	v_tk_textaf_2_1 = v_tk_textaf_2_1.get()
+	v_tk_textaf_2_3 = v_tk_textaf_2_3.get()
 
 	v_tk_ok_1 = v_tk_ok_1.get()
 	
@@ -2110,6 +2186,7 @@ if analogique == 1:
 		v_tk_nuit_1 = 1
 		v_tk_tour_3 = 20
 		v_tk_speed = "slow"
+		v_tk_tyai_1 = 1
 		
 	#Configure la vitesse.
 	if v_tk_speed_1 == 1:
@@ -2399,6 +2476,56 @@ if analogique == 1:
 		t.end_fill()
 		t.hideturtle()
 		
+	def aiguillem1(a, b, t):
+		x_d = 0
+		y_d = 0
+		t.shape('turtle')
+		t.penup()
+		t.setposition(x_d, y_d)
+		t.setheading(0)
+		t.down()
+		t.speed(v_tk_speed)
+		t.pencolor(b)
+		t.right(a*6)
+		t.color(b)
+		t.begin_fill()
+		t.forward(5)
+		t.left(90)
+		t.forward(250)
+		t.left(10)
+		t.forward(30)
+		t.left(160)
+		t.forward(30)
+		t.left(10)
+		t.forward(250)
+		t.left(90)
+		t.forward(5)
+		t.end_fill()
+		t.hideturtle()
+		
+	def aiguillem2(a, b, t):
+		x_d = 0
+		y_d = 0
+		t.shape('turtle')
+		t.penup()
+		t.setposition(x_d, y_d)
+		t.setheading(0)
+		t.down()
+		t.speed(v_tk_speed)
+		t.pencolor(b)
+		t.right(a*6)
+		t.color(b)
+		t.begin_fill()
+		t.forward(5)
+		t.left(91)
+		t.forward(280)
+		t.left(178)
+		t.forward(280)
+		t.left(91)
+		t.forward(5)
+		t.end_fill()
+		t.hideturtle()
+		
 	def aiguilleh(a, b, t):
 		x_d = 0
 		y_d = 0
@@ -2426,7 +2553,57 @@ if analogique == 1:
 		t.right(90)
 		t.forward(200)
 		t.left(90)
-		t.forward(20)	
+		t.forward(10)	
+		t.end_fill()
+		t.hideturtle()
+		
+	def aiguilleh1(a, b, t):
+		x_d = 0
+		y_d = 0
+		t.shape('turtle')
+		t.penup()
+		t.setposition(x_d, y_d)
+		t.setheading(0)
+		t.down()
+		t.speed(v_tk_speed)
+		t.pencolor(b)
+		t.right(a*30)
+		t.color(b)
+		t.begin_fill()
+		t.forward(10)
+		t.left(90)
+		t.forward(180)
+		t.left(20)
+		t.forward(30)
+		t.left(140)
+		t.forward(30)
+		t.left(20)
+		t.forward(180)
+		t.left(90)
+		t.forward(10)
+		t.end_fill()
+		t.hideturtle()
+		
+	def aiguilleh2(a, b, t):
+		x_d = 0
+		y_d = 0
+		t.shape('turtle')
+		t.penup()
+		t.setposition(x_d, y_d)
+		t.setheading(0)
+		t.down()
+		t.speed(v_tk_speed)
+		t.pencolor(b)
+		t.right(a*30)
+		t.color(b)
+		t.begin_fill()
+		t.forward(10)
+		t.left(93)
+		t.forward(180)
+		t.left(174)
+		t.forward(180)
+		t.left(93)
+		t.forward(10)
 		t.end_fill()
 		t.hideturtle()
 		
@@ -2548,10 +2725,20 @@ if analogique == 1:
 		# Créé l'horloge selon les options voulu.
 		if mm == 1:
 			petitmil(0, fondcolor, turtle.Turtle())
-			aiguillem(m1, fondcolor, turtle.Turtle())
+			if v_tk_tyai_1 == 1:
+				aiguillem(m1, fondcolor, turtle.Turtle())
+			elif v_tk_tyai_2 == 1:
+				aiguillem1(m1, fondcolor, turtle.Turtle())
+			else:
+				aiguillem2(m1, fondcolor, turtle.Turtle())
 		if hh == 1:
 			petitmil(0, fondcolor, turtle.Turtle())
-			aiguilleh(h1, fondcolor, turtle.Turtle())
+			if v_tk_tyai_1 == 1:
+				aiguilleh(h1, fondcolor, turtle.Turtle())
+			elif v_tk_tyai_2 == 1:
+				aiguilleh1(h1, fondcolor, turtle.Turtle())
+			else:
+				aiguilleh2(h1, fondcolor, turtle.Turtle())
 		if unefois == 0:
 			acontour(0, fondcolor, turtle.Turtle())
 			heurmin(fondcolor, turtle.Turtle())
@@ -2590,10 +2777,20 @@ if analogique == 1:
 		hh = 0
 		if m11 != m1:
 			mm = 1
-			aiguillem(m1, ifondcolor, turtle.Turtle())
+			if v_tk_tyai_1 == 1:
+				aiguillem(m1, ifondcolor, turtle.Turtle())
+			elif v_tk_tyai_2 == 1:
+				aiguillem1(m1, ifondcolor, turtle.Turtle())
+			else:
+				aiguillem2(m1, ifondcolor, turtle.Turtle())
 		if h11 != h1:
 			hh = 1
-			aiguilleh(h1, ifondcolor, turtle.Turtle())
+			if v_tk_tyai_1 == 1:
+				aiguilleh(h1, ifondcolor, turtle.Turtle())
+			elif v_tk_tyai_2 == 1:
+				aiguilleh1(h1, ifondcolor, turtle.Turtle())
+			else:
+				aiguilleh2(h1, ifondcolor, turtle.Turtle())
 
 		# Pour que l'horloge se ferme automatiquement après l'heure indiqué passé.
 		minuav = int(minu)
@@ -2602,9 +2799,22 @@ if analogique == 1:
 			stop_min += 1
 		if stop_min >= v_tk_tour_3:
 			stop = 1
+		
+		# Pour afficher le message à l'heure indiqué.
+		if v_tk_textaf_2_1 != 30 and mesaffoui == 0:
+			heuremess = int(heure)
+			if v_tk_textaf_2_1 == heuremess:
+				if v_tk_textaf_2_3 == minuav:
+					showinfo("Votre message", v_tk_textaf_1_1)
+					mesaffoui = 1
 """
 
 Changelog :
+v11.0 :
+Ajout d'un choix d'aiguilles.
+Ajout de la possibilité d'afficher un texte à un moment donné.
+Optimisation du code.
+
 v10.1 (Stable) :
 Correction de quelques bugs de l'horloge analogique.
 Ajout de quelques commentaires.
