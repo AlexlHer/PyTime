@@ -18,9 +18,7 @@ Correction de quelque bugs.
 
 ### v13.0 (Stable) :
 
-Modification du mode automatique, activer par défaut pour qu'en cas d'option
-
-non paramétré, le programme ne crash pas.
+Modification du mode automatique, activer par défaut pour qu'en cas d'option non paramétré, le programme ne crash pas.
 
 
 ### v12.0 :
@@ -32,8 +30,7 @@ Possibilité de faire une sauvegarde pour les deux types d'horloge.
 
 Correction de bugs.
 
-Ajout d'une marque aléatoire sur le contour de l'horloge analogique (comme sur
-le rectangle du milieu de l'horloge numérique.
+Ajout d'une marque aléatoire sur le contour de l'horloge analogique (comme sur le rectangle du milieu de l'horloge numérique).
 
 
 ### v11.0 :
