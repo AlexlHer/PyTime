@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("PyTime v12.0")
+print("PyTime v13.0")
 print("----------------------------------------------------------------------")
 
 # Initialisation des variables communes et importation des modules.
@@ -12,7 +12,7 @@ from tkinter import *
 from tkinter.messagebox import *
 numerique = 0			# Sert à séléctionner le mode numérique.
 analogique = 0			# Sert à séléctionner le mode analogique.
-version = "PyTime v12.0" 	# Permet de définir la version de PyTime pour l'afficher.
+version = "PyTime v13.0" 	# Permet de définir la version de PyTime pour l'afficher.
 
 v_tk_textaf_2_1 = 30		# Permet de verifier si il y a un message.
 mesaffoui = 0 			# Permet de savoir si le message a déjà été affiché.
@@ -171,7 +171,7 @@ if numerique == 1:
 		titre.config(font=('Arial', 30, 'italic', 'bold'))
 		tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
 		tk_aproposde_2 = Label(fenetre2, text="Mode numérique")
-		tk_aproposde_3 = Label(fenetre2, text="(Version 12.0)")
+		tk_aproposde_3 = Label(fenetre2, text="(Version 13.0)")
 		tk_aproposde_4 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
 		titre.pack()
 		tk_aproposde_1.pack()
@@ -190,9 +190,9 @@ if numerique == 1:
 		tk_aide_5 = Label(fenetre1, text="Pour le mode nuit, cochez une seul case.")
 		tk_aide_6 = Label(fenetre1, text="---")
 		tk_aide_7 = Label(fenetre1, text="Appuyez sur Ok une fois les paramètres choisi.")
-		tk_aide_8 = Label(fenetre1, text="Appuyez sur Automatique et sur Ok pour cocher")
-		tk_aide_9 = Label(fenetre1, text="les modes aléatoires, mode nuit auto, 20 minutes,")
-		tk_aide_10 = Label(fenetre1, text="vitesse normale et épaisseur normale.")
+		tk_aide_8 = Label(fenetre1, text="Le mode automatique est coché par défaut, appuyer")
+		tk_aide_9 = Label(fenetre1, text="sur Ok pour l'activer, plus besoin non plus de")
+		tk_aide_10 = Label(fenetre1, text="tout cocher pour éviter un crash.")
 		tk_aide_11 = Label(fenetre1, text="---")
 		tk_aide_12 = Label(fenetre1, text="Attention, l'arrêt de l'horloge n'est pas très")
 		tk_aide_13 = Label(fenetre1, text="précise au niveau des secondes.")
@@ -324,7 +324,6 @@ if numerique == 1:
 	
 	# Création des deux boutons.
 	tk_ok = Button(fenetre, text="→ OK ←", command=fenetre.destroy, cursor="clock", height=2, relief=FLAT)
-	tk_ok_1 = Checkbutton(fenetre, text="Automatique", variable = v_tk_ok_1, height=2)
 	tk_ok.config(font=('Arial', 12, 'italic', 'bold'))
 	
 	
@@ -422,7 +421,6 @@ if numerique == 1:
 	tk_me_2.pack(side=LEFT)
 	
 	tk_ok.pack(side=BOTTOM, fill="both")
-	tk_ok_1.pack(side=BOTTOM)
 	
 	# Permet de laisser afficher la fenètre de commande tant que l'utilisateur
 	# n'appui pas sur OK.
@@ -498,8 +496,40 @@ if numerique == 1:
 	v_tk_textaf_1_1 = v_tk_textaf_1_1.get()
 	v_tk_textaf_2_1 = v_tk_textaf_2_1.get()
 	v_tk_textaf_2_3 = v_tk_textaf_2_3.get()
-	
-	v_tk_ok_1 = v_tk_ok_1.get()
+		
+	# Rempli les options incomplète pour éviter les crashs.
+	if v_tk_alea_h1_1 == 0 and v_tk_alea_h1_2 == 0 and v_tk_alea_h1_3 == 0\
+	and v_tk_alea_h1_4 == 0 and v_tk_alea_h1_5 == 0 and v_tk_alea_h1_6 == 0\
+	and v_tk_alea_h1_7 == 0 and v_tk_alea_h1_8 == 0 and v_tk_alea_h1_9 == 0\
+	and v_tk_alea_h1_10 == 0 and v_tk_alea_h1_11 == 0 and v_tk_alea_h1_12 ==\
+	0:
+		v_tk_alea_h1_1 = 1
+	if v_tk_alea_h2_1 == 0 and v_tk_alea_h2_2 == 0 and v_tk_alea_h2_3 == 0\
+	and v_tk_alea_h2_4 == 0 and v_tk_alea_h2_5 == 0 and v_tk_alea_h2_6 == 0\
+	and v_tk_alea_h2_7 == 0 and v_tk_alea_h2_8 == 0 and v_tk_alea_h2_9 == 0\
+	and v_tk_alea_h2_10 == 0 and v_tk_alea_h2_11 == 0 and v_tk_alea_h2_12 ==\
+	0:
+		v_tk_alea_h2_1 = 1
+	if v_tk_alea_m1_1 == 0 and v_tk_alea_m1_2 == 0 and v_tk_alea_m1_3 == 0\
+	and v_tk_alea_m1_4 == 0 and v_tk_alea_m1_5 == 0 and v_tk_alea_m1_6 == 0\
+	and v_tk_alea_m1_7 == 0 and v_tk_alea_m1_8 == 0 and v_tk_alea_m1_9 == 0\
+	and v_tk_alea_m1_10 == 0 and v_tk_alea_m1_11 == 0 and v_tk_alea_m1_12 ==\
+	0:
+		v_tk_alea_m1_1 = 1
+	if v_tk_alea_m2_1 == 0 and v_tk_alea_m2_2 == 0 and v_tk_alea_m2_3 == 0\
+	and v_tk_alea_m2_4 == 0 and v_tk_alea_m2_5 == 0 and v_tk_alea_m2_6 == 0\
+	and v_tk_alea_m2_7 == 0 and v_tk_alea_m2_8 == 0 and v_tk_alea_m2_9 == 0\
+	and v_tk_alea_m2_10 == 0 and v_tk_alea_m2_11 == 0 and v_tk_alea_m2_12 ==\
+	0:
+		v_tk_alea_m2_1 = 1
+	if v_tk_nuit_1 == 0 and v_tk_nuit_2 == 0 and v_tk_nuit_3 == 0:
+		v_tk_nuit_1 = 1
+	if v_tk_tour_3 == 0:
+		v_tk_tour_3 = 20
+	if v_tk_speed_1 == 0 and v_tk_speed_2 == 0 and v_tk_speed_3 == 0:
+		v_tk_speed_2 = 1
+	if v_tk_epais_1 == 0 and v_tk_epais_2 == 0 and v_tk_epais_3 == 0:
+		v_tk_epais_2 = 1		
 		
 	if tk_save_oui == 1:
 		ecrire = open("num_pytime_v1.save", "w")
@@ -712,17 +742,6 @@ Chaques lignes contient un 1 ou un 0 (sauf pour les minutes) pour savoir quelles
 		v_tk_textaf_1_1 = str(liste[58])
 		v_tk_textaf_2_1 = int(liste[59])
 		v_tk_textaf_2_3 = int(liste[60])
-		
-	# Configure le mode auto.
-	if v_tk_ok_1 == 1:
-		v_tk_alea_h1_1 = 1
-		v_tk_alea_h2_1 = 1
-		v_tk_alea_m1_1 = 1
-		v_tk_alea_m2_1 = 1
-		v_tk_nuit_1 = 1
-		v_tk_tour_3 = 20
-		v_tk_speed = "slow"
-		v_tk_epais = 3
 		
 	#Configure la vitesse.
 	if v_tk_speed_1 == 1:
@@ -2254,7 +2273,7 @@ if analogique == 1:
 		titre.config(font=('Arial', 30, 'italic', 'bold'))
 		tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
 		tk_aproposde_2 = Label(fenetre2, text="Mode analogique")
-		tk_aproposde_3 = Label(fenetre2, text="(Version 12.0)")
+		tk_aproposde_3 = Label(fenetre2, text="(Version 13.0)")
 		tk_aproposde_4 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
 		titre.pack()
 		tk_aproposde_1.pack()
@@ -2272,9 +2291,9 @@ if analogique == 1:
 		tk_aide_5 = Label(fenetre1, text="Pour le mode nuit, cochez une seul case.")
 		tk_aide_6 = Label(fenetre1, text="---")
 		tk_aide_7 = Label(fenetre1, text="Appuyez sur Ok une fois les paramètres choisi.")
-		tk_aide_8 = Label(fenetre1, text="Appuyez sur Automatique et sur Ok pour cocher")
-		tk_aide_9 = Label(fenetre1, text="les modes aléatoires, mode nuit auto, 20 minutes,")
-		tk_aide_10 = Label(fenetre1, text="vitesse normale et épaisseur normale.")
+		tk_aide_8 = Label(fenetre1, text="Le mode automatique est coché par défaut, appuyer")
+		tk_aide_9 = Label(fenetre1, text="sur Ok pour l'activer, plus besoin non plus de")
+		tk_aide_10 = Label(fenetre1, text="tout cocher pour éviter un crash.")
 		tk_aide_11 = Label(fenetre1, text="---")
 		tk_aide_12 = Label(fenetre1, text="Attention, l'arrêt de l'horloge n'est pas très")
 		tk_aide_13 = Label(fenetre1, text="précise au niveau des secondes.")
@@ -2360,7 +2379,6 @@ if analogique == 1:
 
 	# Création des deux boutons.
 	tk_ok = Button(fenetre, text="→ OK ←", command=fenetre.destroy, cursor="clock", height=2, relief=FLAT)
-	tk_ok_1 = Checkbutton(fenetre, text="Automatique", variable = v_tk_ok_1, height=2)
 	tk_ok.config(font=('Arial', 12, 'italic', 'bold'))
 	
 	# Formation des différents objets.
@@ -2418,7 +2436,6 @@ if analogique == 1:
 	tk_me_2.pack(side=LEFT)
 	
 	tk_ok.pack(side=BOTTOM, fill="both")
-	tk_ok_1.pack(side=BOTTOM)
 	
 	# Permet de laisser afficher la fenètre de commande tant que l'utilisateur
 	# n'appui pas sur OK.
@@ -2458,8 +2475,24 @@ if analogique == 1:
 	v_tk_textaf_1_1 = v_tk_textaf_1_1.get()
 	v_tk_textaf_2_1 = v_tk_textaf_2_1.get()
 	v_tk_textaf_2_3 = v_tk_textaf_2_3.get()
-
-	v_tk_ok_1 = v_tk_ok_1.get()
+	
+	# Rempli les options incomplète pour éviter les crashs.
+	if v_tk_alea_h1_1 == 0 and v_tk_alea_h1_2 == 0 and v_tk_alea_h1_3 == 0\
+	and v_tk_alea_h1_4 == 0 and v_tk_alea_h1_5 == 0 and v_tk_alea_h1_6 == 0\
+	and v_tk_alea_h1_7 == 0 and v_tk_alea_h1_8 == 0 and v_tk_alea_h1_9 == 0\
+	and v_tk_alea_h1_10 == 0 and v_tk_alea_h1_11 == 0 and v_tk_alea_h1_12 ==\
+	0:
+		v_tk_alea_h1_1 = 1
+	if v_tk_nuit_1 == 0 and v_tk_nuit_2 == 0 and v_tk_nuit_3 == 0:
+		v_tk_nuit_1 = 1
+	if v_tk_tour_3 == 0:
+		v_tk_tour_3 = 20
+	if v_tk_speed_1 == 0 and v_tk_speed_2 == 0 and v_tk_speed_3 == 0:
+		v_tk_speed_2 = 1
+	if v_tk_tyai_1 == 0 and v_tk_tyai_2 == 0 and v_tk_tyai_3 == 0:
+		v_tk_tyai_1 = 1
+	if v_tk_chco_1 == 0 and v_tk_chco_2 == 0:
+		v_tk_chco_1 = 1	
 	
 	if tk_save_oui == 1:
 		ecrire = open("ana_pytime_v1.save", "w")
@@ -2564,14 +2597,6 @@ Chaques lignes contient un 1 ou un 0 (sauf pour les minutes) pour savoir quelles
 		v_tk_textaf_1_1 = str(liste[24])
 		v_tk_textaf_2_1 = int(liste[25])
 		v_tk_textaf_2_3 = int(liste[26])
-	
-	# Configure le mode auto.
-	if v_tk_ok_1 == 1:
-		v_tk_alea_h1_1 = 1
-		v_tk_nuit_1 = 1
-		v_tk_tour_3 = 20
-		v_tk_speed = "slow"
-		v_tk_tyai_1 = 1
 		
 	#Configure la vitesse.
 	if v_tk_speed_1 == 1:
@@ -2588,7 +2613,6 @@ Chaques lignes contient un 1 ou un 0 (sauf pour les minutes) pour savoir quelles
 		v_tk_alea_h2_4 = 0
 		v_tk_alea_m1_4 = 0
 		v_tk_alea_m2_4 = 0
-		
 	
 	# Fin : Fenètre de commande.
 	
@@ -3209,6 +3233,10 @@ Chaques lignes contient un 1 ou un 0 (sauf pour les minutes) pour savoir quelles
 """
 
 Changelog :
+v13.0 (Stable) :
+Modification du mode automatique, activer par défaut pour qu'en cas d'option
+non paramétré, le programme ne crash pas.
+
 v12.0 :
 Possibilité de faire une sauvegarde pour les deux types d'horloge.
 
