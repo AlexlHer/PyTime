@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("Horloge v3.0")
+print("Horloge v3.2")
 print("----------------------------------------------------------------------")
-print("")
-print("Ne pas fermer la fenetre.")
+print("Ne pas fermer la fenètre sauf pour fermer l'horloge.")
 
 import time
 from turtle import Turtle
@@ -16,6 +15,7 @@ mm1 = 1
 mm2 = 1
 cadre = 0
 
+print("")
 choix = str(input("Avec des couleurs aléatoire ? "))
 
 def zero(t, c, f, g):
@@ -661,7 +661,7 @@ def phuit(t, c, f, g):
 	t.hideturtle()
 	
 def pneuf(t, c, f, g):
-	x_d = c[0] - int(-15)
+	x_d = c[0] - int(-12)
 	y_d = c[1] - int(-23)
 	t.shape('turtle')
 	t.penup()
@@ -713,8 +713,9 @@ def milieu(t, c, f, g):
 	t.forward(20)
 	t.left(90)
 	t.forward(50)
-	time.sleep(0.2)
+	t.hideturtle()
 	t.reset()
+	t.hideturtle()
 
 def contour(t, c, f, g):
 	x_d = c[0] - int(-350)
@@ -734,6 +735,33 @@ def contour(t, c, f, g):
 	t.left(90)
 	t.forward(540)
 	t.hideturtle()
+	
+def color(alea):
+	if alea == 98:
+		fondcolor = 'white'
+	elif alea == 99:
+		fondcolor = 'black'
+	elif alea == 1:
+		fondcolor = 'blue'
+	elif alea == 2:
+		fondcolor = 'red'
+	elif alea == 3:
+		fondcolor = 'green'
+	elif alea == 4:
+		fondcolor = 'violet'
+	elif alea == 5:
+		fondcolor = 'yellow'
+	elif alea == 6:
+		fondcolor = 'brown'
+	elif alea == 7:
+		fondcolor = 'pink'
+	elif alea == 8:
+		fondcolor = 'purple'
+	elif alea == 9:
+		fondcolor = 'grey'
+	else:
+		fondcolor = 'orange'
+	return fondcolor
 	
 def main0(a, b, f, g):
 	t = Turtle()
@@ -845,6 +873,8 @@ def mainc(a, b, f, g):
 	c = (a +(-70), b + (-90))
 	contour(t, c, f, g)
 
+turtle.setup(width=850,height=450)
+turtle.title("Horloge v3.2")
 
 for i in range(1000):
 	heure = time.strftime("%H")
@@ -958,117 +988,64 @@ for i in range(1000):
 	cadre = 1
 	
 	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
-		alea = random.randint(1,10)
-	if alea == 98:
+		alea = random.randint(0, 9)
+		colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
+		'pink', 'purple', 'grey', 'orange']
+		fondcolor = colr[alea]
+	elif alea == 98:
 		fondcolor = 'white'
 	elif alea == 99:
 		fondcolor = 'black'
-	elif alea == 1:
-		fondcolor = 'blue'
-	elif alea == 2:
-		fondcolor = 'red'
-	elif alea == 3:
-		fondcolor = 'green'
-	elif alea == 4:
-		fondcolor = 'violet'
-	elif alea == 5:
-		fondcolor = 'yellow'
-	elif alea == 6:
-		fondcolor = 'brown'
-	elif alea == 7:
-		fondcolor = 'pink'
-	elif alea == 8:
-		fondcolor = 'purple'
-	elif alea == 9:
-		fondcolor = 'grey'
-	else:
-		fondcolor = 'orange'
 		
 	if hh1 == 1:
 		if h1 == 0:
-			main0(-100, 0, fondcolor, 6)
+			main0(-100, 0, fondcolor, 3)
 		elif h1 == 1:
-			main1(-100, 0, fondcolor, 6)
+			main1(-100, 0, fondcolor, 3)
 		elif h1 == 2:
-			main2(-100, 0, fondcolor, 6)
+			main2(-100, 0, fondcolor, 3)
 			
 	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
-		alea = random.randint(1,10)
-  
-	if alea == 98:
+		alea = random.randint(0, 9)
+		colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
+		'pink', 'purple', 'grey', 'orange']
+		fondcolor = colr[alea]
+	elif alea == 98:
 		fondcolor = 'white'
 	elif alea == 99:
 		fondcolor = 'black'
-	elif alea == 1:
-		fondcolor = 'blue'
-	elif alea == 2:
-		fondcolor = 'red'
-	elif alea == 3:
-		fondcolor = 'green'
-	elif alea == 4:
-		fondcolor = 'violet'
-	elif alea == 5:
-		fondcolor = 'yellow'
-	elif alea == 6:
-		fondcolor = 'brown'
-	elif alea == 7:
-		fondcolor = 'pink'
-	elif alea == 8:
-		fondcolor = 'purple'
-	elif alea == 9:
-		fondcolor = 'grey'
-	else:
-		fondcolor = 'orange'
 		
 	if hh2 == 1:
 		if h2 == 0:
-			main0(-10, 0, fondcolor, 6)
+			main0(0, 0, fondcolor, 3)
 		elif h2 == 1:
-			main1(-10, 0, fondcolor, 6)
+			main1(0, 0, fondcolor, 3)
 		elif h2 == 2:
-			main2(-10, 0, fondcolor, 6)
+			main2(0, 0, fondcolor, 3)
 		elif h2 == 3:
-			main3(-10, 0, fondcolor, 6)
+			main3(0, 0, fondcolor, 3)
 		elif h2 == 4:
-			main4(-10, 0, fondcolor, 6)
+			main4(0, 0, fondcolor, 3)
 		elif h2 == 5:
-			main5(-10, 0, fondcolor, 6)
+			main5(0, 0, fondcolor, 3)
 		elif h2 == 6:
-			main6(-10, 0, fondcolor, 6)
+			main6(0, 0, fondcolor, 3)
 		elif h2 == 7:
-			main7(-10, 0, fondcolor, 6)
+			main7(0, 0, fondcolor, 3)
 		elif h2 == 8:
-			main8(-10, 0, fondcolor, 6)
+			main8(0, 0, fondcolor, 3)
 		elif h2 == 9:
-			main9(-10, 0, fondcolor, 6)
+			main9(0, 0, fondcolor, 3)
 		
 	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
-		alea = random.randint(1,10)
-  
-	if alea == 98:
+		alea = random.randint(0, 9)
+		colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
+		'pink', 'purple', 'grey', 'orange']
+		fondcolor = colr[alea]
+	elif alea == 98:
 		fondcolor = 'white'
 	elif alea == 99:
 		fondcolor = 'black'
-	elif alea == 1:
-		fondcolor = 'blue'
-	elif alea == 2:
-		fondcolor = 'red'
-	elif alea == 3:
-		fondcolor = 'green'
-	elif alea == 4:
-		fondcolor = 'violet'
-	elif alea == 5:
-		fondcolor = 'yellow'
-	elif alea == 6:
-		fondcolor = 'brown'
-	elif alea == 7:
-		fondcolor = 'pink'
-	elif alea == 8:
-		fondcolor = 'purple'
-	elif alea == 9:
-		fondcolor = 'grey'
-	else:
-		fondcolor = 'orange'
 		
 	if mm1 == 1:
 		if m1 == 0:
@@ -1085,32 +1062,14 @@ for i in range(1000):
 			main5(190, 0, fondcolor, 3)
 		
 	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
-		alea = random.randint(1,10)
-  
-	if alea == 98:
+		alea = random.randint(0, 9)
+		colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
+		'pink', 'purple', 'grey', 'orange']
+		fondcolor = colr[alea]
+	elif alea == 98:
 		fondcolor = 'white'
 	elif alea == 99:
 		fondcolor = 'black'
-	elif alea == 1:
-		fondcolor = 'blue'
-	elif alea == 2:
-		fondcolor = 'red'
-	elif alea == 3:
-		fondcolor = 'green'
-	elif alea == 4:
-		fondcolor = 'violet'
-	elif alea == 5:
-		fondcolor = 'yellow'
-	elif alea == 6:
-		fondcolor = 'brown'
-	elif alea == 7:
-		fondcolor = 'pink'
-	elif alea == 8:
-		fondcolor = 'purple'
-	elif alea == 9:
-		fondcolor = 'grey'
-	else:
-		fondcolor = 'orange'
 		
 	if mm2 == 1:
 		if m2 == 0:
@@ -1136,32 +1095,14 @@ for i in range(1000):
 	
 	for i in range(1):
 		if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
-			alea = random.randint(1,10)
-   
-		if alea == 98:
+			alea = random.randint(0, 9)
+			colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
+			'pink', 'purple', 'grey', 'orange']
+			mfondcolor = colr[alea]
+		elif alea == 98:
 			mfondcolor = 'white'
 		elif alea == 99:
 			mfondcolor = 'black'
-		elif alea == 1:
-			mfondcolor = 'blue'
-		elif alea == 2:
-			mfondcolor = 'red'
-		elif alea == 3:
-			mfondcolor = 'green'
-		elif alea == 4:
-			mfondcolor = 'violet'
-		elif alea == 5:
-			mfondcolor = 'yellow'
-		elif alea == 6:
-			mfondcolor = 'brown'
-		elif alea == 7:
-			mfondcolor = 'pink'
-		elif alea == 8:
-			mfondcolor = 'purple'
-		elif alea == 9:
-			mfondcolor = 'grey'
-		else:
-			mfondcolor = 'orange'
    
 		mainm(-10, 15, mfondcolor, 1)
 		time.sleep(0)
@@ -1179,34 +1120,34 @@ for i in range(1000):
 	if h11 != h1:
 		hh1 = 1
 		if h1 == 0:
-			main0(-100, 0, ifondcolor, 6)
+			main0(-100, 0, ifondcolor, 3)
 		elif h1 == 1:
-			main1(-100, 0, ifondcolor, 6)
+			main1(-100, 0, ifondcolor, 3)
 		elif h1 == 2:
-			main2(-100, 0, ifondcolor, 6)
+			main2(-100, 0, ifondcolor, 3)
    
 	if h21 != h2:
 		hh2 = 1
 		if h2 == 0:
-			main0(-10, 0, ifondcolor, 6)
+			main0(0, 0, ifondcolor, 3)
 		elif h2 == 1:
-			main1(-10, 0, ifondcolor, 6)
+			main1(0, 0, ifondcolor, 3)
 		elif h2 == 2:
-			main2(-10, 0, ifondcolor, 6)
+			main2(0, 0, ifondcolor, 3)
 		elif h2 == 3:
-			main3(-10, 0, ifondcolor, 6)
+			main3(0, 0, ifondcolor, 3)
 		elif h2 == 4:
-			main4(-10, 0, ifondcolor, 6)
+			main4(0, 0, ifondcolor, 3)
 		elif h2 == 5:
-			main5(-10, 0, ifondcolor, 6)
+			main5(0, 0, ifondcolor, 3)
 		elif h2 == 6:
-			main6(-10, 0, ifondcolor, 6)
+			main6(0, 0, ifondcolor, 3)
 		elif h2 == 7:
-			main7(-10, 0, ifondcolor, 6)
+			main7(0, 0, ifondcolor, 3)
 		elif h2 == 8:
-			main8(-10, 0, ifondcolor, 6)
+			main8(0, 0, ifondcolor, 3)
 		elif h2 == 9:
-			main9(-10, 0, ifondcolor, 6)
+			main9(0, 0, ifondcolor, 3)
    
 	if m11 != m1:
 		mm1 = 1
@@ -1246,28 +1187,31 @@ for i in range(1000):
 		elif m2 == 9:
 			main9(290, 0, ifondcolor, 3)
 
-# Pour éviter que la fenètre de commande se ferme.
-print("")
-print("==========================")
-print("")
-input("Appuyer sur Entrer pour fermer le programme.")
-
 """
 Changelog :
-v3.0 :
+v3.2
+Réglage de la taille de la fenètre.
+Améliorations de l'affichage de la date.
+Ajout d'un titre pour la fenètre.
+Optimisation du code.
+
+v3.1
+Correction de quelques bugs.
+
+v3.0
 Ajout d'un cadre.
 Ajout de la date.
 
-v2.2 :
+v2.2
 Correction d'un problème de ralentissement.
 
-v2.1 :
+v2.1
 Ajout de quelques couleurs.
 
-v2.0 :
+v2.0
 Ajout des couleurs aléatoire.
 Ajout du mode nuit.
 
-v1.0 :
+v1.0
 Version final de Projet Pytime, renommée Horloge.
 """
