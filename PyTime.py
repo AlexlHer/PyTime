@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("PyTime v6.1")
+print("PyTime v7.0")
 print("----------------------------------------------------------------------")
 
 # Initialisation des variables et importation des modules.
 import time
 import turtle
 import random
-import tkinter.font as tkFont
 from tkinter import *
 hh1 = 1		# Savoir si l'heure a changée après la boucle.
 hh2 = 1		# Savoir si l'heure a changée après la boucle.
@@ -19,11 +18,11 @@ colora = []		# Permet de sauvegarder les couleurs choisi.
 colorachif = 0	# Compte le nombre de couleur choisi par l'utilisateur.
 stop = 0		# Permet d'arrêter la boucle une fois le temps écoulé.
 stop_min = 0	# Contient les minutes de l'heure d'arrêt de la boucle.
-egea_1 = 0		# Met 0 à la variable egea_1.
+egea_1 = 0		# 
 
 # Début : Fenètre de commande.
 fenetre = Tk()
-fenetre.title("PyTime v6.1")
+fenetre.title("PyTime v7.0")
 
 # Initialisation des variables de la fenètre de commande.
 v_tk_alea_h1_1 = IntVar()
@@ -88,7 +87,25 @@ v_tk_speed_1 = IntVar()
 v_tk_speed_2 = IntVar()
 v_tk_speed_3 = IntVar()
 
+v_tk_epais_1 = IntVar()
+v_tk_epais_2 = IntVar()
+v_tk_epais_3 = IntVar()
+
 v_tk_ok_1 = IntVar()
+
+# Fenètres tiers.
+def aproposde():
+	fenetre2 = Tk()
+	fenetre2.title("A propos")
+	titre = Label(fenetre2, text="PyTime", height=1, width=10)
+	titre.config(font=('Arial', 30, 'italic', 'bold'))
+	tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
+	tk_aproposde_2 = Label(fenetre2, text="(Version 7.0)")
+	tk_aproposde_3 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
+	titre.pack()
+	tk_aproposde_1.pack()
+	tk_aproposde_2.pack()
+	tk_aproposde_3.pack()
 
 def aide():
 	fenetre1 = Tk()
@@ -101,12 +118,14 @@ def aide():
 	tk_aide_5 = Label(fenetre1, text="Pour le mode nuit, cochez une seul case.")
 	tk_aide_6 = Label(fenetre1, text="---")
 	tk_aide_7 = Label(fenetre1, text="Appuyez sur Ok une fois les paramètres choisi.")
-	tk_aide_8 = Label(fenetre1, text="Appuyez sur Aléatoire/Auto et sur Ok pour cocher")
-	tk_aide_9 = Label(fenetre1, text="les modes aléatoires, mode nuit auto, 20 minutes")
-	tk_aide_10 = Label(fenetre1, text="et vitesse lente.")
+	tk_aide_8 = Label(fenetre1, text="Appuyez sur Automatique et sur Ok pour cocher")
+	tk_aide_9 = Label(fenetre1, text="les modes aléatoires, mode nuit auto, 20 minutes,")
+	tk_aide_10 = Label(fenetre1, text="vitesse lente et épaisseur normal.")
 	tk_aide_11 = Label(fenetre1, text="---")
 	tk_aide_12 = Label(fenetre1, text="Attention, l'arrêt de l'horloge n'est pas très")
 	tk_aide_13 = Label(fenetre1, text="précise au niveau des secondes.")
+	tk_aide_14 = Label(fenetre1, text="---")
+	tk_aide_15 = Button(fenetre1, text="A propos", command=aproposde)
 	tk_aide.pack()
 	tk_aide_1.pack()
 	tk_aide_2.pack()
@@ -121,7 +140,10 @@ def aide():
 	tk_aide_11.pack()
 	tk_aide_12.pack()
 	tk_aide_13.pack()
+	tk_aide_14.pack()
+	tk_aide_15.pack()
 
+# Création du titre.
 titre_1 = LabelFrame(fenetre, text="", padx=2, pady=2)
 titre = Label(titre_1, text="PyTime", height=1)
 titre.config(font=('Arial', 30, 'italic', 'bold'))
@@ -197,12 +219,12 @@ tk_nuit_3 = Checkbutton(tk_nuit, text="Non", variable = v_tk_nuit_3)
 tk_tour = LabelFrame(fenetre, text="Minute", padx=2, pady=2)
 tk_tour_1 = Label(tk_tour, text="Choisissez le nombre de minutes que")
 tk_tour_2 = Label(tk_tour, text=" l'horloge doit fonctionner.")
-tk_tour_3 = Spinbox(tk_tour, from_ = 0, to = 9999999, textvariable = v_tk_tour_3)
+tk_tour_3 = Spinbox(tk_tour, from_ = 0, to = 9999999, textvariable = v_tk_tour_3, relief=FLAT)
 
 
 # Création de la partie "Mode d'emploi".
 tk_me = LabelFrame(fenetre, text="Mode d'emploi", padx=2, pady=2)
-tk_me_1 = Button(tk_me, text="→ Cliquez ICI ←", command=aide)
+tk_me_1 = Button(tk_me, text="→ Cliquez ICI ←", command=aide, relief=FLAT)
 
 
 # Création de la partie "Mode d'emploi".
@@ -212,9 +234,16 @@ tk_speed_2 = Checkbutton(tk_speed, text="Rapide", variable = v_tk_speed_2)
 tk_speed_3 = Checkbutton(tk_speed, text="Très rapide", variable = v_tk_speed_3)
 
 
+# Création de la partie "Epaisseur des chiffres".
+tk_epais = LabelFrame(fenetre, text="Epaisseur des chiffres", padx=2, pady=2)
+tk_epais_1 = Checkbutton(tk_epais, text="Fin", variable = v_tk_epais_1)
+tk_epais_2 = Checkbutton(tk_epais, text="Normal", variable = v_tk_epais_2)
+tk_epais_3 = Checkbutton(tk_epais, text="Gros", variable = v_tk_epais_3)
+
+
 # Création des deux boutons.
-tk_ok = Button(fenetre, text="→ OK ←", command=fenetre.destroy, cursor="clock", height=2)
-tk_ok_1 = Checkbutton(fenetre, text="→ Aléatoire/Auto ←", variable = v_tk_ok_1, height=2)
+tk_ok = Button(fenetre, text="→ OK ←", command=fenetre.destroy, cursor="clock", height=2, relief=FLAT)
+tk_ok_1 = Checkbutton(fenetre, text="Automatique", variable = v_tk_ok_1, height=2)
 tk_ok.config(font=('Arial', 12, 'italic', 'bold'))
 
 
@@ -297,6 +326,11 @@ tk_speed_1.pack(side=LEFT)
 tk_speed_2.pack(side=LEFT)
 tk_speed_3.pack(side=LEFT)
 
+tk_epais.pack(fill="both")
+tk_epais_1.pack(side=LEFT)
+tk_epais_2.pack(side=LEFT)
+tk_epais_3.pack(side=LEFT)
+
 tk_ok.pack(side=BOTTOM, fill="both")
 tk_ok_1.pack(side=BOTTOM)
 
@@ -367,6 +401,10 @@ v_tk_speed_1 = v_tk_speed_1.get()
 v_tk_speed_2 = v_tk_speed_2.get()
 v_tk_speed_3 = v_tk_speed_3.get()
 
+v_tk_epais_1 = v_tk_epais_1.get()
+v_tk_epais_2 = v_tk_epais_2.get()
+v_tk_epais_3 = v_tk_epais_3.get()
+
 v_tk_ok_1 = v_tk_ok_1.get()
 
 # Configure le mode auto.
@@ -377,16 +415,36 @@ if v_tk_ok_1 == 1:
 	v_tk_alea_m2_1 = 1
 	v_tk_nuit_1 = 1
 	v_tk_tour_3 = 20
-	v_tk_speed_1 = 1
+	v_tk_speed = "slow"
+	v_tk_epais = 3
 	
+#Configure la vitesse.
 if v_tk_speed_1 == 1:
 	v_tk_speed = "slow"
 if v_tk_speed_2 == 1:
 	v_tk_speed = "normal"
 if v_tk_speed_3 == 1:
 	v_tk_speed = "fastest"
+	
+# 
+if v_tk_nuit_1 == 1 and v_tk_nuit_2 == 1 and v_tk_nuit_3 == 1:
+	egea_1 = 1
+	v_tk_alea_h1_4 = 0
+	v_tk_alea_h2_4 = 0
+	v_tk_alea_m1_4 = 0
+	v_tk_alea_m2_4 = 0
+	
+# Configure l'épaisseur des chiffres.
+if v_tk_epais_1 == 1:
+	v_tk_epais = 1
+elif v_tk_epais_2 == 1:
+	v_tk_epais = 3
+elif v_tk_epais_3 == 1:
+	v_tk_epais = 5
+	
 
 # Fin : Fenètre de commande.
+
 
 # Construction des chiffres par Turtle : a désigne le positionnement gauche/
 # droite, b désigne le positionnement haut/bas, f désigne la couleur du crayon,
@@ -409,8 +467,8 @@ def zero(a, b, f, g, t):
 	t.forward(140)
 	t.left(90)
 	t.forward(80)
-	t.penup()
 	t.left(180)
+	t.penup()
 	t.forward(10)
 	t.right(90)
 	t.forward(10)
@@ -703,7 +761,7 @@ def huit(a, b, f, g, t):
 	t.left(90)
 	t.forward(60)
 	t.hideturtle()
-	
+
 def neuf(a, b, f, g, t):
 	x_d = a + (-70)
 	y_d = b + (20)
@@ -1188,7 +1246,7 @@ def main(d, a, b, f, g):
 	
 # Configure la fenètre.
 turtle.setup(width=850,height=450)
-turtle.title("PyTime v6.1")
+turtle.title("PyTime v7.0")
 
 # Boucle qui permet de faire tourner le rectangle du milieu et d'actualiser
 # l'heure. La boucle fait le nombre de tour indiqué par la fenètre de commande.
@@ -1208,6 +1266,7 @@ while stop == 0:
 	mo2 = int(mois[1]) 	# |
 	a1 = int(ans[0]) 	 	# |
 	a2 = int(ans[1]) 	 	# |
+		
 	
 	# Lit les options de la fenètre de commande et en fonction, met le mode
 	# nuit ou le mode jour ou automatiquement.
@@ -1235,6 +1294,11 @@ while stop == 0:
 			ifondcolor = 'white'
 			alea = 99
 			turtle.bgcolor('white')
+	if egea_1 == 1:
+		fondcolor = 'black'
+		ifondcolor = 'green'
+		alea = 99
+		turtle.bgcolor('green')
 
 	# Dessine le cadre et la date une seul fois (tant que cadredate = 0).
 	if cadredate == 0:
@@ -1399,11 +1463,11 @@ while stop == 0:
 	# Choisi un chiffre selon l'heure.
 	if hh1 == 1:
 		if h1 == 0:
-			main("0", -100, 0, fondcolor, 3)
+			main("0", -100, 0, fondcolor, v_tk_epais)
 		elif h1 == 1:
-			main("1", -100, 0, fondcolor, 3)
+			main("1", -100, 0, fondcolor, v_tk_epais)
 		elif h1 == 2:
-			main("2", -100, 0, fondcolor, 3)
+			main("2", -100, 0, fondcolor, v_tk_epais)
 			
 	if v_tk_alea_h2_1 == 1:
 		if v_tk_alea_h2_2 == 1:
@@ -1478,25 +1542,25 @@ while stop == 0:
 		
 	if hh2 == 1:
 		if h2 == 0:
-			main("0", 0, 0, fondcolor, 3)
+			main("0", 0, 0, fondcolor, v_tk_epais)
 		elif h2 == 1:
-			main("1", 0, 0, fondcolor, 3)
+			main("1", 0, 0, fondcolor, v_tk_epais)
 		elif h2 == 2:
-			main("2", 0, 0, fondcolor, 3)
+			main("2", 0, 0, fondcolor, v_tk_epais)
 		elif h2 == 3:
-			main("3", 0, 0, fondcolor, 3)
+			main("3", 0, 0, fondcolor, v_tk_epais)
 		elif h2 == 4:
-			main("4", 0, 0, fondcolor, 3)
+			main("4", 0, 0, fondcolor, v_tk_epais)
 		elif h2 == 5:
-			main("5", 0, 0, fondcolor, 3)
+			main("5", 0, 0, fondcolor, v_tk_epais)
 		elif h2 == 6:
-			main("6", 0, 0, fondcolor, 3)
+			main("6", 0, 0, fondcolor, v_tk_epais)
 		elif h2 == 7:
-			main("7", 0, 0, fondcolor, 3)
+			main("7", 0, 0, fondcolor, v_tk_epais)
 		elif h2 == 8:
-			main("8", 0, 0, fondcolor, 3)
+			main("8", 0, 0, fondcolor, v_tk_epais)
 		elif h2 == 9:
-			main("9", 0, 0, fondcolor, 3)
+			main("9", 0, 0, fondcolor, v_tk_epais)
 		
 	if v_tk_alea_m1_1 == 1:
 		if v_tk_alea_m1_2 == 1:
@@ -1571,17 +1635,17 @@ while stop == 0:
 		
 	if mm1 == 1:
 		if m1 == 0:
-			main("0", 190, 0, fondcolor, 3)
+			main("0", 190, 0, fondcolor, v_tk_epais)
 		elif m1 == 1:
-			main("1", 190, 0, fondcolor, 3)
+			main("1", 190, 0, fondcolor, v_tk_epais)
 		elif m1 == 2:
-			main("2", 190, 0, fondcolor, 3)
+			main("2", 190, 0, fondcolor, v_tk_epais)
 		elif m1 == 3:
-			main("3", 190, 0, fondcolor, 3)
+			main("3", 190, 0, fondcolor, v_tk_epais)
 		elif m1 == 4:
-			main("4", 190, 0, fondcolor, 3)
+			main("4", 190, 0, fondcolor, v_tk_epais)
 		elif m1 == 5:
-			main("5", 190, 0, fondcolor, 3)
+			main("5", 190, 0, fondcolor, v_tk_epais)
 		
 	if v_tk_alea_m2_1 == 1:
 		if v_tk_alea_m2_2 == 1:
@@ -1656,25 +1720,25 @@ while stop == 0:
 		
 	if mm2 == 1:
 		if m2 == 0:
-			main("0", 295, 0, fondcolor, 3)
+			main("0", 295, 0, fondcolor, v_tk_epais)
 		elif m2 == 1:
-			main("1", 295, 0, fondcolor, 3)
+			main("1", 295, 0, fondcolor, v_tk_epais)
 		elif m2 == 2:
-			main("2", 295, 0, fondcolor, 3)
+			main("2", 295, 0, fondcolor, v_tk_epais)
 		elif m2 == 3:
-			main("3", 295, 0, fondcolor, 3)
+			main("3", 295, 0, fondcolor, v_tk_epais)
 		elif m2 == 4:
-			main("4", 295, 0, fondcolor, 3)
+			main("4", 295, 0, fondcolor, v_tk_epais)
 		elif m2 == 5:
-			main("5", 295, 0, fondcolor, 3)
+			main("5", 295, 0, fondcolor, v_tk_epais)
 		elif m2 == 6:
-			main("6", 295, 0, fondcolor, 3)
+			main("6", 295, 0, fondcolor, v_tk_epais)
 		elif m2 == 7:
-			main("7", 295, 0, fondcolor, 3)
+			main("7", 295, 0, fondcolor, v_tk_epais)
 		elif m2 == 8:
-			main("8", 295, 0, fondcolor, 3)
+			main("8", 295, 0, fondcolor, v_tk_epais)
 		elif m2 == 9:
-			main("9", 295, 0, fondcolor, 3)
+			main("9", 295, 0, fondcolor, v_tk_epais)
 	
 	# Fait tourner le rectangle du milieu à chaque boucle. La boucle est
 	# nécessaire si on change time.sleep et le nombre de tour (change le
@@ -1691,7 +1755,7 @@ while stop == 0:
 			colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
 			'pink', 'purple', 'grey', 'orange']
 			mfondcolor = colr[alea]
-   
+			
 		main("m", -10, 15, mfondcolor, 1)
 		time.sleep(0)
 		
@@ -1708,75 +1772,76 @@ while stop == 0:
 	hh2 = 0
 	mm1 = 0
 	mm2 = 0
+		
 	if h11 != h1:
 		hh1 = 1
 		if h1 == 0:
-			main("0", -100, 0, ifondcolor, 3)
+			main("0", -100, 0, ifondcolor, v_tk_epais)
 		elif h1 == 1:
-			main("1", -100, 0, ifondcolor, 3)
+			main("1", -100, 0, ifondcolor, v_tk_epais)
 		elif h1 == 2:
-			main("2", -100, 0, ifondcolor, 3)
+			main("2", -100, 0, ifondcolor, v_tk_epais)
    
 	if h21 != h2:
 		hh2 = 1
 		if h2 == 0:
-			main("0", 0, 0, ifondcolor, 3)
+			main("0", 0, 0, ifondcolor, v_tk_epais)
 		elif h2 == 1:
-			main("1", 0, 0, ifondcolor, 3)
+			main("1", 0, 0, ifondcolor, v_tk_epais)
 		elif h2 == 2:
-			main("2", 0, 0, ifondcolor, 3)
+			main("2", 0, 0, ifondcolor, v_tk_epais)
 		elif h2 == 3:
-			main("3", 0, 0, ifondcolor, 3)
+			main("3", 0, 0, ifondcolor, v_tk_epais)
 		elif h2 == 4:
-			main("4", 0, 0, ifondcolor, 3)
+			main("4", 0, 0, ifondcolor, v_tk_epais)
 		elif h2 == 5:
-			main("5", 0, 0, ifondcolor, 3)
+			main("5", 0, 0, ifondcolor, v_tk_epais)
 		elif h2 == 6:
-			main("6", 0, 0, ifondcolor, 3)
+			main("6", 0, 0, ifondcolor, v_tk_epais)
 		elif h2 == 7:
-			main("7", 0, 0, ifondcolor, 3)
+			main("7", 0, 0, ifondcolor, v_tk_epais)
 		elif h2 == 8:
-			main("8", 0, 0, ifondcolor, 3)
+			main("8", 0, 0, ifondcolor, v_tk_epais)
 		elif h2 == 9:
-			main("9", 0, 0, ifondcolor, 3)
+			main("9", 0, 0, ifondcolor, v_tk_epais)
    
 	if m11 != m1:
 		mm1 = 1
 		if m1 == 0:
-			main("0", 190, 0, ifondcolor, 3)
+			main("0", 190, 0, ifondcolor, v_tk_epais)
 		elif m1 == 1:
-			main("1", 190, 0, ifondcolor, 3)
+			main("1", 190, 0, ifondcolor, v_tk_epais)
 		elif m1 == 2:
-			main("2", 190, 0, ifondcolor, 3)
+			main("2", 190, 0, ifondcolor, v_tk_epais)
 		elif m1 == 3:
-			main("3", 190, 0, ifondcolor, 3)
+			main("3", 190, 0, ifondcolor, v_tk_epais)
 		elif m1 == 4:
-			main("4", 190, 0, ifondcolor, 3)
+			main("4", 190, 0, ifondcolor, v_tk_epais)
 		elif m1 == 5:
-			main("5", 190, 0, ifondcolor, 3)
+			main("5", 190, 0, ifondcolor, v_tk_epais)
    
 	if m21 != m2:
 		mm2 = 1
 		if m2 == 0:
-			main("0", 295, 0, ifondcolor, 3)
+			main("0", 295, 0, ifondcolor, v_tk_epais)
 		elif m2 == 1:
-			main("1", 295, 0, ifondcolor, 3)
+			main("1", 295, 0, ifondcolor, v_tk_epais)
 		elif m2 == 2:
-			main("2", 295, 0, ifondcolor, 3)
+			main("2", 295, 0, ifondcolor, v_tk_epais)
 		elif m2 == 3:
-			main("3", 295, 0, ifondcolor, 3)
+			main("3", 295, 0, ifondcolor, v_tk_epais)
 		elif m2 == 4:
-			main("4", 295, 0, ifondcolor, 3)
+			main("4", 295, 0, ifondcolor, v_tk_epais)
 		elif m2 == 5:
-			main("5", 295, 0, ifondcolor, 3)
+			main("5", 295, 0, ifondcolor, v_tk_epais)
 		elif m2 == 6:
-			main("6", 295, 0, ifondcolor, 3)
+			main("6", 295, 0, ifondcolor, v_tk_epais)
 		elif m2 == 7:
-			main("7", 295, 0, ifondcolor, 3)
+			main("7", 295, 0, ifondcolor, v_tk_epais)
 		elif m2 == 8:
-			main("8", 295, 0, ifondcolor, 3)
+			main("8", 295, 0, ifondcolor, v_tk_epais)
 		elif m2 == 9:
-			main("9", 295, 0, ifondcolor, 3)
+			main("9", 295, 0, ifondcolor, v_tk_epais)
 	
 	# Pour que l'horloge se ferme automatiquement après l'heure indiqué passé.
 	minuav = int(minu)
@@ -1790,6 +1855,10 @@ while stop == 0:
 """
 
 Changelog :
+v7.0 :
+(Version envoyée au prof de ISN)
+Ajout d'une option pour l'épaisseur.
+
 v6.1 :
 Correction de bugs.
 Ajout du choix de la vitesse.
@@ -1815,11 +1884,13 @@ La fenètre contient :
 - Un bouton Aléatoire/Auto.
 
 v4.0 :
+(Version envoyée au prof de ISN)
 Optimisation du code.
 Ajout de commentaires pour rendre le code plus clair.
 Ajout d'une marque aléatoire sur le rectangle du milieu.
 
 v3.2 :
+(Version présentée en classe)
 Réglage de la taille de la fenètre.
 Améliorations de l'affichage de la date.
 Ajout d'un titre pour la fenètre.
@@ -1844,4 +1915,6 @@ Ajout du mode nuit.
 
 v1.0 :
 Version final de Projet Pytime, renommée Horloge.
+
+Initialisation du Projet PyTime le 24/11/15.
 """
