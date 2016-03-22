@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("PyTime v7.0")
+print("PyTime v10.0")
 print("----------------------------------------------------------------------")
 
 # Initialisation des variables et importation des modules.
@@ -13,7 +13,7 @@ numerique = 0
 analogique = 0
 
 debut = Tk()
-debut.title("PyTime v7.0")
+debut.title("PyTime v10.0")
 
 def v_tk_debut_1():
 	global numerique
@@ -25,16 +25,18 @@ def v_tk_debut_2():
 	analogique = 1
 	debut.destroy()
 	
+tk_debut = Label(debut, text="Choisissez le type d'affichage de l'horloge", height=2, width=50)
+tk_debut_1 = Button(debut, text="Numérique", command=v_tk_debut_1, height=2)
+tk_debut_2 = Button(debut, text="Analogique", command=v_tk_debut_2, height=2)
 
-tk_debut_1 = Button(debut, text="N", command=v_tk_debut_1)
-tk_debut_2 = Button(debut, text="A", command=v_tk_debut_2)
-
-tk_debut_1.pack()
-tk_debut_2.pack()
+tk_debut.pack()
+tk_debut_1.pack(side=LEFT)
+tk_debut_2.pack(side=RIGHT)
 
 debut.mainloop()
 
 if numerique == 1:
+	# Initialisation des variables.
 	hh1 = 1		# Savoir si l'heure a changée après la boucle.
 	hh2 = 1		# Savoir si l'heure a changée après la boucle.
 	mm1 = 1		# Savoir si les minutes ont changées après la boucle.
@@ -48,7 +50,7 @@ if numerique == 1:
 	
 	# Début : Fenètre de commande.
 	fenetre = Tk()
-	fenetre.title("PyTime v7.0")
+	fenetre.title("PyTime v10.0")
 	
 	# Initialisation des variables de la fenètre de commande.
 	v_tk_alea_h1_1 = IntVar()
@@ -126,12 +128,14 @@ if numerique == 1:
 		titre = Label(fenetre2, text="PyTime", height=1, width=10)
 		titre.config(font=('Arial', 30, 'italic', 'bold'))
 		tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
-		tk_aproposde_2 = Label(fenetre2, text="(Version 7.0)")
-		tk_aproposde_3 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
+		tk_aproposde_2 = Label(fenetre2, text="Mode numérique")
+		tk_aproposde_3 = Label(fenetre2, text="(Version 10.0)")
+		tk_aproposde_4 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
 		titre.pack()
 		tk_aproposde_1.pack()
 		tk_aproposde_2.pack()
 		tk_aproposde_3.pack()
+		tk_aproposde_4.pack()
 	
 	def aide():
 		fenetre1 = Tk()
@@ -146,7 +150,7 @@ if numerique == 1:
 		tk_aide_7 = Label(fenetre1, text="Appuyez sur Ok une fois les paramètres choisi.")
 		tk_aide_8 = Label(fenetre1, text="Appuyez sur Automatique et sur Ok pour cocher")
 		tk_aide_9 = Label(fenetre1, text="les modes aléatoires, mode nuit auto, 20 minutes,")
-		tk_aide_10 = Label(fenetre1, text="vitesse lente et épaisseur normal.")
+		tk_aide_10 = Label(fenetre1, text="vitesse normale et épaisseur normale.")
 		tk_aide_11 = Label(fenetre1, text="---")
 		tk_aide_12 = Label(fenetre1, text="Attention, l'arrêt de l'horloge n'est pas très")
 		tk_aide_13 = Label(fenetre1, text="précise au niveau des secondes.")
@@ -253,7 +257,7 @@ if numerique == 1:
 	tk_me_1 = Button(tk_me, text="→ Cliquez ICI ←", command=aide, relief=FLAT)
 	
 	
-	# Création de la partie "Mode d'emploi".
+	# Création de la partie "Vitesse".
 	tk_speed = LabelFrame(fenetre, text="Vitesse", padx=2, pady=2)
 	tk_speed_1 = Checkbutton(tk_speed, text="Normal", variable = v_tk_speed_1)
 	tk_speed_2 = Checkbutton(tk_speed, text="Rapide", variable = v_tk_speed_2)
@@ -1272,7 +1276,7 @@ if numerique == 1:
 		
 	# Configure la fenètre.
 	turtle.setup(width=850,height=450)
-	turtle.title("PyTime v7.0")
+	turtle.title("PyTime v10.0")
 	
 	# Boucle qui permet de faire tourner le rectangle du milieu et d'actualiser
 	# l'heure. La boucle fait le nombre de tour indiqué par la fenètre de commande.
@@ -1878,169 +1882,287 @@ if numerique == 1:
 			stop = 1
 
 if analogique == 1:
-	t = turtle.Turtle()
-	def acontour():
-		t.speed(50)
+	# Initialisation des variables.
+	egea_1 = 0		# 
+	colorachif = 0	# Compte le nombre de couleur choisi par l'utilisateur.
+	stop_min = 0	# Contient les minutes de l'heure d'arrêt de la boucle.
+	stop = 0		# Permet d'arrêter la boucle une fois le temps écoulé.
+	mm = 1		# Savoir si l'heure a changée après la boucle.
+	hh = 1		# Savoir si les minutes ont changées après la boucle.
+	unefois = 0		# Permet de faire la parie aléatoire et le cadre une seule fois.
+	
+	# Début : Fenètre de commande.
+	fenetre = Tk()
+	fenetre.title("PyTime v10.0")
+
+	# Initialisation des variables de la fenètre de commande.
+	v_tk_alea_h1_1 = IntVar()
+	v_tk_alea_h1_2 = IntVar()
+	v_tk_alea_h1_3 = IntVar()
+	v_tk_alea_h1_4 = IntVar()
+	v_tk_alea_h1_5 = IntVar()
+	v_tk_alea_h1_6 = IntVar()
+	v_tk_alea_h1_7 = IntVar()
+	v_tk_alea_h1_8 = IntVar()
+	v_tk_alea_h1_9 = IntVar()
+	v_tk_alea_h1_10 = IntVar()
+	v_tk_alea_h1_11 = IntVar()
+	v_tk_alea_h1_12 = IntVar()
+	
+	v_tk_nuit_1 = IntVar()
+	v_tk_nuit_2 = IntVar()
+	v_tk_nuit_3 = IntVar()
+	
+	v_tk_chco_1 = IntVar()
+	v_tk_chco_2 = IntVar()	
+	
+	v_tk_tour_3 = IntVar()
+	
+	v_tk_speed_1 = IntVar()
+	v_tk_speed_2 = IntVar()
+	v_tk_speed_3 = IntVar()
+	
+	v_tk_ok_1 = IntVar()
+	
+	# Fenètres tiers.
+	def aaproposde():
+		fenetre2 = Tk()
+		fenetre2.title("A propos")
+		titre = Label(fenetre2, text="PyTime", height=1, width=10)
+		titre.config(font=('Arial', 30, 'italic', 'bold'))
+		tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
+		tk_aproposde_2 = Label(fenetre2, text="Mode analogique")
+		tk_aproposde_3 = Label(fenetre2, text="(Version 10.0)")
+		tk_aproposde_4 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
+		titre.pack()
+		tk_aproposde_1.pack()
+		tk_aproposde_2.pack()
+		tk_aproposde_3.pack()
+		tk_aproposde_4.pack()
+		
+	def aaide():
+		fenetre1 = Tk()
+		fenetre1.title("Aide")
+		tk_aide = Label(fenetre1, text="Pour les couleurs, choisissez une seul couleur")
+		tk_aide_1 = Label(fenetre1, text="OU aléatoire avec les couleurs que vous voulez")
+		tk_aide_2 = Label(fenetre1, text="et qui vont apparaitre aléatoirement OU juste")
+		tk_aide_3 = Label(fenetre1, text="aléatoire pour mettre toutes les couleurs.")
+		tk_aide_4 = Label(fenetre1, text="---")
+		tk_aide_5 = Label(fenetre1, text="Pour le mode nuit, cochez une seul case.")
+		tk_aide_6 = Label(fenetre1, text="---")
+		tk_aide_7 = Label(fenetre1, text="Appuyez sur Ok une fois les paramètres choisi.")
+		tk_aide_8 = Label(fenetre1, text="Appuyez sur Automatique et sur Ok pour cocher")
+		tk_aide_9 = Label(fenetre1, text="les modes aléatoires, mode nuit auto, 20 minutes,")
+		tk_aide_10 = Label(fenetre1, text="vitesse normale et épaisseur normale.")
+		tk_aide_11 = Label(fenetre1, text="---")
+		tk_aide_12 = Label(fenetre1, text="Attention, l'arrêt de l'horloge n'est pas très")
+		tk_aide_13 = Label(fenetre1, text="précise au niveau des secondes.")
+		tk_aide_14 = Label(fenetre1, text="---")
+		tk_aide_15 = Button(fenetre1, text="A propos", command=aaproposde)
+		tk_aide.pack()
+		tk_aide_1.pack()
+		tk_aide_2.pack()
+		tk_aide_3.pack()
+		tk_aide_4.pack()
+		tk_aide_5.pack()
+		tk_aide_6.pack()
+		tk_aide_7.pack()
+		tk_aide_8.pack()
+		tk_aide_9.pack()
+		tk_aide_10.pack()
+		tk_aide_11.pack()
+		tk_aide_12.pack()
+		tk_aide_13.pack()
+		tk_aide_14.pack()
+		tk_aide_15.pack()
+	# Création du titre.
+	titre_1 = LabelFrame(fenetre, text="", padx=2, pady=2)
+	titre = Label(titre_1, text="PyTime", height=1)
+	titre.config(font=('Arial', 30, 'italic', 'bold'))
+	
+	# Création de la partie "Couleur de l'horloge".
+	tk_alea_h1 = LabelFrame(fenetre, text="Couleur de l'horloge", padx=2, pady=2)
+	tk_alea_h1_1 = Checkbutton(tk_alea_h1, text="Aléatoire", variable = v_tk_alea_h1_1)
+	tk_alea_h1_2 = Checkbutton(tk_alea_h1, text="Bleu", variable = v_tk_alea_h1_2)
+	tk_alea_h1_3 = Checkbutton(tk_alea_h1, text="Rouge", variable = v_tk_alea_h1_3)
+	tk_alea_h1_4 = Checkbutton(tk_alea_h1, text="Vert", variable = v_tk_alea_h1_4)
+	tk_alea_h1_5 = Checkbutton(tk_alea_h1, text="Violet", variable = v_tk_alea_h1_5)
+	tk_alea_h1_6 = Checkbutton(tk_alea_h1, text="Jaune", variable = v_tk_alea_h1_6)
+	tk_alea_h1_7 = Checkbutton(tk_alea_h1, text="Marron", variable = v_tk_alea_h1_7)
+	tk_alea_h1_8 = Checkbutton(tk_alea_h1, text="Rose", variable = v_tk_alea_h1_8)
+	tk_alea_h1_9 = Checkbutton(tk_alea_h1, text="Violet foncé", variable = v_tk_alea_h1_9)
+	tk_alea_h1_10 = Checkbutton(tk_alea_h1, text="Gris", variable = v_tk_alea_h1_10)
+	tk_alea_h1_11 = Checkbutton(tk_alea_h1, text="Orange", variable = v_tk_alea_h1_11)
+	tk_alea_h1_12 = Checkbutton(tk_alea_h1, text="Noir/Blanc", variable = v_tk_alea_h1_12)
+	
+	# Création de la partie "Mode nuit".
+	tk_nuit = LabelFrame(fenetre, text="Mode nuit", padx=2, pady=2)
+	tk_nuit_1 = Checkbutton(tk_nuit, text="Auto", variable = v_tk_nuit_1)
+	tk_nuit_2 = Checkbutton(tk_nuit, text="Oui", variable = v_tk_nuit_2)
+	tk_nuit_3 = Checkbutton(tk_nuit, text="Non", variable = v_tk_nuit_3)
+	
+	# Création de la partie "Tour".
+	tk_tour = LabelFrame(fenetre, text="Minute", padx=2, pady=2)
+	tk_tour_1 = Label(tk_tour, text="Choisissez le nombre de minutes que")
+	tk_tour_2 = Label(tk_tour, text=" l'horloge doit fonctionner.")
+	tk_tour_3 = Spinbox(tk_tour, from_ = 0, to = 9999999, textvariable = v_tk_tour_3, relief=FLAT)
+
+	# Création de la partie "Mode d'emploi".
+	tk_me = LabelFrame(fenetre, text="Mode d'emploi", padx=2, pady=2)
+	tk_me_1 = Button(tk_me, text="→ Cliquez ICI ←", command=aaide, relief=FLAT)
+
+	# Création de la partie "Vitesse".
+	tk_speed = LabelFrame(fenetre, text="Vitesse", padx=2, pady=2)
+	tk_speed_1 = Checkbutton(tk_speed, text="Normal", variable = v_tk_speed_1)
+	tk_speed_2 = Checkbutton(tk_speed, text="Rapide", variable = v_tk_speed_2)
+	tk_speed_3 = Checkbutton(tk_speed, text="Très rapide", variable = v_tk_speed_3)
+
+	# Création de la partie "Changement de couleur à chaque tours".
+	tk_chco = LabelFrame(fenetre, text="Changement de couleur à chaque tours", padx=2, pady=2)
+	tk_chco_1 = Checkbutton(tk_chco, text="Oui", variable = v_tk_chco_1)
+	tk_chco_2 = Checkbutton(tk_chco, text="Non", variable = v_tk_chco_2)
+
+	# Création des deux boutons.
+	tk_ok = Button(fenetre, text="→ OK ←", command=fenetre.destroy, cursor="clock", height=2, relief=FLAT)
+	tk_ok_1 = Checkbutton(fenetre, text="Automatique", variable = v_tk_ok_1, height=2)
+	tk_ok.config(font=('Arial', 12, 'italic', 'bold'))
+	
+	# Formation des différents objets.
+	titre.pack()
+	titre_1.pack()
+	tk_alea_h1.pack()
+	tk_alea_h1_1.grid(row=1, column=1, sticky = W)
+	tk_alea_h1_2.grid(row=2, column=1, sticky = W)
+	tk_alea_h1_3.grid(row=3, column=1, sticky = W)
+	tk_alea_h1_4.grid(row=4, column=1, sticky = W)
+	tk_alea_h1_5.grid(row=1, column=2, sticky = W)
+	tk_alea_h1_6.grid(row=2, column=2, sticky = W)
+	tk_alea_h1_7.grid(row=3, column=2, sticky = W)
+	tk_alea_h1_8.grid(row=4, column=2, sticky = W)
+	tk_alea_h1_9.grid(row=1, column=3, sticky = W)
+	tk_alea_h1_10.grid(row=2, column=3, sticky = W)
+	tk_alea_h1_11.grid(row=3, column=3, sticky = W)
+	tk_alea_h1_12.grid(row=4, column=3, sticky = W)
+
+	tk_nuit.pack(side=TOP, fill="both")
+	tk_nuit_1.pack(side=LEFT)
+	tk_nuit_2.pack(side=LEFT)
+	tk_nuit_3.pack(side=LEFT)
+	
+	tk_chco.pack(side=TOP, fill="both")
+	tk_chco_1.pack(side=LEFT)
+	tk_chco_2.pack(side=LEFT)	
+	
+	tk_tour.pack(side=TOP, fill="both")
+	tk_tour_1.pack()
+	tk_tour_2.pack()
+	tk_tour_3.pack()
+	tk_tour_3.get()
+	
+	tk_me.pack(side=TOP, fill="both")
+	tk_me_1.pack()
+	
+	tk_speed.pack(fill="both")
+	tk_speed_1.pack(side=LEFT)
+	tk_speed_2.pack(side=LEFT)
+	tk_speed_3.pack(side=LEFT)
+	
+	tk_ok.pack(side=BOTTOM, fill="both")
+	tk_ok_1.pack(side=BOTTOM)
+	
+	# Permet de laisser afficher la fenètre de commande tant que l'utilisateur
+	# n'appui pas sur OK.
+	fenetre.mainloop()
+	
+	# Met les résultats obtenu dans les variables correspondantes.
+	v_tk_alea_h1_1 = v_tk_alea_h1_1.get()
+	v_tk_alea_h1_2 = v_tk_alea_h1_2.get()
+	v_tk_alea_h1_3 = v_tk_alea_h1_3.get()
+	v_tk_alea_h1_4 = v_tk_alea_h1_4.get()
+	v_tk_alea_h1_5 = v_tk_alea_h1_5.get()
+	v_tk_alea_h1_6 = v_tk_alea_h1_6.get()
+	v_tk_alea_h1_7 = v_tk_alea_h1_7.get()
+	v_tk_alea_h1_8 = v_tk_alea_h1_8.get()
+	v_tk_alea_h1_9 = v_tk_alea_h1_9.get()
+	v_tk_alea_h1_10 = v_tk_alea_h1_10.get()
+	v_tk_alea_h1_11 = v_tk_alea_h1_11.get()
+	v_tk_alea_h1_12 = v_tk_alea_h1_12.get()
+	
+	v_tk_nuit_1 = v_tk_nuit_1.get()
+	v_tk_nuit_2 = v_tk_nuit_2.get()
+	v_tk_nuit_3 = v_tk_nuit_3.get()
+	
+	v_tk_chco_1 = v_tk_chco_1.get()
+	v_tk_chco_2 = v_tk_chco_2.get()	
+	
+	v_tk_tour_3 = v_tk_tour_3.get()
+	
+	v_tk_speed_1 = v_tk_speed_1.get()
+	v_tk_speed_2 = v_tk_speed_2.get()
+	v_tk_speed_3 = v_tk_speed_3.get()
+
+	v_tk_ok_1 = v_tk_ok_1.get()
+	
+	# Configure le mode auto.
+	if v_tk_ok_1 == 1:
+		v_tk_alea_h1_1 = 1
+		v_tk_nuit_1 = 1
+		v_tk_tour_3 = 20
+		v_tk_speed = "slow"
+		
+	#Configure la vitesse.
+	if v_tk_speed_1 == 1:
+		v_tk_speed = "slow"
+	if v_tk_speed_2 == 1:
+		v_tk_speed = "normal"
+	if v_tk_speed_3 == 1:
+		v_tk_speed = "fastest"
+		
+	# 
+	if v_tk_nuit_1 == 1 and v_tk_nuit_2 == 1 and v_tk_nuit_3 == 1:
+		egea_1 = 1
+		v_tk_alea_h1_4 = 0
+		v_tk_alea_h2_4 = 0
+		v_tk_alea_m1_4 = 0
+		v_tk_alea_m2_4 = 0
+		
+	
+	# Fin : Fenètre de commande.
+	
+	
+	
+	def acontour(a, b, t):
 		x_d = 400
 		y_d = 0
+		t.speed(v_tk_speed)
+		if a == 1:
+			t.speed(10)
 		t.shape('turtle')
 		t.penup()
 		t.setposition(x_d, y_d)
 		t.setheading(90)
 		t.down()
+		if a == 1 and v_tk_chco_2 == 1:
+			t.penup()
+		t.width(3)
+		t.pencolor(b)
 		t.circle(400)
-		
-	def postrois():
-		x_d = 370
-		y_d = -40
-		t.shape('turtle')
-		t.penup()
-		t.setposition(x_d, y_d)
-		t.setheading(90)
-		t.down()
-		t.forward(70)
-		t.left(90)
-		t.forward(40)
-		t.left(90)
-		t.forward(5)
-		t.left(90)
-		t.forward(35)
-		t.right(90)
-		t.forward(25)
-		t.right(90)
-		t.forward(20)
-		t.left(90)
-		t.forward(5)
-		t.left(90)
-		t.forward(20)
-		t.right(90)
-		t.forward(30)
-		t.right(90)
-		t.forward(35)
-		t.left(90)
-		t.forward(5)
-		t.left(90)
-		t.forward(40)
-		
-	def posdouze():
-		x_d = -10
-		y_d = 310
-		t.shape('turtle')
-		t.penup()
-		t.setposition(x_d, y_d)
-		t.setheading(90)
-		t.down()
-		t.forward(70)
-		t.left(130)
-		t.forward(50)
-		t.left(90)
-		t.forward(5)
-		t.left(90)
-		t.forward(40)
-		t.left(-130)
-		t.forward(60)
-		t.left(90)
-		t.forward(4.5)
-		t.penup()
-		t.forward(55)
-		t.down()
-		t.left(90)
-		t.forward(5)
-		t.left(90)
-		t.forward(35)
-		t.right(90)
-		t.forward(25)
-		t.right(90)
-		t.forward(35)
-		t.left(90)
-		t.forward(40)
-		t.left(90)
-		t.forward(40)
-		t.left(90)
-		t.forward(5)
-		t.left(90)
-		t.forward(35)
-		t.right(90)
-		t.forward(30)
-		t.right(90)
-		t.forward(35)
-		t.left(90)
-		t.forward(35)
-		t.left(90)
-		t.forward(40)
-		
-	def possix():
-		x_d = -15
-		y_d = -350
-		t.shape('turtle')
-		t.penup()
-		t.setposition(x_d, y_d)
-		t.setheading(0)
-		t.down()
-		t.right(0)
-		t.forward(35)
-		t.right(90)
-		t.forward(35)
-		t.right(90)
-		t.forward(40)
-		t.right(90)
-		t.forward(70)
-		t.right(90)
-		t.forward(40)
-		t.right(90)
-		t.forward(5)
-		t.right(90)
-		t.forward(35)
-		t.left(90)
-		t.forward(60)
-		t.left(90)
-		t.forward(30)
-		t.left(90)
-		t.forward(25)
-		t.left(90)
-		t.forward(30)
-	
-	def posneuf():
-		x_d = -330
-		y_d = 0
-		t.shape('turtle')
-		t.penup()
-		t.setposition(x_d, y_d)
-		t.setheading(180)
-		t.down()
-		t.right(0)
-		t.forward(35)
-		t.right(90)
-		t.forward(35)
-		t.right(90)
-		t.forward(40)
-		t.right(90)
-		t.forward(70)
-		t.right(90)
-		t.forward(40)
-		t.right(90)
-		t.forward(5)
-		t.right(90)
-		t.forward(35)
-		t.left(90)
-		t.forward(60)
-		t.left(90)
-		t.forward(30)
-		t.left(90)
-		t.forward(25)
-		t.left(90)
-		t.forward(30)
-		input("n")
-		
-	def petit():
-		t.speed(10)
+		t.hideturtle()
+		if a == 1:
+			t.reset()
+			t.hideturtle()
+			
+	def heurmin(b, t):
 		x_d = 300
 		y_d = 0
 		t.shape('turtle')
 		t.penup()
 		t.setposition(x_d, y_d)
 		t.setheading(90)
+		t.pencolor(b)
 		t.down()
+		t.speed(v_tk_speed)
+		t.speed(20)
 		for i in range(12):
 			t.circle(300, extent=30)
 			t.left(90)
@@ -2057,33 +2179,194 @@ if analogique == 1:
 			t.right(180)
 			t.forward(5)
 			t.left(90)
-			
-	def aiguillem(a):
-		x_d = 0
-		y_d = 0
-		t.shape('turtle')
-		t.penup()
-		t.setposition(x_d, y_d)
-		t.setheading(0)
-		t.down()
-		t.right(a*6)
-		t.forward(10)
-		t.left(90)
-		t.forward(250)
-		t.right(90)
-		t.forward(20)
-		t.left(135)
-		t.forward(42)
-		t.left(90)
-		t.forward(42)
-		t.left(135)
-		t.forward(20)
-		t.right(90)
-		t.forward(250)
-		t.left(90)
-		t.forward(20)
+		t.hideturtle()
 		
-	def aiguilleh(a):
+	def petitmil(a, b, t):
+		x_d = 25
+		y_d = 0
+		if a == 1:
+			t.speed(100)
+		t.shape('turtle')
+		t.penup()
+		t.setposition(x_d, y_d)
+		t.setheading(90)
+		t.pencolor(b)
+		t.down()
+		t.speed(v_tk_speed)
+		t.color(b)
+		t.begin_fill()
+		t.circle(25)
+		t.hideturtle()
+		t.end_fill()
+		
+	def postrois(b, t):
+		x_d = 370
+		y_d = -40
+		t.shape('turtle')
+		t.penup()
+		t.setposition(x_d, y_d)
+		t.setheading(90)
+		t.pencolor(b)
+		t.down()
+		t.speed(v_tk_speed)
+		t.color(b)
+		t.begin_fill()
+		t.forward(70)
+		t.left(90)
+		t.forward(40)
+		t.left(90)
+		t.forward(5)
+		t.left(90)
+		t.forward(35)
+		t.right(90)
+		t.forward(25)
+		t.right(90)
+		t.forward(20)
+		t.left(90)
+		t.forward(5)
+		t.left(90)
+		t.forward(20)
+		t.right(90)
+		t.forward(30)
+		t.right(90)
+		t.forward(35)
+		t.left(90)
+		t.forward(5)
+		t.left(90)
+		t.forward(40)
+		t.end_fill()
+		t.hideturtle()
+		
+	def posdouze(b, t):
+		x_d = -10
+		y_d = 310
+		t.shape('turtle')
+		t.penup()
+		t.setposition(x_d, y_d)
+		t.setheading(90)
+		t.pencolor(b)
+		t.down()
+		t.speed(v_tk_speed)
+		t.color(b)
+		t.begin_fill()
+		t.forward(70)
+		t.left(130)
+		t.forward(50)
+		t.left(90)
+		t.forward(5)
+		t.left(90)
+		t.forward(40)
+		t.left(-130)
+		t.forward(60)
+		t.left(90)
+		t.forward(4.5)
+		t.end_fill()
+		t.penup()
+		t.forward(55)
+		t.down()
+		t.begin_fill()
+		t.left(90)
+		t.forward(5)
+		t.left(90)
+		t.forward(35)
+		t.right(90)
+		t.forward(25)
+		t.right(90)
+		t.forward(35)
+		t.left(90)
+		t.forward(40)
+		t.left(90)
+		t.forward(40)
+		t.left(90)
+		t.forward(5)
+		t.left(90)
+		t.forward(35)
+		t.right(90)
+		t.forward(30)
+		t.right(90)
+		t.forward(35)
+		t.left(90)
+		t.forward(35)
+		t.left(90)
+		t.forward(40)
+		t.end_fill()
+		t.hideturtle()
+		
+	def possix(b, t):
+		x_d = -15
+		y_d = -350
+		t.shape('turtle')
+		t.penup()
+		t.setposition(x_d, y_d)
+		t.setheading(0)
+		t.pencolor(b)
+		t.down()
+		t.speed(v_tk_speed)
+		t.color(b)
+		t.begin_fill()
+		t.right(0)
+		t.forward(35)
+		t.right(90)
+		t.forward(35)
+		t.right(90)
+		t.forward(40)
+		t.right(90)
+		t.forward(70)
+		t.right(90)
+		t.forward(40)
+		t.right(90)
+		t.forward(5)
+		t.right(90)
+		t.forward(35)
+		t.left(90)
+		t.forward(60)
+		t.left(90)
+		t.forward(30)
+		t.left(90)
+		t.forward(25)
+		t.left(90)
+		t.forward(30)
+		t.end_fill()
+		t.hideturtle()
+	
+	def posneuf(b, t):
+		x_d = -330
+		y_d = 0
+		t.shape('turtle')
+		t.penup()
+		t.setposition(x_d, y_d)
+		t.setheading(180)
+		t.pencolor(b)
+		t.down()
+		t.speed(v_tk_speed)
+		t.color(b)
+		t.begin_fill()
+		t.right(0)
+		t.forward(35)
+		t.right(90)
+		t.forward(35)
+		t.right(90)
+		t.forward(40)
+		t.right(90)
+		t.forward(70)
+		t.right(90)
+		t.forward(40)
+		t.right(90)
+		t.forward(5)
+		t.right(90)
+		t.forward(35)
+		t.left(90)
+		t.forward(60)
+		t.left(90)
+		t.forward(30)
+		t.left(90)
+		t.forward(25)
+		t.left(90)
+		t.forward(30)
+		t.end_fill()
+		t.hideturtle()
+			
+	def aiguillem(a, b, t):
 		x_d = 0
 		y_d = 0
 		t.shape('turtle')
@@ -2091,7 +2374,42 @@ if analogique == 1:
 		t.setposition(x_d, y_d)
 		t.setheading(0)
 		t.down()
+		t.speed(v_tk_speed)
+		t.pencolor(b)
+		t.right(a*6)
+		t.color(b)
+		t.begin_fill()
+		t.forward(5)
+		t.left(90)
+		t.forward(250)
+		t.right(90)
+		t.forward(25)
+		t.left(135)
+		t.forward(42)
+		t.left(90)
+		t.forward(42)
+		t.left(135)
+		t.forward(25)
+		t.right(90)
+		t.forward(250)
+		t.left(90)
+		t.forward(15)
+		t.end_fill()
+		t.hideturtle()
+		
+	def aiguilleh(a, b, t):
+		x_d = 0
+		y_d = 0
+		t.shape('turtle')
+		t.penup()
+		t.setposition(x_d, y_d)
+		t.setheading(0)
+		t.down()
+		t.speed(v_tk_speed)
+		t.pencolor(b)
 		t.right(a*30)
+		t.color(b)
+		t.begin_fill()
 		t.forward(10)
 		t.left(90)
 		t.forward(200)
@@ -2106,36 +2424,187 @@ if analogique == 1:
 		t.right(90)
 		t.forward(200)
 		t.left(90)
-		t.forward(20)
-	
+		t.forward(20)	
+		t.end_fill()
+		t.hideturtle()
 		
 	turtle.setup(width=850,height=850)
-	turtle.title("APyTime v0.5")
-	acontour()
-	petit()
-	postrois()
-	posdouze()
-	possix()
-	posneuf()
-	stop = 0
+	turtle.title("PyTime v10.0")
 	while stop == 0:
 		heure = time.strftime("%H")	# heure prend les heures de l'heure qu'il est.
 		minu = time.strftime("%M")	# minu prend les minutes de l'heure qu'il est.
-		day = time.strftime("%d")	# day prend le jour où l'on est.
-		mois = time.strftime("%m")	# mois prend le mois où l'on est.
-		ans = time.strftime("%y")	# ans prend l'année où l'on est.
-		h1 = int(heure)
-		m1 = int(minu)
-		aiguillem(m1)
-		aiguilleh(h1)
-		input("a")
-		stop = 1
+		h1 = int(heure)			# Prend l'heure et la convertit en entier.
+		m1 = int(minu)			# Prend les minutes et les convertient en entier.
+		
+		# Lit les options de la fenètre de commande et en fonction, met le mode
+		# nuit ou le mode jour ou automatiquement.
+		# Si il fait jour ou nuit (nuit entre 18h et 08h), et en
+		# fonction, détermine la couleur de l'effacement des chiffres et la
+		# couleur du cadre et de la date.
+		if v_tk_nuit_2 == 1:
+			fondcolor = 'white'
+			ifondcolor = 'black'
+			alea = 98
+			turtle.bgcolor('black')
+		elif v_tk_nuit_3 == 1:
+			fondcolor = 'black'
+			ifondcolor = 'white'
+			alea = 99
+			turtle.bgcolor('white')
+		elif v_tk_nuit_1 == 1:
+			if (h1 >= 18) or (h1 <= 8):
+				fondcolor = 'white'
+				ifondcolor = 'black'
+				alea = 98
+				turtle.bgcolor('black')
+			else:
+				fondcolor = 'black'
+				ifondcolor = 'white'
+				alea = 99
+				turtle.bgcolor('white')
+		if egea_1 == 1:
+			fondcolor = 'black'
+			ifondcolor = 'green'
+			alea = 99
+			turtle.bgcolor('green')
+			
+		# Choisi la couleur choisi par l'utilisateur. Si il en a choisi plusieurs
+		# afficher une couleur aléatoire parmi celles choisi. Si aléatoire a été
+		# cocher, choisir une couleur aléatoire.
+		if v_tk_alea_h1_1 == 1 and unefois == 0:
+			if v_tk_alea_h1_2 == 1:
+				colora.append('blue')
+				colorachif += 1
+			if v_tk_alea_h1_3 == 1:
+				colora.append('red')
+				colorachif += 1
+			if v_tk_alea_h1_4 == 1:
+				colora.append('green')
+				colorachif += 1
+			if v_tk_alea_h1_5 == 1:
+				colora.append('violet')
+				colorachif += 1
+			if v_tk_alea_h1_6 == 1:
+				colora.append('yellow')
+				colorachif += 1
+			if v_tk_alea_h1_7 == 1:
+				colora.append('brown')
+				colorachif += 1
+			if v_tk_alea_h1_8 == 1:
+				colora.append('pink')
+				colorachif += 1
+			if v_tk_alea_h1_9 == 1:
+				colora.append('purple')
+				colorachif += 1
+			if v_tk_alea_h1_10 == 1:
+				colora.append('grey')
+				colorachif += 1
+			if v_tk_alea_h1_11 == 1:
+				colora.append('orange')
+				colorachif += 1
+			if colorachif > 0:
+				colorachif -= 1
+				alea = random.randint(0, colorachif)
+				fondcolor = colora[alea]
+			else:
+				alea = random.randint(0, 9)
+				colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
+				'pink', 'purple', 'grey', 'orange']
+				fondcolor = colr[alea]
+				
+		elif v_tk_alea_h1_12 == 1 and unefois == 0:
+			if alea == 98:
+				fondcolor = 'white'
+			elif alea == 99:
+				fondcolor = 'black'
+				
+		elif v_tk_alea_h1_2 == 1 and unefois == 0:
+			fondcolor = 'blue'
+		elif v_tk_alea_h1_3 == 1 and unefois == 0:
+			fondcolor = 'red'
+		elif v_tk_alea_h1_4 == 1 and unefois == 0:
+			fondcolor = 'green'
+		elif v_tk_alea_h1_5 == 1 and unefois == 0:
+			fondcolor = 'violet'
+		elif v_tk_alea_h1_6 == 1 and unefois == 0:
+			fondcolor = 'yellow'
+		elif v_tk_alea_h1_7 == 1 and unefois == 0:
+			fondcolor = 'brown'
+		elif v_tk_alea_h1_8 == 1 and unefois == 0:
+			fondcolor = 'pink'
+		elif v_tk_alea_h1_9 == 1 and unefois == 0:
+			fondcolor = 'purple'
+		elif v_tk_alea_h1_10 == 1 and unefois == 0:
+			fondcolor = 'grey'
+		elif v_tk_alea_h1_11 == 1 and unefois == 0:
+			fondcolor = 'orange'
+			
+		# Permet de réinitialiser les variables.
+		colora = []
+		colorachif = 0
+			
+		# Créé l'horloge selon les options voulu.
+		if unefois == 0:
+			petitmil(0, fondcolor, turtle.Turtle())
+		if mm == 1:
+			petitmil(1, fondcolor, turtle.Turtle())
+			aiguillem(m1, fondcolor, turtle.Turtle())
+		if hh == 1:
+			petitmil(1, fondcolor, turtle.Turtle())
+			aiguilleh(h1, fondcolor, turtle.Turtle())
+		if unefois == 0:
+			acontour(0, fondcolor, turtle.Turtle())
+			heurmin(fondcolor, turtle.Turtle())
+			postrois(fondcolor, turtle.Turtle())
+			posdouze(fondcolor, turtle.Turtle())
+			possix(fondcolor, turtle.Turtle())
+			posneuf(fondcolor, turtle.Turtle())
+		unefois = 1
+		
+		# Fait tourner le grand cercle à chaque boucle. La boucle est
+		# nécessaire si on change time.sleep et le nombre de tour (change le
+		# temps d'actualisation sans toucher au grand cercle qui bouge).
+		for i in range(1):
+			alea = random.randint(0, 9)
+			colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
+			'pink', 'purple', 'grey', 'orange']
+			mfondcolor = colr[alea]
+				
+			acontour(1, mfondcolor, turtle.Turtle())
+			time.sleep(0)
+		
+		heure1 = time.strftime("%H")	# heure prend les heures de l'heure qu'il est.
+		minu1 = time.strftime("%M")	# minu prend les minutes de l'heure qu'il est.
+		h11 = int(heure1)
+		m11 = int(minu1)
+		mm = 0
+		hh = 0
+		if m11 != m1:
+			mm = 1
+			aiguillem(m1, ifondcolor, turtle.Turtle())
+		if h11 != h1:
+			hh = 1
+			aiguilleh(h1, ifondcolor, turtle.Turtle())
 
+		# Pour que l'horloge se ferme automatiquement après l'heure indiqué passé.
+		minuav = int(minu)
+		minuap = int(minu1)
+		if minuav != minuap:
+			stop_min += 1
+		if stop_min >= v_tk_tour_3:
+			stop = 1
 """
 
 Changelog :
+v10.0 :
+Mise en place d'une fenètre de commande pour la partie analogique.
+
+v9.0 :
+Mise en place d'une fenètre pour choisir entre analogique et numérique.
+Ajout de commentaire dans la partie analogique.
+
 v8.0 :
-Fusion du projet AnalogiTime avec PyTime.
+Fusion du projet AnalogiTime (v1.0) avec PyTime.
 Adaptation du code pour le support de AnalogiTime.
 
 v7.0 :
