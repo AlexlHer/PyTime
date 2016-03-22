@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("PyTime v11.0")
+print("PyTime v11.1")
 print("----------------------------------------------------------------------")
 
 # Initialisation des variables communes et importation des modules.
@@ -12,7 +12,7 @@ from tkinter import *
 from tkinter.messagebox import *
 numerique = 0			# Sert à séléctionner le mode numérique.
 analogique = 0			# Sert à séléctionner le mode analogique.
-version = "PyTime v11.0" 	# Permet de définir la version de PyTime pour l'afficher.
+version = "PyTime v11.1" 	# Permet de définir la version de PyTime pour l'afficher.
 
 v_tk_textaf_2_1 = 30		# Permet de verifier si il y a un message.
 mesaffoui = 0 			# Permet de savoir si le message a déjà été affiché.
@@ -138,7 +138,7 @@ if numerique == 1:
 		titre.config(font=('Arial', 30, 'italic', 'bold'))
 		tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
 		tk_aproposde_2 = Label(fenetre2, text="Mode numérique")
-		tk_aproposde_3 = Label(fenetre2, text="(Version 11.0)")
+		tk_aproposde_3 = Label(fenetre2, text="(Version 11.1)")
 		tk_aproposde_4 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
 		titre.pack()
 		tk_aproposde_1.pack()
@@ -1975,7 +1975,7 @@ if analogique == 1:
 		titre.config(font=('Arial', 30, 'italic', 'bold'))
 		tk_aproposde_1 = Label(fenetre2, text="L'horloge en python")
 		tk_aproposde_2 = Label(fenetre2, text="Mode analogique")
-		tk_aproposde_3 = Label(fenetre2, text="(Version 11.0)")
+		tk_aproposde_3 = Label(fenetre2, text="(Version 11.1)")
 		tk_aproposde_4 = Label(fenetre2, text="Auteur : Alexandre l'Heritier")
 		titre.pack()
 		tk_aproposde_1.pack()
@@ -2215,7 +2215,12 @@ if analogique == 1:
 		t.speed(v_tk_speed)
 		if a == 1:
 			t.speed(10)
-		t.shape('turtle')
+		# Pour changer aléatoirement la marque qui dessine, à chaque tour.
+		alea = random.randint(0, 5)
+		forme = ['arrow', 'turtle', 'circle', 'square', 'triangle',\
+		'classic']
+		logo = forme[alea]
+		t.shape(logo)
 		t.penup()
 		t.setposition(x_d, y_d)
 		t.setheading(0)
@@ -2748,14 +2753,23 @@ if analogique == 1:
 			posneuf(fondcolor, turtle.Turtle())
 		unefois = 1
 		
-		# Permet de reconstruire l'aiguille des heure si l'aiguille 
+		# Permet de reconstruire l'aiguille des heures si l'aiguille 
 		# des minute passe dessus.
 		if h1 >= 12:
 			reheure = 5 * (h1 - 12)
 		else:
 			reheure = 5 * h1
-		if reheure == m1 or reheure == m1-1 or reheure == m1+1:
-			aiguilleh(h1, fondcolor, turtle.Turtle())
+		if reheure == m1 or reheure == m1-1 or reheure == m1-2\
+		or reheure == m1-3 or reheure == m1-4 or reheure == m1-5\
+		or reheure == m1-6 or reheure == m1+1 or reheure == m1+2\
+		or reheure == m1+3 or reheure == m1+4 or reheure == m1+5\
+		or reheure == m1+6:
+			if v_tk_tyai_1 == 1:
+				aiguilleh(h1, fondcolor, turtle.Turtle())
+			elif v_tk_tyai_2 == 1:
+				aiguilleh1(h1, fondcolor, turtle.Turtle())
+			else:
+				aiguilleh2(h1, fondcolor, turtle.Turtle())
 		
 		# Fait tourner le grand cercle à chaque boucle. La boucle est
 		# nécessaire si on change time.sleep et le nombre de tour (change le
@@ -2810,6 +2824,11 @@ if analogique == 1:
 """
 
 Changelog :
+v11.1 (Stable) :
+Correction de bugs.
+Ajout d'une marque aléatoire sur le contour de l'horloge analogique (comme sur
+le rectangle du milieu de l'horloge numérique.
+
 v11.0 :
 Ajout d'un choix d'aiguilles.
 Ajout de la possibilité d'afficher un texte à un moment donné.
