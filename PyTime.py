@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Auteur : Alexandreou
 print("----------------------------------------------------------------------")
-print("Horloge v4.0")
+print("Horloge v5.0")
 print("----------------------------------------------------------------------")
 print("Ne pas fermer la fenètre sauf pour fermer l'horloge.")
 
@@ -9,15 +9,315 @@ print("Ne pas fermer la fenètre sauf pour fermer l'horloge.")
 import time
 import turtle
 import random
+from tkinter import *
 hh1 = 1		# Savoir si l'heure a changée après la boucle.
 hh2 = 1		# Savoir si l'heure a changée après la boucle.
 mm1 = 1		# Savoir si les minutes ont changées après la boucle.
 mm2 = 1		# Savoir si les minutes ont changées après la boucle.
 cadredate = 0	# Permet de faire le cadre et la date une seule fois.
+test = 0
+colora = []
+colorachif = 0
+boutononf = 0
 
-# Demande si l'utilisateur veut des couleurs aléatoires.
-print("")
-choix = str(input("Avec des couleurs aléatoire ? "))
+# Début : Fenètre de commande.
+fenetre = Tk()
+fenetre.title("Horloge v5.0")
+
+# Initialisation des variables de la fenètre de commande.
+v_tk_alea_h1_1 = IntVar()
+v_tk_alea_h1_2 = IntVar()
+v_tk_alea_h1_3 = IntVar()
+v_tk_alea_h1_4 = IntVar()
+v_tk_alea_h1_5 = IntVar()
+v_tk_alea_h1_6 = IntVar()
+v_tk_alea_h1_7 = IntVar()
+v_tk_alea_h1_8 = IntVar()
+v_tk_alea_h1_9 = IntVar()
+v_tk_alea_h1_10 = IntVar()
+v_tk_alea_h1_11 = IntVar()
+v_tk_alea_h1_12 = IntVar()
+
+v_tk_alea_h2_1 = IntVar()
+v_tk_alea_h2_2 = IntVar()
+v_tk_alea_h2_3 = IntVar()
+v_tk_alea_h2_4 = IntVar()
+v_tk_alea_h2_5 = IntVar()
+v_tk_alea_h2_6 = IntVar()
+v_tk_alea_h2_7 = IntVar()
+v_tk_alea_h2_8 = IntVar()
+v_tk_alea_h2_9 = IntVar()
+v_tk_alea_h2_10 = IntVar()
+v_tk_alea_h2_11 = IntVar()
+v_tk_alea_h2_12 = IntVar()
+
+v_tk_alea_m1_1 = IntVar()
+v_tk_alea_m1_2 = IntVar()
+v_tk_alea_m1_3 = IntVar()
+v_tk_alea_m1_4 = IntVar()
+v_tk_alea_m1_5 = IntVar()
+v_tk_alea_m1_6 = IntVar()
+v_tk_alea_m1_7 = IntVar()
+v_tk_alea_m1_8 = IntVar()
+v_tk_alea_m1_9 = IntVar()
+v_tk_alea_m1_10 = IntVar()
+v_tk_alea_m1_11 = IntVar()
+v_tk_alea_m1_12 = IntVar()
+
+v_tk_alea_m2_1 = IntVar()
+v_tk_alea_m2_2 = IntVar()
+v_tk_alea_m2_3 = IntVar()
+v_tk_alea_m2_4 = IntVar()
+v_tk_alea_m2_5 = IntVar()
+v_tk_alea_m2_6 = IntVar()
+v_tk_alea_m2_7 = IntVar()
+v_tk_alea_m2_8 = IntVar()
+v_tk_alea_m2_9 = IntVar()
+v_tk_alea_m2_10 = IntVar()
+v_tk_alea_m2_11 = IntVar()
+v_tk_alea_m2_12 = IntVar()
+
+v_tk_nuit_1 = IntVar()
+v_tk_nuit_2 = IntVar()
+v_tk_nuit_3 = IntVar()
+
+v_tk_tour_3 = IntVar()
+
+v_tk_ok_1 = IntVar()
+
+titre = Label(fenetre, text="Horloge")
+
+tk_alea = LabelFrame(fenetre, text="Couleur des chiffres", padx=2, pady=2)
+tk_alea_h1 = LabelFrame(tk_alea, text="1er chiffre des heures", padx=2, pady=2)
+tk_alea_h1_1 = Checkbutton(tk_alea_h1, text="Aleatoire", variable = v_tk_alea_h1_1)
+tk_alea_h1_2 = Checkbutton(tk_alea_h1, text="Bleu", variable = v_tk_alea_h1_2)
+tk_alea_h1_3 = Checkbutton(tk_alea_h1, text="Rouge", variable = v_tk_alea_h1_3)
+tk_alea_h1_4 = Checkbutton(tk_alea_h1, text="Vert", variable = v_tk_alea_h1_4)
+tk_alea_h1_5 = Checkbutton(tk_alea_h1, text="Violet", variable = v_tk_alea_h1_5)
+tk_alea_h1_6 = Checkbutton(tk_alea_h1, text="Jaune", variable = v_tk_alea_h1_6)
+tk_alea_h1_7 = Checkbutton(tk_alea_h1, text="Marron", variable = v_tk_alea_h1_7)
+tk_alea_h1_8 = Checkbutton(tk_alea_h1, text="Rose", variable = v_tk_alea_h1_8)
+tk_alea_h1_9 = Checkbutton(tk_alea_h1, text="Violet foncé", variable = v_tk_alea_h1_9)
+tk_alea_h1_10 = Checkbutton(tk_alea_h1, text="Gris", variable = v_tk_alea_h1_10)
+tk_alea_h1_11 = Checkbutton(tk_alea_h1, text="Orange", variable = v_tk_alea_h1_11)
+tk_alea_h1_12 = Checkbutton(tk_alea_h1, text="Noir/Blanc", variable = v_tk_alea_h1_12)
+
+tk_alea_h2 = LabelFrame(tk_alea, text="2eme chiffre des heures", padx=2, pady=2)
+tk_alea_h2_1 = Checkbutton(tk_alea_h2, text="Aleatoire", variable = v_tk_alea_h2_1)
+tk_alea_h2_2 = Checkbutton(tk_alea_h2, text="Bleu", variable = v_tk_alea_h2_2)
+tk_alea_h2_3 = Checkbutton(tk_alea_h2, text="Rouge", variable = v_tk_alea_h2_3)
+tk_alea_h2_4 = Checkbutton(tk_alea_h2, text="Vert", variable = v_tk_alea_h2_4)
+tk_alea_h2_5 = Checkbutton(tk_alea_h2, text="Violet", variable = v_tk_alea_h2_5)
+tk_alea_h2_6 = Checkbutton(tk_alea_h2, text="Jaune", variable = v_tk_alea_h2_6)
+tk_alea_h2_7 = Checkbutton(tk_alea_h2, text="Marron", variable = v_tk_alea_h2_7)
+tk_alea_h2_8 = Checkbutton(tk_alea_h2, text="Rose", variable = v_tk_alea_h2_8)
+tk_alea_h2_9 = Checkbutton(tk_alea_h2, text="Violet foncé", variable = v_tk_alea_h2_9)
+tk_alea_h2_10 = Checkbutton(tk_alea_h2, text="Gris", variable = v_tk_alea_h2_10)
+tk_alea_h2_11 = Checkbutton(tk_alea_h2, text="Orange", variable = v_tk_alea_h2_11)
+tk_alea_h2_12 = Checkbutton(tk_alea_h2, text="Noir/Blanc", variable = v_tk_alea_h2_12)
+
+tk_alea_m1 = LabelFrame(tk_alea, text="1er chiffre des minutes", padx=2, pady=2)
+tk_alea_m1_1 = Checkbutton(tk_alea_m1, text="Aleatoire", variable = v_tk_alea_m1_1)
+tk_alea_m1_2 = Checkbutton(tk_alea_m1, text="Bleu", variable = v_tk_alea_m1_2)
+tk_alea_m1_3 = Checkbutton(tk_alea_m1, text="Rouge", variable = v_tk_alea_m1_3)
+tk_alea_m1_4 = Checkbutton(tk_alea_m1, text="Vert", variable = v_tk_alea_m1_4)
+tk_alea_m1_5 = Checkbutton(tk_alea_m1, text="Violet", variable = v_tk_alea_m1_5)
+tk_alea_m1_6 = Checkbutton(tk_alea_m1, text="Jaune", variable = v_tk_alea_m1_6)
+tk_alea_m1_7 = Checkbutton(tk_alea_m1, text="Marron", variable = v_tk_alea_m1_7)
+tk_alea_m1_8 = Checkbutton(tk_alea_m1, text="Rose", variable = v_tk_alea_m1_8)
+tk_alea_m1_9 = Checkbutton(tk_alea_m1, text="Violet foncé", variable = v_tk_alea_m1_9)
+tk_alea_m1_10 = Checkbutton(tk_alea_m1, text="Gris", variable = v_tk_alea_m1_10)
+tk_alea_m1_11 = Checkbutton(tk_alea_m1, text="Orange", variable = v_tk_alea_m1_11)
+tk_alea_m1_12 = Checkbutton(tk_alea_m1, text="Noir/Blanc", variable = v_tk_alea_m1_12)
+
+tk_alea_m2 = LabelFrame(tk_alea, text="2eme chiffre des minutes", padx=2, pady=2)
+tk_alea_m2_1 = Checkbutton(tk_alea_m2, text="Aleatoire", variable = v_tk_alea_m2_1)
+tk_alea_m2_2 = Checkbutton(tk_alea_m2, text="Bleu", variable = v_tk_alea_m2_2)
+tk_alea_m2_3 = Checkbutton(tk_alea_m2, text="Rouge", variable = v_tk_alea_m2_3)
+tk_alea_m2_4 = Checkbutton(tk_alea_m2, text="Vert", variable = v_tk_alea_m2_4)
+tk_alea_m2_5 = Checkbutton(tk_alea_m2, text="Violet", variable = v_tk_alea_m2_5)
+tk_alea_m2_6 = Checkbutton(tk_alea_m2, text="Jaune", variable = v_tk_alea_m2_6)
+tk_alea_m2_7 = Checkbutton(tk_alea_m2, text="Marron", variable = v_tk_alea_m2_7)
+tk_alea_m2_8 = Checkbutton(tk_alea_m2, text="Rose", variable = v_tk_alea_m2_8)
+tk_alea_m2_9 = Checkbutton(tk_alea_m2, text="Violet foncé", variable = v_tk_alea_m2_9)
+tk_alea_m2_10 = Checkbutton(tk_alea_m2, text="Gris", variable = v_tk_alea_m2_10)
+tk_alea_m2_11 = Checkbutton(tk_alea_m2, text="Orange", variable = v_tk_alea_m2_11)
+tk_alea_m2_12 = Checkbutton(tk_alea_m2, text="Noir/Blanc", variable = v_tk_alea_m2_12)
+
+tk_nuit = LabelFrame(fenetre, text="Mode nuit", padx=2, pady=2)
+tk_nuit_1 = Checkbutton(tk_nuit, text="Auto", variable = v_tk_nuit_1)
+tk_nuit_2 = Checkbutton(tk_nuit, text="Oui", variable = v_tk_nuit_2)
+tk_nuit_3 = Checkbutton(tk_nuit, text="Non", variable = v_tk_nuit_3)
+
+tk_tour = LabelFrame(fenetre, text="Tour", padx=2, pady=2)
+tk_tour_1 = Label(tk_tour, text="Choisissez le nombre de tour que l'horloge")
+tk_tour_2 = Label(tk_tour, text="doit effectuer (1000 tour ~= 20 min).")
+tk_tour_3 = Spinbox(tk_tour, from_ = 0, to = 9999999)
+
+tk_me = LabelFrame(fenetre, text="Mode d'emploi", padx=2, pady=2)
+tk_me_1 = Label(tk_me, text="Pour les couleurs, choisissez une seul couleur")
+tk_me_2 = Label(tk_me, text="OU aléatoire avec les couleurs que vous voulez")
+tk_me_3 = Label(tk_me, text="et qui vont apparaitre aléatoirement OU juste")
+tk_me_4 = Label(tk_me, text="aléatoire pour mettre toutes les couleurs.")
+tk_me_5 = Label(tk_me, text="Pour le mode nuit, cochez une seul case.")
+tk_me_6 = Label(tk_me, text="Appuyez sur Ok une fois les paramètres choisi.")
+tk_me_7 = Label(tk_me, text="Appuyez sur Aléatoire/Auto et sur Ok pour cocher")
+tk_me_8 = Label(tk_me, text="les modes aléatoires et mode nuit auto.")
+
+tk_ok = Button(fenetre, text="→ OK ←", command=fenetre.destroy, cursor="clock")
+tk_ok_1 = Checkbutton(fenetre, text="→ Aléatoire/Auto ←", variable = v_tk_ok_1)
+
+titre.pack()
+tk_alea.pack(side=LEFT, fill="both", expand="yes")
+tk_alea_h1.pack()
+tk_alea_h1_1.grid(row=1, column=1, sticky = W)
+tk_alea_h1_2.grid(row=2, column=1, sticky = W)
+tk_alea_h1_3.grid(row=3, column=1, sticky = W)
+tk_alea_h1_4.grid(row=1, column=2, sticky = W)
+tk_alea_h1_5.grid(row=2, column=2, sticky = W)
+tk_alea_h1_6.grid(row=3, column=2, sticky = W)
+tk_alea_h1_7.grid(row=1, column=3, sticky = W)
+tk_alea_h1_8.grid(row=2, column=3, sticky = W)
+tk_alea_h1_9.grid(row=3, column=3, sticky = W)
+tk_alea_h1_10.grid(row=1, column=4, sticky = W)
+tk_alea_h1_11.grid(row=2, column=4, sticky = W)
+tk_alea_h1_12.grid(row=3, column=4, sticky = W)
+
+tk_alea_h2.pack()
+tk_alea_h2_1.grid(row=1, column=1, sticky = W)
+tk_alea_h2_2.grid(row=2, column=1, sticky = W)
+tk_alea_h2_3.grid(row=3, column=1, sticky = W)
+tk_alea_h2_4.grid(row=1, column=2, sticky = W)
+tk_alea_h2_5.grid(row=2, column=2, sticky = W)
+tk_alea_h2_6.grid(row=3, column=2, sticky = W)
+tk_alea_h2_7.grid(row=1, column=3, sticky = W)
+tk_alea_h2_8.grid(row=2, column=3, sticky = W)
+tk_alea_h2_9.grid(row=3, column=3, sticky = W)
+tk_alea_h2_10.grid(row=1, column=4, sticky = W)
+tk_alea_h2_11.grid(row=2, column=4, sticky = W)
+tk_alea_h2_12.grid(row=3, column=4, sticky = W)
+
+tk_alea_m1.pack()
+tk_alea_m1_1.grid(row=1, column=1, sticky = W)
+tk_alea_m1_2.grid(row=2, column=1, sticky = W)
+tk_alea_m1_3.grid(row=3, column=1, sticky = W)
+tk_alea_m1_4.grid(row=1, column=2, sticky = W)
+tk_alea_m1_5.grid(row=2, column=2, sticky = W)
+tk_alea_m1_6.grid(row=3, column=2, sticky = W)
+tk_alea_m1_7.grid(row=1, column=3, sticky = W)
+tk_alea_m1_8.grid(row=2, column=3, sticky = W)
+tk_alea_m1_9.grid(row=3, column=3, sticky = W)
+tk_alea_m1_10.grid(row=1, column=4, sticky = W)
+tk_alea_m1_11.grid(row=2, column=4, sticky = W)
+tk_alea_m1_12.grid(row=3, column=4, sticky = W)
+
+tk_alea_m2.pack()
+tk_alea_m2_1.grid(row=1, column=1, sticky = W)
+tk_alea_m2_2.grid(row=2, column=1, sticky = W)
+tk_alea_m2_3.grid(row=3, column=1, sticky = W)
+tk_alea_m2_4.grid(row=1, column=2, sticky = W)
+tk_alea_m2_5.grid(row=2, column=2, sticky = W)
+tk_alea_m2_6.grid(row=3, column=2, sticky = W)
+tk_alea_m2_7.grid(row=1, column=3, sticky = W)
+tk_alea_m2_8.grid(row=2, column=3, sticky = W)
+tk_alea_m2_9.grid(row=3, column=3, sticky = W)
+tk_alea_m2_10.grid(row=1, column=4, sticky = W)
+tk_alea_m2_11.grid(row=2, column=4, sticky = W)
+tk_alea_m2_12.grid(row=3, column=4, sticky = W)
+
+tk_nuit.pack(side=TOP, fill="both")
+tk_nuit_1.pack()
+tk_nuit_2.pack()
+tk_nuit_3.pack()
+
+tk_tour.pack(side=TOP, fill="both")
+tk_tour_1.pack()
+tk_tour_2.pack()
+tk_tour_3.pack()
+
+tk_me.pack(side=TOP, fill="both")
+tk_me_1.pack()
+tk_me_2.pack()
+tk_me_3.pack()
+tk_me_4.pack()
+tk_me_5.pack()
+tk_me_6.pack()
+tk_me_7.pack()
+tk_me_8.pack()
+
+tk_ok.pack()
+tk_ok_1.pack()
+
+fenetre.mainloop()
+
+v_tk_alea_h1_1 = v_tk_alea_h1_1.get()
+v_tk_alea_h1_2 = v_tk_alea_h1_2.get()
+v_tk_alea_h1_3 = v_tk_alea_h1_3.get()
+v_tk_alea_h1_4 = v_tk_alea_h1_4.get()
+v_tk_alea_h1_5 = v_tk_alea_h1_5.get()
+v_tk_alea_h1_6 = v_tk_alea_h1_6.get()
+v_tk_alea_h1_7 = v_tk_alea_h1_7.get()
+v_tk_alea_h1_8 = v_tk_alea_h1_8.get()
+v_tk_alea_h1_9 = v_tk_alea_h1_9.get()
+v_tk_alea_h1_10 = v_tk_alea_h1_10.get()
+v_tk_alea_h1_11 = v_tk_alea_h1_11.get()
+v_tk_alea_h1_12 = v_tk_alea_h1_12.get()
+
+v_tk_alea_h2_1 = v_tk_alea_h2_1.get()
+v_tk_alea_h2_2 = v_tk_alea_h2_2.get()
+v_tk_alea_h2_3 = v_tk_alea_h2_3.get()
+v_tk_alea_h2_4 = v_tk_alea_h2_4.get()
+v_tk_alea_h2_5 = v_tk_alea_h2_5.get()
+v_tk_alea_h2_6 = v_tk_alea_h2_6.get()
+v_tk_alea_h2_7 = v_tk_alea_h2_7.get()
+v_tk_alea_h2_8 = v_tk_alea_h2_8.get()
+v_tk_alea_h2_9 = v_tk_alea_h2_9.get()
+v_tk_alea_h2_10 = v_tk_alea_h2_10.get()
+v_tk_alea_h2_11 = v_tk_alea_h2_11.get()
+v_tk_alea_h2_12 = v_tk_alea_h2_12.get()
+
+v_tk_alea_m1_1 = v_tk_alea_m1_1.get()
+v_tk_alea_m1_2 = v_tk_alea_m1_2.get()
+v_tk_alea_m1_3 = v_tk_alea_m1_3.get()
+v_tk_alea_m1_4 = v_tk_alea_m1_4.get()
+v_tk_alea_m1_5 = v_tk_alea_m1_5.get()
+v_tk_alea_m1_6 = v_tk_alea_m1_6.get()
+v_tk_alea_m1_7 = v_tk_alea_m1_7.get()
+v_tk_alea_m1_8 = v_tk_alea_m1_8.get()
+v_tk_alea_m1_9 = v_tk_alea_m1_9.get()
+v_tk_alea_m1_10 = v_tk_alea_m1_10.get()
+v_tk_alea_m1_11 = v_tk_alea_m1_11.get()
+v_tk_alea_m1_12 = v_tk_alea_m1_12.get()
+
+v_tk_alea_m2_1 = v_tk_alea_m2_1.get()
+v_tk_alea_m2_2 = v_tk_alea_m2_2.get()
+v_tk_alea_m2_3 = v_tk_alea_m2_3.get()
+v_tk_alea_m2_4 = v_tk_alea_m2_4.get()
+v_tk_alea_m2_5 = v_tk_alea_m2_5.get()
+v_tk_alea_m2_6 = v_tk_alea_m2_6.get()
+v_tk_alea_m2_7 = v_tk_alea_m2_7.get()
+v_tk_alea_m2_8 = v_tk_alea_m2_8.get()
+v_tk_alea_m2_9 = v_tk_alea_m2_9.get()
+v_tk_alea_m2_10 = v_tk_alea_m2_10.get()
+v_tk_alea_m2_11 = v_tk_alea_m2_11.get()
+v_tk_alea_m2_12 = v_tk_alea_m2_12.get()
+
+v_tk_nuit_1 = v_tk_nuit_1.get()
+v_tk_nuit_2 = v_tk_nuit_2.get()
+v_tk_nuit_3 = v_tk_nuit_3.get()
+
+v_tk_tour_3 = v_tk_tour_3.get()
+
+v_tk_ok_1 = v_tk_ok_1.get()
+
+if v_tk_ok_1 == 1:
+	v_tk_alea_h1_1 = 1
+	v_tk_alea_h2_1 = 1
+	v_tk_alea_m1_1 = 1
+	v_tk_alea_m2_1 = 1
+	v_tk_nuit_1 = 1
+	v_tk_tour_3 = 1000
+
 
 # Construction des chiffres par Turtle : a désigne le positionnement gauche/
 # droite, b désigne le positionnement haut/bas, f désigne la couleur du crayon,
@@ -361,7 +661,7 @@ def neuf(a, b, f, g, t):
 	t.hideturtle()
 	
 def pzero(a, b, f, g, t):
-	x_d = a + (-50)
+	x_d = a + (-60)
 	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
@@ -451,7 +751,7 @@ def pdeux(a, b, f, g, t):
 	t.hideturtle()
 		
 def ptrois(a, b, f, g, t):
-	x_d = a + (-50)
+	x_d = a + (-65)
 	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
@@ -513,7 +813,7 @@ def pquatre(a, b, f, g, t):
 	t.hideturtle()
 	
 def pcinq(a, b, f, g, t):
-	x_d = a + (-80)
+	x_d = a + (-90)
 	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
@@ -622,7 +922,7 @@ def psept(a, b, f, g, t):
 	t.hideturtle()
 	
 def phuit(a, b, f, g, t):
-	x_d = a +(-60)
+	x_d = a + (-60)
 	y_d = b + (-50)
 	t.shape('turtle')
 	t.penup()
@@ -701,7 +1001,13 @@ def pneuf(a, b, f, g, t):
 def milieu(a, b, f, g, t):
 	x_d = a + 20
 	y_d = b
-	t.shape('turtle')
+	
+	# Pour changer aléatoirement la marque qui dessine, à chaque tour.
+	alea = random.randint(0, 5)
+	forme = ['arrow', 'turtle', 'circle', 'square', 'triangle',\
+	'classic']
+	logo = forme[alea]
+	t.shape(logo)
 	t.penup()
 	t.setposition(x_d, y_d)
 	t.setheading(90)
@@ -791,7 +1097,7 @@ def main(d, a, b, f, g):
 	
 # Configure la fenètre.
 turtle.setup(width=850,height=450)
-turtle.title("Horloge v4.0")
+turtle.title("Horloge v5.0")
 
 # Boucle qui permet de faire tourner le rectangle du milieu et d'actualiser
 # l'heure. La boucle fait 1000 tours donc environ 20 minutes (selon la vitesse
@@ -816,16 +1122,27 @@ for i in range(1000):
 	# Détermine si il fait jour ou nuit (nuit entre 18h et 08h), et en
 	# fonction, détermine la couleur de l'effacement des chiffres et la
 	# couleur du cadre et de la date.
-	if (h1 == 1 and h2 >= 8) or (h1 == 2) or (h1 == 0 and h2 <= 8):
+	if v_tk_nuit_2 == 1:
 		fondcolor = 'white'
 		ifondcolor = 'black'
 		alea = 98
 		turtle.bgcolor('black')
-	else:
+	elif v_tk_nuit_3 == 1:
 		fondcolor = 'black'
 		ifondcolor = 'white'
 		alea = 99
 		turtle.bgcolor('white')
+	elif v_tk_nuit_1 == 1:
+		if (h1 == 1 and h2 >= 8) or (h1 == 2) or (h1 == 0 and h2 <= 8):
+			fondcolor = 'white'
+			ifondcolor = 'black'
+			alea = 98
+			turtle.bgcolor('black')
+		else:
+			fondcolor = 'black'
+			ifondcolor = 'white'
+			alea = 99
+			turtle.bgcolor('white')
 
 	# Dessine le cadre et la date une seul fois (tant que cadredate = 0).
 	if cadredate == 0:
@@ -914,15 +1231,74 @@ for i in range(1000):
 	
 	# Si l'utilisateur choisi les couleurs aléatoires, choisir une couleur,
 	# sinon, selon si il fait nuit ou jour, choisi noir ou blanc.
-	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
-		alea = random.randint(0, 9)
-		colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
-		'pink', 'purple', 'grey', 'orange']
-		fondcolor = colr[alea]
-	elif alea == 98:
-		fondcolor = 'white'
-	elif alea == 99:
-		fondcolor = 'black'
+	if v_tk_alea_h1_1 == 1:
+		if v_tk_alea_h1_2 == 1:
+			colora.append('blue')
+			colorachif += 1
+		if v_tk_alea_h1_3 == 1:
+			colora.append('red')
+			colorachif += 1
+		if v_tk_alea_h1_4 == 1:
+			colora.append('green')
+			colorachif += 1
+		if v_tk_alea_h1_5 == 1:
+			colora.append('violet')
+			colorachif += 1
+		if v_tk_alea_h1_6 == 1:
+			colora.append('yellow')
+			colorachif += 1
+		if v_tk_alea_h1_7 == 1:
+			colora.append('brown')
+			colorachif += 1
+		if v_tk_alea_h1_8 == 1:
+			colora.append('pink')
+			colorachif += 1
+		if v_tk_alea_h1_9 == 1:
+			colora.append('purple')
+			colorachif += 1
+		if v_tk_alea_h1_10 == 1:
+			colora.append('grey')
+			colorachif += 1
+		if v_tk_alea_h1_11 == 1:
+			colora.append('orange')
+			colorachif += 1
+		if colorachif > 0:
+			colorachif -= 1
+			alea = random.randint(0, colorachif)
+			fondcolor = colora[alea]
+		else:
+			alea = random.randint(0, 9)
+			colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
+			'pink', 'purple', 'grey', 'orange']
+			fondcolor = colr[alea]
+			
+	elif v_tk_alea_h1_12 == 1:
+		if alea == 98:
+			fondcolor = 'white'
+		elif alea == 99:
+			fondcolor = 'black'
+			
+	elif v_tk_alea_h1_2 == 1:
+		fondcolor = 'blue'
+	elif v_tk_alea_h1_3 == 1:
+		fondcolor = 'red'
+	elif v_tk_alea_h1_4 == 1:
+		fondcolor = 'green'
+	elif v_tk_alea_h1_5 == 1:
+		fondcolor = 'violet'
+	elif v_tk_alea_h1_6 == 1:
+		fondcolor = 'yellow'
+	elif v_tk_alea_h1_7 == 1:
+		fondcolor = 'brown'
+	elif v_tk_alea_h1_8 == 1:
+		fondcolor = 'pink'
+	elif v_tk_alea_h1_9 == 1:
+		fondcolor = 'purple'
+	elif v_tk_alea_h1_10 == 1:
+		fondcolor = 'grey'
+	elif v_tk_alea_h1_11 == 1:
+		fondcolor = 'orange'
+
 		
 	# Choisi un chiffre selon l'heure.
 	if hh1 == 1:
@@ -933,15 +1309,73 @@ for i in range(1000):
 		elif h1 == 2:
 			main("2", -100, 0, fondcolor, 3)
 			
-	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
-		alea = random.randint(0, 9)
-		colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
-		'pink', 'purple', 'grey', 'orange']
-		fondcolor = colr[alea]
-	elif alea == 98:
-		fondcolor = 'white'
-	elif alea == 99:
-		fondcolor = 'black'
+	if v_tk_alea_h2_1 == 1:
+		if v_tk_alea_h2_2 == 1:
+			colora.append('blue')
+			colorachif += 1
+		if v_tk_alea_h2_3 == 1:
+			colora.append('red')
+			colorachif += 1
+		if v_tk_alea_h2_4 == 1:
+			colora.append('green')
+			colorachif += 1
+		if v_tk_alea_h2_5 == 1:
+			colora.append('violet')
+			colorachif += 1
+		if v_tk_alea_h2_6 == 1:
+			colora.append('yellow')
+			colorachif += 1
+		if v_tk_alea_h2_7 == 1:
+			colora.append('brown')
+			colorachif += 1
+		if v_tk_alea_h2_8 == 1:
+			colora.append('pink')
+			colorachif += 1
+		if v_tk_alea_h2_9 == 1:
+			colora.append('purple')
+			colorachif += 1
+		if v_tk_alea_h2_10 == 1:
+			colora.append('grey')
+			colorachif += 1
+		if v_tk_alea_h2_11 == 1:
+			colora.append('orange')
+			colorachif += 1
+		if colorachif > 0:
+			colorachif -= 1
+			alea = random.randint(0, colorachif)
+			fondcolor = colora[alea]
+		else:
+			alea = random.randint(0, 9)
+			colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
+			'pink', 'purple', 'grey', 'orange']
+			fondcolor = colr[alea]
+			
+	elif v_tk_alea_h2_12 == 1:
+		if alea == 98:
+			fondcolor = 'white'
+		elif alea == 99:
+			fondcolor = 'black'
+			
+	elif v_tk_alea_h2_2 == 1:
+		fondcolor = 'blue'
+	elif v_tk_alea_h2_3 == 1:
+		fondcolor = 'red'
+	elif v_tk_alea_h2_4 == 1:
+		fondcolor = 'green'
+	elif v_tk_alea_h2_5 == 1:
+		fondcolor = 'violet'
+	elif v_tk_alea_h2_6 == 1:
+		fondcolor = 'yellow'
+	elif v_tk_alea_h2_7 == 1:
+		fondcolor = 'brown'
+	elif v_tk_alea_h2_8 == 1:
+		fondcolor = 'pink'
+	elif v_tk_alea_h2_9 == 1:
+		fondcolor = 'purple'
+	elif v_tk_alea_h2_10 == 1:
+		fondcolor = 'grey'
+	elif v_tk_alea_h2_11 == 1:
+		fondcolor = 'orange'
 		
 	if hh2 == 1:
 		if h2 == 0:
@@ -965,15 +1399,73 @@ for i in range(1000):
 		elif h2 == 9:
 			main("9", 0, 0, fondcolor, 3)
 		
-	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
-		alea = random.randint(0, 9)
-		colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
-		'pink', 'purple', 'grey', 'orange']
-		fondcolor = colr[alea]
-	elif alea == 98:
-		fondcolor = 'white'
-	elif alea == 99:
-		fondcolor = 'black'
+	if v_tk_alea_m1_1 == 1:
+		if v_tk_alea_m1_2 == 1:
+			colora.append('blue')
+			colorachif += 1
+		if v_tk_alea_m1_3 == 1:
+			colora.append('red')
+			colorachif += 1
+		if v_tk_alea_m1_4 == 1:
+			colora.append('green')
+			colorachif += 1
+		if v_tk_alea_m1_5 == 1:
+			colora.append('violet')
+			colorachif += 1
+		if v_tk_alea_m1_6 == 1:
+			colora.append('yellow')
+			colorachif += 1
+		if v_tk_alea_m1_7 == 1:
+			colora.append('brown')
+			colorachif += 1
+		if v_tk_alea_m1_8 == 1:
+			colora.append('pink')
+			colorachif += 1
+		if v_tk_alea_m1_9 == 1:
+			colora.append('purple')
+			colorachif += 1
+		if v_tk_alea_m1_10 == 1:
+			colora.append('grey')
+			colorachif += 1
+		if v_tk_alea_m1_11 == 1:
+			colora.append('orange')
+			colorachif += 1
+		if colorachif > 0:
+			colorachif -= 1
+			alea = random.randint(0, colorachif)
+			fondcolor = colora[alea]
+		else:
+			alea = random.randint(0, 9)
+			colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
+			'pink', 'purple', 'grey', 'orange']
+			fondcolor = colr[alea]
+			
+	elif v_tk_alea_m1_12 == 1:
+		if alea == 98:
+			fondcolor = 'white'
+		elif alea == 99:
+			fondcolor = 'black'
+			
+	elif v_tk_alea_m1_2 == 1:
+		fondcolor = 'blue'
+	elif v_tk_alea_m1_3 == 1:
+		fondcolor = 'red'
+	elif v_tk_alea_m1_4 == 1:
+		fondcolor = 'green'
+	elif v_tk_alea_m1_5 == 1:
+		fondcolor = 'violet'
+	elif v_tk_alea_m1_6 == 1:
+		fondcolor = 'yellow'
+	elif v_tk_alea_m1_7 == 1:
+		fondcolor = 'brown'
+	elif v_tk_alea_m1_8 == 1:
+		fondcolor = 'pink'
+	elif v_tk_alea_m1_9 == 1:
+		fondcolor = 'purple'
+	elif v_tk_alea_m1_10 == 1:
+		fondcolor = 'grey'
+	elif v_tk_alea_m1_11 == 1:
+		fondcolor = 'orange'
 		
 	if mm1 == 1:
 		if m1 == 0:
@@ -989,51 +1481,111 @@ for i in range(1000):
 		elif m1 == 5:
 			main("5", 190, 0, fondcolor, 3)
 		
-	if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
-		alea = random.randint(0, 9)
-		colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
-		'pink', 'purple', 'grey', 'orange']
-		fondcolor = colr[alea]
-	elif alea == 98:
-		fondcolor = 'white'
-	elif alea == 99:
-		fondcolor = 'black'
+	if v_tk_alea_m2_1 == 1:
+		if v_tk_alea_m2_2 == 1:
+			colora.append('blue')
+			colorachif += 1
+		if v_tk_alea_m2_3 == 1:
+			colora.append('red')
+			colorachif += 1
+		if v_tk_alea_m2_4 == 1:
+			colora.append('green')
+			colorachif += 1
+		if v_tk_alea_m2_5 == 1:
+			colora.append('violet')
+			colorachif += 1
+		if v_tk_alea_m2_6 == 1:
+			colora.append('yellow')
+			colorachif += 1
+		if v_tk_alea_m2_7 == 1:
+			colora.append('brown')
+			colorachif += 1
+		if v_tk_alea_m2_8 == 1:
+			colora.append('pink')
+			colorachif += 1
+		if v_tk_alea_m2_9 == 1:
+			colora.append('purple')
+			colorachif += 1
+		if v_tk_alea_m2_10 == 1:
+			colora.append('grey')
+			colorachif += 1
+		if v_tk_alea_m2_11 == 1:
+			colora.append('orange')
+			colorachif += 1
+		if colorachif > 0:
+			colorachif -= 1
+			alea = random.randint(0, colorachif)
+			fondcolor = colora[alea]
+		else:
+			alea = random.randint(0, 9)
+			colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
+			'pink', 'purple', 'grey', 'orange']
+			fondcolor = colr[alea]
+			
+	elif v_tk_alea_m2_12 == 1:
+		if alea == 98:
+			fondcolor = 'white'
+		elif alea == 99:
+			fondcolor = 'black'
+			
+	elif v_tk_alea_m2_2 == 1:
+		fondcolor = 'blue'
+	elif v_tk_alea_m2_3 == 1:
+		fondcolor = 'red'
+	elif v_tk_alea_m2_4 == 1:
+		fondcolor = 'green'
+	elif v_tk_alea_m2_5 == 1:
+		fondcolor = 'violet'
+	elif v_tk_alea_m2_6 == 1:
+		fondcolor = 'yellow'
+	elif v_tk_alea_m2_7 == 1:
+		fondcolor = 'brown'
+	elif v_tk_alea_m2_8 == 1:
+		fondcolor = 'pink'
+	elif v_tk_alea_m2_9 == 1:
+		fondcolor = 'purple'
+	elif v_tk_alea_m2_10 == 1:
+		fondcolor = 'grey'
+	elif v_tk_alea_m2_11 == 1:
+		fondcolor = 'orange'
 		
 	if mm2 == 1:
 		if m2 == 0:
-			main("0", 290, 0, fondcolor, 3)
+			main("0", 295, 0, fondcolor, 3)
 		elif m2 == 1:
-			main("1", 290, 0, fondcolor, 3)
+			main("1", 295, 0, fondcolor, 3)
 		elif m2 == 2:
-			main("2", 290, 0, fondcolor, 3)
+			main("2", 295, 0, fondcolor, 3)
 		elif m2 == 3:
-			main("3", 290, 0, fondcolor, 3)
+			main("3", 295, 0, fondcolor, 3)
 		elif m2 == 4:
-			main("4", 290, 0, fondcolor, 3)
+			main("4", 295, 0, fondcolor, 3)
 		elif m2 == 5:
-			main("5", 290, 0, fondcolor, 3)
+			main("5", 295, 0, fondcolor, 3)
 		elif m2 == 6:
-			main("6", 290, 0, fondcolor, 3)
+			main("6", 295, 0, fondcolor, 3)
 		elif m2 == 7:
-			main("7", 290, 0, fondcolor, 3)
+			main("7", 295, 0, fondcolor, 3)
 		elif m2 == 8:
-			main("8", 290, 0, fondcolor, 3)
+			main("8", 295, 0, fondcolor, 3)
 		elif m2 == 9:
-			main("9", 290, 0, fondcolor, 3)
+			main("9", 295, 0, fondcolor, 3)
 	
 	# Fait tourner le rectangle du milieu à chaque boucle. La boucle est
 	# nécessaire si on change time.sleep et le nombre de tour (change le
 	# temps d'actualisation sans toucher au rectangle qui bouge.
 	for i in range(1):
-		if choix == "oui" or choix == "o" or choix == "Oui" or choix == "O":
+		if v_tk_alea_h1_12 == 1 and v_tk_alea_h2_12 == 1 and \
+		v_tk_alea_m1_12 == 1 and v_tk_alea_m2_12 == 1:
+			if alea == 98:
+				mfondcolor = 'white'
+			elif alea == 99:
+				mfondcolor = 'black'
+		else:
 			alea = random.randint(0, 9)
 			colr = ['blue', 'red', 'green', 'violet', 'yellow', 'brown',\
 			'pink', 'purple', 'grey', 'orange']
 			mfondcolor = colr[alea]
-		elif alea == 98:
-			mfondcolor = 'white'
-		elif alea == 99:
-			mfondcolor = 'black'
    
 		main("m", -10, 15, mfondcolor, 1)
 		time.sleep(0)
@@ -1101,32 +1653,37 @@ for i in range(1000):
 	if m21 != m2:
 		mm2 = 1
 		if m2 == 0:
-			main("0", 290, 0, ifondcolor, 3)
+			main("0", 295, 0, ifondcolor, 3)
 		elif m2 == 1:
-			main("1", 290, 0, ifondcolor, 3)
+			main("1", 295, 0, ifondcolor, 3)
 		elif m2 == 2:
-			main("2", 290, 0, ifondcolor, 3)
+			main("2", 295, 0, ifondcolor, 3)
 		elif m2 == 3:
-			main("3", 290, 0, ifondcolor, 3)
+			main("3", 295, 0, ifondcolor, 3)
 		elif m2 == 4:
-			main("4", 290, 0, ifondcolor, 3)
+			main("4", 295, 0, ifondcolor, 3)
 		elif m2 == 5:
-			main("5", 290, 0, ifondcolor, 3)
+			main("5", 295, 0, ifondcolor, 3)
 		elif m2 == 6:
-			main("6", 290, 0, ifondcolor, 3)
+			main("6", 295, 0, ifondcolor, 3)
 		elif m2 == 7:
-			main("7", 290, 0, ifondcolor, 3)
+			main("7", 295, 0, ifondcolor, 3)
 		elif m2 == 8:
-			main("8", 290, 0, ifondcolor, 3)
+			main("8", 295, 0, ifondcolor, 3)
 		elif m2 == 9:
-			main("9", 290, 0, ifondcolor, 3)
+			main("9", 295, 0, ifondcolor, 3)
+
 
 """
 
 Changelog :
+v5.0
+Fenètre de commande avec tkinter.
+
 v4.0
 Optimisation du code.
 Ajout de commentaires pour rendre le code plus clair.
+Ajout d'une marque aléatoire sur le rectangle du milieu.
 
 v3.2
 Réglage de la taille de la fenètre.
