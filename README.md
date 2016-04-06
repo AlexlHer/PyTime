@@ -1,10 +1,15 @@
-# PyTime v15.0
+# PyTime v16.0
 ## Horloge en python
 
 Projet libre d'ISN qui avait pour but de s'entrainer sur les fonctions et sur turtle puis sur tkinter et sur les modules.
 
 
 ## Changelog de PyTime :
+
+### v16.0 (Stable) :
+
+Optimisation du code (-306 lignes).
+
 
 ### v15.0 :
 
