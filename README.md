@@ -18,7 +18,7 @@ Mise en place d'un deuxième fichier contenant le nécessaire pour PyTime.
 
 ### v14.0 (Super Stable) :
 
-Correction de quelque bugs.
+Correction de quelques bugs.
 
 
 ### v13.0 (Stable) :
