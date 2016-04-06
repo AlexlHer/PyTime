@@ -4,6 +4,7 @@
 import random
 from tkinter import *
 
+# Fonctions pour l'horloge numérique.
 def zero(a, b, f, g, t, v_tk_speed):
 	x_d = a + (-50)
 	y_d = b + (-50)
@@ -750,6 +751,8 @@ def contour(a, b, f, g, t, v_tk_speed):
 	t.forward(540)
 	t.hideturtle()
 	
+	
+# Fonctions pour l'horloge analogique.
 def acontour(a, b, t, v_tk_speed, v_tk_chco_2):
 	x_d = 0
 	y_d = 200
