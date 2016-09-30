@@ -409,7 +409,7 @@ if numerique == 1:
 	if v_tk_nuit_1 == 0 and v_tk_nuit_2 == 0 and v_tk_nuit_3 == 0:
 		v_tk_nuit_1 = 1
 	if v_tk_tour_3 == 0:
-		v_tk_tour_3 = 20
+		v_tk_tour_3 = 9999999999999
 	if v_tk_speed_1 == 0 and v_tk_speed_2 == 0 and v_tk_speed_3 == 0:
 		v_tk_speed_2 = 1
 	if v_tk_epais_1 == 0 and v_tk_epais_2 == 0 and v_tk_epais_3 == 0:
