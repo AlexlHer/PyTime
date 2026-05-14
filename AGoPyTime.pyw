@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
-# Auteur : Alexandre l'Heritier
+#------------------------------------------------------------------------------
+# Copyright 2016-2026 Alexandre l'Heritier
+# See the top-level LICENSE file for details.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#------------------------------------------------------------------------------
+
 print("----------------------------------------------------------------------")
 print("GoPyTime v1.1 analogique")
 print("----------------------------------------------------------------------")
